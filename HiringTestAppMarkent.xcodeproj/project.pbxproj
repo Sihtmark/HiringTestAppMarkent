@@ -11,6 +11,7 @@
 		A06CD9FE2940B2550038DDCE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06CD9FD2940B2550038DDCE /* ContentView.swift */; };
 		A06CDA002940B2570038DDCE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A06CD9FF2940B2570038DDCE /* Assets.xcassets */; };
 		A06CDA032940B2570038DDCE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A06CDA022940B2570038DDCE /* Preview Assets.xcassets */; };
+		A09BEEE4294380C200A07922 /* HotSalesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09BEEE3294380C200A07922 /* HotSalesCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		A06CD9FD2940B2550038DDCE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A06CD9FF2940B2570038DDCE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A06CDA022940B2570038DDCE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		A09BEEE3294380C200A07922 /* HotSalesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotSalesCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +55,7 @@
 			children = (
 				A06CD9FB2940B2550038DDCE /* HiringTestAppMarkentApp.swift */,
 				A06CD9FD2940B2550038DDCE /* ContentView.swift */,
+				A09BEEE3294380C200A07922 /* HotSalesCell.swift */,
 				A06CD9FF2940B2570038DDCE /* Assets.xcassets */,
 				A06CDA012940B2570038DDCE /* Preview Content */,
 			);
@@ -138,6 +141,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A06CD9FE2940B2550038DDCE /* ContentView.swift in Sources */,
+				A09BEEE4294380C200A07922 /* HotSalesCell.swift in Sources */,
 				A06CD9FC2940B2550038DDCE /* HiringTestAppMarkentApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
