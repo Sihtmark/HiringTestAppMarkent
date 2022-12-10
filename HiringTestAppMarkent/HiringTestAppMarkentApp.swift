@@ -11,7 +11,8 @@ import SwiftUI
 struct HiringTestAppMarkentApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+//            HomeStorePage()
+            HotSalesCell()
         }
     }
 }
