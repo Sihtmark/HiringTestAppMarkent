@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct HomeStorePage: View {
+    
+    @StateObject private var viewModel = HomeStoreListModel()
+    
     var body: some View {
         VStack {
             
@@ -41,19 +44,27 @@ struct HomeStorePage: View {
                     .padding(.trailing, 32)
                 }
                 .frame(width: 40, height: 19, alignment: .trailing)
+                
+                
             }
             Spacer()
+                .frame(height: 20)
             
             ScrollView() {
+                
                 HStack {
                     Text("Select Category")
+                        .font(.system(size: 25))
+                        .bold()
                     
                     Spacer()
                     
-                    Text("View all")
+                    Text("view all")
+                        .foregroundColor(Color(red: 1.079, green: 0.382, blue: 0.252))
+                        .font(.system(size: 15))
                 }
-                
-                
+                .padding(.leading, 17)
+                .padding(.trailing, 17)
                 
                 ScrollView(.horizontal) {
                     HStack {
@@ -63,7 +74,6 @@ struct HomeStorePage: View {
                         .padding(6.5)
                     }
                     .padding(.leading, 8)
-                    .padding(.top, 5)
                 }
                 
                 HStack {
@@ -72,6 +82,13 @@ struct HomeStorePage: View {
                             .foregroundColor(Color(red: 1.079, green: 0.382, blue: 0.252))
                             .font(.system(size: 16))
                             .padding(.leading, 24)
+                        
+                        Spacer()
+                            .frame(width: 18)
+                        
+                        Text("Search")
+                            .font(.system(size: 12))
+                            .foregroundColor(Color(uiColor: UIColor(red: 0.004, green: 0, blue: 0.208, alpha: 0.5)))
                     }
                     .frame(width: 300, height: 34, alignment: .leading)
                     .background(.white)
@@ -92,9 +109,29 @@ struct HomeStorePage: View {
                     .cornerRadius(50)
                 }
                 .padding(.top, 15)
+                
+                HStack {
+                    Text("Hot sales")
+                        .font(.system(size: 25))
+                        .bold()
+                    Spacer()
+                    Text("see more")
+                        .foregroundColor(Color(red: 1.079, green: 0.382, blue: 0.252))
+                        .font(.system(size: 15))
+                }
+                .padding(.leading, 17)
+                .padding(.trailing, 17)
+                .padding(.top, 17)
+                
+                ScrollView(.horizontal) {
+                    HStack {
+                        
+                    }
+                }
+                .padding(.leading, 15)
             }
-            .background(Color(red: 0.961, green: 0.961, blue: 0.961))
         }
+        .background(Color(red: 0.961, green: 0.961, blue: 0.961))
     }
 }
 

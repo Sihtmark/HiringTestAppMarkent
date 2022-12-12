@@ -7,8 +7,8 @@
 
 import Foundation
 
-// MARK: - Welcome
-struct Welcome: Codable {
+// MARK: - HomeStoreCard
+struct HomeStoreCard: Codable {
     let homeStore: [HomeStore]?
     let bestSeller: [BestSeller]?
 
@@ -52,3 +52,6 @@ struct HomeStore: Codable {
     }
 }
 
+struct WelcomeResponse: Decodable {
+    let request: [HomeStoreCard]
+}
