@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct HotSalesCell: View {
+    
+    
+    
     var body: some View {
         ZStack(alignment: .topLeading) {
             
