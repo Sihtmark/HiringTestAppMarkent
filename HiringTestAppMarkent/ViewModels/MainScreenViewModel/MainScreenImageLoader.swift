@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Combine
+import Foundation
 
 class MainScreenImageLoader: ObservableObject {
     @Published var image: UIImage?

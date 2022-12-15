@@ -7,14 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A003DDEE2944DDB700DA84F7 /* MainScreenObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = A003DDED2944DDB700DA84F7 /* MainScreenObjects.swift */; };
-		A003DDF22944E3D700DA84F7 /* BestSeller.swift in Sources */ = {isa = PBXBuildFile; fileRef = A003DDF12944E3D700DA84F7 /* BestSeller.swift */; };
-		A06C67A3294628C9007A9BF1 /* SalesCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06C67A2294628C9007A9BF1 /* SalesCategory.swift */; };
+		A06442B4294B1B8000599EDF /* AsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06442B3294B1B8000599EDF /* AsyncImage.swift */; };
+		A06C67A3294628C9007A9BF1 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06C67A2294628C9007A9BF1 /* Product.swift */; };
 		A06CD9FC2940B2550038DDCE /* HiringTestAppMarkentApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06CD9FB2940B2550038DDCE /* HiringTestAppMarkentApp.swift */; };
 		A06CD9FE2940B2550038DDCE /* MainScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06CD9FD2940B2550038DDCE /* MainScreenView.swift */; };
 		A06CDA002940B2570038DDCE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A06CD9FF2940B2570038DDCE /* Assets.xcassets */; };
 		A06CDA032940B2570038DDCE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A06CDA022940B2570038DDCE /* Preview Assets.xcassets */; };
-		A09BEEE4294380C200A07922 /* HotSalesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09BEEE3294380C200A07922 /* HotSalesCell.swift */; };
 		A0D45B8F2948BBC4004C20D4 /* MainScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D45B8E2948BBC4004C20D4 /* MainScreenViewModel.swift */; };
 		A0D45B912948C4ED004C20D4 /* MainScreenImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D45B902948C4ED004C20D4 /* MainScreenImageLoader.swift */; };
 		A0D45B982948D166004C20D4 /* MarkPro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A0D45B932948D165004C20D4 /* MarkPro-Regular.ttf */; };
@@ -25,15 +23,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		A003DDED2944DDB700DA84F7 /* MainScreenObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenObjects.swift; sourceTree = "<group>"; };
-		A003DDF12944E3D700DA84F7 /* BestSeller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BestSeller.swift; sourceTree = "<group>"; };
-		A06C67A2294628C9007A9BF1 /* SalesCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalesCategory.swift; sourceTree = "<group>"; };
+		A06442B3294B1B8000599EDF /* AsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImage.swift; sourceTree = "<group>"; };
+		A06C67A2294628C9007A9BF1 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		A06CD9F82940B2550038DDCE /* HiringTestAppMarkent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HiringTestAppMarkent.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A06CD9FB2940B2550038DDCE /* HiringTestAppMarkentApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiringTestAppMarkentApp.swift; sourceTree = "<group>"; };
 		A06CD9FD2940B2550038DDCE /* MainScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenView.swift; sourceTree = "<group>"; };
 		A06CD9FF2940B2570038DDCE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A06CDA022940B2570038DDCE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		A09BEEE3294380C200A07922 /* HotSalesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotSalesCell.swift; sourceTree = "<group>"; };
 		A09CD1EE294486BD0007193A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A0D45B8E2948BBC4004C20D4 /* MainScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewModel.swift; sourceTree = "<group>"; };
 		A0D45B902948C4ED004C20D4 /* MainScreenImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenImageLoader.swift; sourceTree = "<group>"; };
@@ -55,14 +51,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		A003DDEF2944E06300DA84F7 /* MainScreen */ = {
+		A030B587294A3B9400BF4D73 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				A06CD9FD2940B2550038DDCE /* MainScreenView.swift */,
-				A09BEEE3294380C200A07922 /* HotSalesCell.swift */,
-				A003DDF12944E3D700DA84F7 /* BestSeller.swift */,
+				A09DF29129473F6E0002E163 /* MainScreenViewModel */,
 			);
-			path = MainScreen;
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		A030B588294A3BD100BF4D73 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A09DF29029473F5A0002E163 /* MainScreenModel */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		A06CD9EF2940B2550038DDCE = {
@@ -84,9 +86,9 @@
 		A06CD9FA2940B2550038DDCE /* HiringTestAppMarkent */ = {
 			isa = PBXGroup;
 			children = (
+				A030B588294A3BD100BF4D73 /* Models */,
+				A030B587294A3B9400BF4D73 /* ViewModels */,
 				A09DF292294740380002E163 /* Views */,
-				A09DF29129473F6E0002E163 /* MainScreenViewModel */,
-				A09DF29029473F5A0002E163 /* MainScreenModel */,
 				A0D45B922948D111004C20D4 /* Fonts */,
 				A06CDA012940B2570038DDCE /* Preview Content */,
 				A06CD9FF2940B2570038DDCE /* Assets.xcassets */,
@@ -106,8 +108,7 @@
 		A09DF29029473F5A0002E163 /* MainScreenModel */ = {
 			isa = PBXGroup;
 			children = (
-				A06C67A2294628C9007A9BF1 /* SalesCategory.swift */,
-				A003DDED2944DDB700DA84F7 /* MainScreenObjects.swift */,
+				A06C67A2294628C9007A9BF1 /* Product.swift */,
 			);
 			path = MainScreenModel;
 			sourceTree = "<group>";
@@ -125,7 +126,8 @@
 			isa = PBXGroup;
 			children = (
 				A06CD9FB2940B2550038DDCE /* HiringTestAppMarkentApp.swift */,
-				A003DDEF2944E06300DA84F7 /* MainScreen */,
+				A06CD9FD2940B2550038DDCE /* MainScreenView.swift */,
+				A06442B3294B1B8000599EDF /* AsyncImage.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -216,15 +218,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				A06CD9FE2940B2550038DDCE /* MainScreenView.swift in Sources */,
+				A06442B4294B1B8000599EDF /* AsyncImage.swift in Sources */,
 				A0D45B9C2948D166004C20D4 /* Colors.swift in Sources */,
-				A09BEEE4294380C200A07922 /* HotSalesCell.swift in Sources */,
 				A06CD9FC2940B2550038DDCE /* HiringTestAppMarkentApp.swift in Sources */,
-				A003DDEE2944DDB700DA84F7 /* MainScreenObjects.swift in Sources */,
 				A0D45B8F2948BBC4004C20D4 /* MainScreenViewModel.swift in Sources */,
 				A0D45B9B2948D166004C20D4 /* Fonts.swift in Sources */,
 				A0D45B912948C4ED004C20D4 /* MainScreenImageLoader.swift in Sources */,
-				A003DDF22944E3D700DA84F7 /* BestSeller.swift in Sources */,
-				A06C67A3294628C9007A9BF1 /* SalesCategory.swift in Sources */,
+				A06C67A3294628C9007A9BF1 /* Product.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

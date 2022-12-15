@@ -6,13 +6,16 @@
 //
 
 import Foundation
+import UIKit
 
 class MainScreenViewModel: ObservableObject {
     @Published var salesCategory: SalesCategory = .phone
-    @Published var hotSales = [HomeStore]()
-    @Published var bestSellers = [BestSeller]()
+    @Published var hotSales = [home_store]()
+    @Published var bestSellers = [best_seller]()
     
-    func getMainScreenCards() {
+    @Published var image = UIImage()
+    
+    func fetchData() {
         let url = "https://run.mocky.io/v3/654bd15e-b121-49ba-a588-960956b15175"
         guard let safeUrl = URL(string: url) else {
             print("Wrong URL")
@@ -21,14 +24,14 @@ class MainScreenViewModel: ObservableObject {
         let session = URLSession(configuration: .default)
         let task = session.dataTask(with: safeUrl) { [weak self] data, response, error in
             if error != nil {
-                print("Network error")
+                print("Network error: \(error?.localizedDescription ?? "asdf")")
                 return
             }
             if let data = data {
                 if let mainScreenModel = self?.parse(data) {
                     DispatchQueue.main.async {
-                        self?.hotSales = mainScreenModel.homeStore
-                        self?.bestSellers = mainScreenModel.bestSeller
+                        self?.hotSales = mainScreenModel.home_store
+                        self?.bestSellers = mainScreenModel.best_seller
                     }
                 }
             }
@@ -38,12 +41,12 @@ class MainScreenViewModel: ObservableObject {
     
     private func parse(_ data: Data) -> MainScreenCardStruct? {
         let decoder = JSONDecoder()
-        decoder.keyDecodingStrategy = .convertFromSnakeCase
+//        decoder.keyDecodingStrategy = .convertFromSnakeCase
         do {
             let data = try decoder.decode(MainScreenCardStruct.self, from: data)
             return data
         } catch {
-            print("Parsing error")
+            print("Parsing error: \(error)")
             return nil
         }
     }
