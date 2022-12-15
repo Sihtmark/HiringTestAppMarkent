@@ -11,7 +11,7 @@ import SwiftUI
 struct HiringTestAppMarkentApp: App {
     var body: some Scene {
         WindowGroup {
-            MainScreenView(filterPresentation: .constant(false))
+            HomeView(filterPresentation: .constant(false))
         }
     }
 }

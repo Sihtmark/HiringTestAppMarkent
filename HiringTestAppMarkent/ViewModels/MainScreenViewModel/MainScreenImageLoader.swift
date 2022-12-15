@@ -9,29 +9,29 @@ import SwiftUI
 import Combine
 import Foundation
 
-class MainScreenImageLoader: ObservableObject {
+class ImageLoader: ObservableObject {
     @Published var image: UIImage?
     private let url: String
-    private var cancelable: AnyCancellable?
-    
+    private var cancellable: AnyCancellable?
+
     init(url: String) {
         self.url = url
     }
-    
+
     deinit {
         cancel()
     }
     
-    func loadImage() {
+    func load() {
         guard let safeUrl = URL(string: url) else { return }
-        cancelable = URLSession.shared.dataTaskPublisher(for: safeUrl)
-            .map { UIImage(data: $0.data) }
-            .replaceError(with: nil)
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] in self?.image = $0 }
+        cancellable = URLSession.shared.dataTaskPublisher(for: safeUrl)
+                    .map { UIImage(data: $0.data) }
+                    .replaceError(with: nil)
+                    .receive(on: DispatchQueue.main)
+                    .sink { [weak self] in self?.image = $0 }
     }
-    
+
     func cancel() {
-        cancelable?.cancel()
+        cancellable?.cancel()
     }
 }

@@ -8,16 +8,15 @@
 import SwiftUI
 
 struct AsyncImage: View {
-    
-    @StateObject private var loader: MainScreenImageLoader
-    
+    @StateObject private var loader: ImageLoader
+
     init(url: String) {
-        _loader = StateObject(wrappedValue: MainScreenImageLoader(url: url))
+        _loader = StateObject(wrappedValue: ImageLoader(url: url))
     }
     
     var body: some View {
         content
-            .onAppear(perform: loader.loadImage)
+            .onAppear(perform: loader.load)
     }
     
     private var content: some View {
@@ -27,10 +26,8 @@ struct AsyncImage: View {
                     .resizable()
             } else {
                 Image(systemName: "heart")
-//                ProgressView()
-//                    .progressViewStyle(CircularProgressViewStyle(tint: .blue))
-//                    .scaleEffect(2)
             }
         }
     }
 }
+

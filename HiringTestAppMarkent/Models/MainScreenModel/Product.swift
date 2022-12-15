@@ -7,57 +7,43 @@
 
 import Foundation
 
-// MARK: - HomeStoreCard
-struct MainScreenCardStruct: Codable {
-    let home_store: [home_store]
-    let best_seller: [best_seller]
-    
-//    enum CodingKeys: String, CodingKey {
-//        case home_store = "home_store"
-//        case bestSeller = "best_seller"
-//    }
+// Product Model
+
+// MARK: - HomeModel
+struct HomeModel: Codable {
+    let homeStore: [HomeStore]
+    let bestSeller: [BestSeller]
 }
 
 // MARK: - BestSeller
-struct best_seller: Codable, Hashable {
+struct BestSeller: Codable, Hashable {
     let id: Int
-    let is_favorites: Bool
+    let isFavorites: Bool
     let title: String
-    let price_without_discount, discount_price: Int
+    let priceWithoutDiscount: Int
+    let discountPrice: Int
     let picture: String
-    
-//    enum CodingKeys: String, CodingKey {
-//        case id
-//        case isFavorites = "is_favorites"
-//        case title
-//        case priceWithoutDiscount = "price_without_discount"
-//        case discountPrice = "discount_price"
-//        case picture
-//    }
 }
 
 // MARK: - HomeStore
-struct home_store: Codable, Hashable {
+struct HomeStore: Codable, Hashable {
     let id: Int
-    let is_new: Bool?
-    let title, subtitle: String
+    let isNew: Bool?
+    let title: String
+    let subtitle: String
     let picture: String
-    let is_buy: Bool
-    
-//    enum CodingKeys: String, CodingKey {
-//        case id
-//        case isNew = "is_new"
-//        case title, subtitle, picture
-//        case isBuy = "is_buy"
-//    }
+    let isBuy: Bool
 }
 
-enum SalesCategory: CaseIterable {
+
+
+// ProductTypes
+enum ProductType: CaseIterable {
     case phone
     case computer
     case health
     case books
-    case food
+    case other
     
     var title: String {
         switch self {
@@ -69,23 +55,24 @@ enum SalesCategory: CaseIterable {
             return "Health"
         case .books:
             return "Books"
-        case .food:
-            return "food"
+        case .other:
+            return "Other"
         }
     }
     
     var imageName: String {
         switch self {
         case .phone:
-            return "iphone"
+            return "phone"
         case .computer:
-            return "laptopcomputer"
+            return "computer"
+        // Changed health image to similar one cause previous had a bug
         case .health:
-            return "bolt.heart"
+            return "health"
         case .books:
-            return "book.closed"
-        case .food:
-            return "takeoutbag.and.cup.and.straw"
+            return "books"
+        case .other:
+            return "other"
         }
     }
 }

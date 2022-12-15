@@ -7,13 +7,14 @@
 
 import SwiftUI
 
-struct MainScreenView: View {
-    
-    @StateObject var mainScreenViewModel = MainScreenViewModel()
-    @State private var isPresent = false
+struct HomeView: View {
+    @StateObject var homeViewModel: HomeViewModel = HomeViewModel()
+    @State private var isPresent: Bool = false
     @Binding var filterPresentation: Bool
-    let columns = [GridItem(.flexible()), GridItem(.flexible())]
-    
+    let columns = [
+        GridItem(.flexible()),
+        GridItem(.flexible())
+    ]
     var body: some View {
         ZStack {
             VStack(spacing: 0) {
@@ -23,39 +24,39 @@ struct MainScreenView: View {
                             
                         } label: {
                             HStack {
-                                Image("Group")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(height: 15)
+                                Image("metka")
                                 Text("Zihuatanejo, Gro")
-                                    .font(.custom(regularMark, size: 15))
-                                    .foregroundColor(.black)
-                                Image(systemName: "chevron.down")
-                                    .foregroundColor(Color.appGrey)
+                                    .font(.custom(regularMark, size: 20))
+                                    .foregroundColor(Color.black)
+                                Image("arrow")
                             }
                         }
                         .frame(alignment: .center)
                         
                         VStack(alignment: .trailing) {
                             Button {
-                                
+                                filterPresentation.toggle()
                             } label: {
-                                Image("funnel")
+                                Image("filter")
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
-                                    .frame(width: 11, height: 13)
+                                    .frame(width: 15)
                             }
                         }
                         .frame(maxWidth: .infinity, alignment: .trailing)
                     }
+                    
+                    
+                    
                 }
                 .padding(.vertical)
                 .padding(.horizontal, 25)
+                .background(Color.white)
                 
                 ScrollView(.vertical, showsIndicators: true) {
                     VStack(spacing: 0) {
                         HStack {
-                            Text("Select category")
+                            Text("Select Category")
                                 .font(.custom(regularMark, size: 25).bold())
                             Spacer()
                             Button {
@@ -71,17 +72,16 @@ struct MainScreenView: View {
                         
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack(spacing: 23) {
-                                ForEach(SalesCategory.allCases, id: \.self) { category in
-                                    salesCategoryView(category: category)
+                                ForEach(ProductType.allCases, id: \.self) { type in
+                                    productTypeView(type: type)
                                         .onTapGesture {
-                                            switchSalesCategory(category: category)
+                                            switchProuductType(type: type)
                                         }
                                 }
                             }
                             .padding(.vertical)
                             .padding(.horizontal, 25)
                         }
-                        
                         HStack {
                             HStack(spacing: 20) {
                                 Button {
@@ -101,6 +101,7 @@ struct MainScreenView: View {
                                     .shadow(color: .black.opacity(0.1), radius: 7)
                                     .frame(maxWidth: .infinity)
                             )
+                            
                             ZStack {
                                 Button {
                                     
@@ -108,16 +109,17 @@ struct MainScreenView: View {
                                     ZStack {
                                         Circle()
                                             .fill(Color.appOrange)
-                                        Image("group 3")
+                                        Image("qrCode")
                                             .resizable()
                                             .renderingMode(.template)
                                             .aspectRatio(contentMode: .fit)
-                                            .frame(height: 15)
-                                            .foregroundColor(.white)
+                                            .frame(height: 20)
+                                            .foregroundColor(Color.white)
                                     }
                                 }
                             }
                             .frame(maxWidth: 50)
+                            
                         }
                         .padding(.vertical)
                         .padding(.horizontal, 25)
@@ -139,7 +141,7 @@ struct MainScreenView: View {
                         
                         VStack {
                             TabView {
-                                ForEach(mainScreenViewModel.hotSales, id: \.self) { item in
+                                ForEach(homeViewModel.hotSales, id: \.self) { item in
                                     hotSalesView(hotSalesData: item)
                                 }
                             }
@@ -149,7 +151,7 @@ struct MainScreenView: View {
                         .frame(height: 200)
                         
                         HStack {
-                            Text("Best Seller")
+                            Text("Best seller")
                                 .font(.custom(regularMark, size: 25).bold())
                             Spacer()
                             Button {
@@ -164,84 +166,140 @@ struct MainScreenView: View {
                         .padding(.horizontal, 25)
                         
                         LazyVGrid(columns: columns, spacing: 20) {
-                            ForEach(mainScreenViewModel.bestSellers, id: \.self) { item in
-                                productCardView(bestSeller: item)
+                            ForEach(homeViewModel.bestSeller, id: \.self) { bestSeller in
+                                productCardView(bestSeller: bestSeller)
                             }
                         }
                         .padding(.horizontal, 13)
                         .padding(.vertical)
                     }
                 }
+                
+                
             }
             .onAppear {
-                mainScreenViewModel.fetchData()
+                homeViewModel.fetchData()
             }
+            
+//            FlexibleSheet(isPresent: $isPresent) {
+//                VStack {
+//                    HStack {
+//                        Button {
+//                            isPresent.toggle()
+//                        } label: {
+//                            Image(systemName: "clear.fill")
+//                                .resizable()
+//                                .frame(width: 37, height: 37)
+//                                .foregroundColor(Color.customDarkBlue)
+//                        }
+//                        Spacer()
+//                        Text("Filter options")
+//                            .font(.custom(regularMark, size: 18))
+//                            .padding(.leading, 25)
+//                        Spacer()
+//                        Button {
+//                            isPresent.toggle()
+//                        } label: {
+//                            Text("Done")
+//                                .font(.custom(regularMark, size: 18))
+//                                .foregroundColor(Color.white)
+//                                .padding(.horizontal, 21)
+//                                .padding(.vertical, 7)
+//                                .background(Color.customOrange)
+//                                .cornerRadius(10)
+//                        }
+//                    }
+//                    Spacer()
+//
+//                }
+//                .padding(.horizontal, 44)
+//                .padding(.vertical, 30)
+////                .frame(maxWidth: .infinity, maxHeight: .infinity)
+//                .background(Color.white)
+//                .clipShape(RoundedRectangle(cornerRadius: 25, style: .continuous))
+//                .shadow(color: .black.opacity(0.1), radius: 12)
+//            }
+            
+            
         }
-        .background(Color.appBackground)
+        
     }
 }
 
-// MARK: - Sales category circle view with text
-extension MainScreenView {
+struct HomeView_Previews: PreviewProvider {
+    static var previews: some View {
+        HomeView(filterPresentation: .constant(false))
+    }
+}
+
+
+// MARK: Product typeView
+extension HomeView {
     @ViewBuilder
-    private func salesCategoryView(category: SalesCategory) -> some View {
+    private func productTypeView(type: ProductType) -> some View {
         VStack {
             ZStack {
                 Circle()
-                    .fill(mainScreenViewModel.salesCategory == category ? Color.appOrange : Color.white)
+                    .fill(homeViewModel.productType == type ? Color.appOrange : Color.white)
                     .frame(width: 71, height: 71)
                     .shadow(color: .black.opacity(0.1), radius: 10)
                 
-                Image(systemName: category.imageName)
-                    .font(.system(size: 30))
-                    .foregroundColor(mainScreenViewModel.salesCategory == category ? Color.white : Color.imageCategory)
+                Image(type.imageName)
+                    .resizable()
+                    .renderingMode(.template)
+                    .aspectRatio(contentMode: .fit)
+                    .frame(height: 30)
+                    .foregroundColor(homeViewModel.productType == type ? Color.white : Color.black.opacity(0.3))
             }
             
-            Text(category.title)
-                .font(.custom(regularMark, size: 12))
-                .foregroundColor(mainScreenViewModel.salesCategory == category ? Color.appOrange : Color.black)
+            Text(type.title)
+                .font(.custom(regularMark, size: 14))
+                .foregroundColor(homeViewModel.productType == type ? Color.appOrange : Color.black)
         }
+        .background(Color.white)
     }
     
-    private func switchSalesCategory(category: SalesCategory) {
+    private func switchProuductType(type: ProductType) {
         withAnimation {
-            mainScreenViewModel.salesCategory = category
+            homeViewModel.productType = type
         }
     }
 }
 
-//MARK: - Hot sales tab view
-extension MainScreenView {
+// MARK: Hot sales tabView
+extension HomeView {
     @ViewBuilder
-    private func hotSalesView(hotSalesData: home_store) -> some View {
+    private func hotSalesView(hotSalesData: HomeStore) -> some View {
         HStack {
             VStack(alignment: .leading) {
-                if let _ = hotSalesData.is_new {
-                    Text("new")
+                
+                if let _ = hotSalesData.isNew {
+                    Text("New")
                         .font(.custom(regularMark, size: 10).bold())
-                        .foregroundColor(.white)
+                        .foregroundColor(Color.white)
                         .padding(8)
                         .background(
                             Circle()
                                 .fill(Color.appOrange)
                         )
+                    
                 }
                 VStack(alignment: .leading) {
                     Text(hotSalesData.title)
                         .font(.custom(regularMark, size: 25).bold())
-                        .foregroundColor(.white)
+                        .foregroundColor(Color.white)
                     Text(hotSalesData.subtitle)
                         .font(.custom(regularMark, size: 11))
-                        .foregroundColor(.white)
+                        .foregroundColor(Color.white)
                 }
                 Spacer()
                 Text("Buy now!")
-                font(.custom(regularMark, size: 11).bold())
+                    .font(.custom(regularMark, size: 11).bold())
                     .padding(.vertical, 7)
                     .padding(.horizontal, 30)
                     .background(
-                        RoundedRectangle(cornerRadius: 5)
-                            .fill(.white)
+                        RoundedRectangle(cornerRadius: 9)
+                            .fill(Color.white)
                     )
             }
             Spacer()
@@ -258,10 +316,11 @@ extension MainScreenView {
     }
 }
 
+
 // MARK: Best seller cardView
-extension MainScreenView {
+extension HomeView {
     @ViewBuilder
-    private func productCardView(bestSeller: best_seller) -> some View {
+    private func productCardView(bestSeller: BestSeller) -> some View {
         VStack(spacing: 0) {
             ZStack {
                 AsyncImage(url: bestSeller.picture)
@@ -273,7 +332,7 @@ extension MainScreenView {
                         Spacer()
                         ZStack {
                             
-                            Image(systemName: bestSeller.is_favorites ? "heart.fill" : "heart")
+                            Image(systemName: bestSeller.isFavorites ? "heart.fill" : "heart")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .frame(height: 11)
@@ -295,9 +354,9 @@ extension MainScreenView {
             }
             
             HStack(alignment: .bottom) {
-                Text("$" + "\(bestSeller.price_without_discount)")
+                Text("$" + "\(bestSeller.priceWithoutDiscount)")
                     .font(.custom(regularMark, size: 16)).bold()
-                Text("$" + "\(bestSeller.discount_price)")
+                Text("$" + "\(bestSeller.discountPrice)")
                     .font(.custom(regularMark, size: 10))
                     .foregroundColor(Color.black.opacity(0.3))
                 Spacer()
@@ -321,12 +380,5 @@ extension MainScreenView {
                 .fill(.white)
                 .shadow(color: Color.black.opacity(0.1), radius: 12)
         )
-    }
-}
-
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        MainScreenView(filterPresentation: .constant(false))
     }
 }
