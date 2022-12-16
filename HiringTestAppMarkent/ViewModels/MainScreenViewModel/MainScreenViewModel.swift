@@ -11,10 +11,8 @@ import UIKit
 class HomeViewModel: ObservableObject {
     @Published var productType: ProductType = .phone
     @Published var productCarousel: Int = 0
-    
     @Published var hotSales: [HomeStore] = [HomeStore]()
     @Published var bestSeller: [BestSeller] = [BestSeller]()
-    
     @Published var image: UIImage = UIImage()
     
     // get request from https://run.mocky.io/v3/654bd15e-b121-49ba-a588-960956b15175

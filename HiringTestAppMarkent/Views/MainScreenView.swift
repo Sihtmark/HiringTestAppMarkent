@@ -9,8 +9,12 @@ import SwiftUI
 
 struct HomeView: View {
     @StateObject var homeViewModel: HomeViewModel = HomeViewModel()
-    @State private var isPresent: Bool = false
+    @State private var isPresent = true
     @Binding var filterPresentation: Bool
+    @State private var brandFilterTitle = "Samsung"
+    @State private var priceFilterTitle = "$300 - $500"
+    @State var filterPriceWidth: CGFloat = 25
+    
     let columns = [
         GridItem(.flexible()),
         GridItem(.flexible())
@@ -35,7 +39,7 @@ struct HomeView: View {
                         
                         VStack(alignment: .trailing) {
                             Button {
-                                filterPresentation.toggle()
+                                isPresent.toggle()
                             } label: {
                                 Image("filter")
                                     .resizable()
@@ -174,55 +178,56 @@ struct HomeView: View {
                         .padding(.vertical)
                     }
                 }
-                
-                
             }
             .onAppear {
                 homeViewModel.fetchData()
             }
             
-//            FlexibleSheet(isPresent: $isPresent) {
-//                VStack {
-//                    HStack {
-//                        Button {
-//                            isPresent.toggle()
-//                        } label: {
-//                            Image(systemName: "clear.fill")
-//                                .resizable()
-//                                .frame(width: 37, height: 37)
-//                                .foregroundColor(Color.customDarkBlue)
-//                        }
-//                        Spacer()
-//                        Text("Filter options")
-//                            .font(.custom(regularMark, size: 18))
-//                            .padding(.leading, 25)
-//                        Spacer()
-//                        Button {
-//                            isPresent.toggle()
-//                        } label: {
-//                            Text("Done")
-//                                .font(.custom(regularMark, size: 18))
-//                                .foregroundColor(Color.white)
-//                                .padding(.horizontal, 21)
-//                                .padding(.vertical, 7)
-//                                .background(Color.customOrange)
-//                                .cornerRadius(10)
-//                        }
-//                    }
-//                    Spacer()
-//
-//                }
-//                .padding(.horizontal, 44)
-//                .padding(.vertical, 30)
-////                .frame(maxWidth: .infinity, maxHeight: .infinity)
-//                .background(Color.white)
-//                .clipShape(RoundedRectangle(cornerRadius: 25, style: .continuous))
-//                .shadow(color: .black.opacity(0.1), radius: 12)
-//            }
-            
-            
+            FlexibleSheet(isPresent: $isPresent) {
+                VStack {
+                    HStack {
+                        Button {
+                            isPresent.toggle()
+                        } label: {
+                            Image(systemName: "clear.fill")
+                                .resizable()
+                                .frame(width: 37, height: 37)
+                                .foregroundColor(Color.appBlue)
+                        }
+                        Spacer()
+                        Text("Filter options")
+                            .font(.custom(regularMark, size: 18).bold())
+                            .padding(.leading, 25)
+                        Spacer()
+                        Button {
+                            isPresent.toggle()
+                        } label: {
+                            Text("Done")
+                                .font(.custom(regularMark, size: 18))
+                                .foregroundColor(Color.white)
+                                .padding(.horizontal, 21)
+                                .padding(.vertical, 7)
+                                .background(Color.appOrange)
+                                .cornerRadius(10)
+                        }
+                    }
+                    Spacer()
+                        .frame(height: 50)
+                    filterBrand()
+                        .padding(.bottom, 5)
+                    filterPrice()
+                        .padding(.bottom, 5)
+                    filterSize()
+                }
+                .padding(.leading, 44)
+                .padding(.trailing, 20)
+                .padding(.vertical, 30)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .background(Color.white)
+                .clipShape(RoundedRectangle(cornerRadius: 25, style: .continuous))
+                .shadow(color: .black.opacity(0.1), radius: 12)
+            }
         }
-        
     }
 }
 
@@ -372,7 +377,7 @@ extension HomeView {
             .padding(.horizontal, 16)
             .padding(.bottom)
             
-
+            
         }
         .frame(width: UIScreen.main.bounds.width / 2.3, height: UIScreen.main.bounds.height / 3)
         .background(
@@ -380,5 +385,111 @@ extension HomeView {
                 .fill(.white)
                 .shadow(color: Color.black.opacity(0.1), radius: 12)
         )
+    }
+}
+
+extension HomeView {
+    @ViewBuilder
+    func filterBrand() -> some View {
+        VStack(alignment: .leading) {
+            Text("Brand")
+                .font(.custom(mediumMark, size: 18).bold())
+            Menu {
+                Button {
+                    self.brandFilterTitle = "Iphone"
+                } label: {
+                    Text("iPhone")
+                }
+                Button {
+                    self.brandFilterTitle = "Samsung"
+                } label: {
+                    Text("Samsung")
+                }
+                Button {
+                    self.brandFilterTitle = "Motorola"
+                } label: {
+                    Text("Motorola")
+                }
+                Button {
+                    self.brandFilterTitle = "Xiaomi"
+                } label: {
+                    Text("Xiaomi")
+                }
+            } label: {
+                HStack {
+                    Text(brandFilterTitle)
+                        .font(.custom(regularMark, size: 18))
+                        .foregroundColor(.black)
+                    Spacer()
+                    Image(systemName: "chevron.down")
+                        .foregroundColor(Color.imageCategory)
+                }
+                .frame(height: 37)
+                .padding(.horizontal)
+            }
+        }
+    }
+    
+    @ViewBuilder
+    func filterPrice() -> some View {
+        VStack(alignment: .leading) {
+            Text("Price")
+                .font(.custom(mediumMark, size: 18).bold())
+            Menu {
+                Button {
+                    self.priceFilterTitle = "$0 - $300"
+                } label: {
+                    Text("$0 - $300")
+                }
+                Button {
+                    self.priceFilterTitle = "$300 - $500"
+                } label: {
+                    Text("$300 - $500")
+                }
+                Button {
+                    self.priceFilterTitle = "$500 - $800"
+                } label: {
+                    Text("$500 - $800")
+                }
+                Button {
+                    self.priceFilterTitle = "$800 - $1000"
+                } label: {
+                    Text("$800 - $1000")
+                }
+            } label: {
+                HStack {
+                    Text(priceFilterTitle)
+                        .font(.custom(regularMark, size: 18))
+                        .foregroundColor(.black)
+                    Spacer()
+                    Image(systemName: "chevron.down")
+                        .foregroundColor(Color.imageCategory)
+                }
+                .frame(height: 37)
+                .padding(.horizontal)
+            }
+        }
+    }
+    
+    @ViewBuilder
+    func filterSize() -> some View {
+        VStack(alignment: .leading) {
+            Text("Size")
+                .font(.custom(mediumMark, size: 18).bold())
+            ZStack {
+                Capsule()
+                    .foregroundColor(.white)
+                    .frame(height: 37)
+                HStack {
+                    Text("4.5 to 5.5 inches")
+                        .font(.custom(regularMark, size: 18))
+                        .foregroundColor(.black)
+                    Spacer()
+                    Image(systemName: "chevron.down")
+                        .foregroundColor(Color.imageCategory)
+                }
+                .padding(.horizontal)
+            }
+        }
     }
 }
