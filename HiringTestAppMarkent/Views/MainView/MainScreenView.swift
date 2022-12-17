@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     @StateObject var homeViewModel: HomeViewModel = HomeViewModel()
-    @State private var isPresent = true
+    @State private var isPresent = false
     @Binding var filterPresentation: Bool
     @State private var brandFilterTitle = "Samsung"
     @State private var priceFilterTitle = "$300 - $500"
@@ -178,6 +178,33 @@ struct HomeView: View {
                         .padding(.vertical)
                     }
                 }
+                HStack {
+                    Spacer()
+                    HStack {
+                        Circle()
+                            .frame(width: 8)
+                            .foregroundColor(.white)
+                        Text("Explorer")
+                            .font(.custom(regularMark, size: 15).bold())
+                            .foregroundColor(.white)
+                    }
+                    Spacer()
+                    Image("cart")
+                    Spacer()
+                    Image("heart")
+                    Spacer()
+                    Image("profile")
+                    Spacer()
+                }
+                .frame(height: 72)
+                .background(Color.appBlue)
+                .cornerRadius(30)
+                .padding(.bottom, -20)
+                
+                HStack {
+                    Spacer()
+                }
+                    .background(Color.appBlue)
             }
             .onAppear {
                 homeViewModel.fetchData()
