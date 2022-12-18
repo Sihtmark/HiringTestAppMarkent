@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct AsyncImage: View {
+    
     @StateObject private var loader: ImageLoader
 
     init(url: String) {
