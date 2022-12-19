@@ -104,8 +104,6 @@ extension ProductDetailsView {
             }
             .padding(.horizontal, 38)
             
-            
-            
             HStack {
                 Image(systemName: "star.fill")
                     .foregroundColor(.yellow)
@@ -124,19 +122,21 @@ extension ProductDetailsView {
                     .font(.system(size: 18))
             }
             .padding(.horizontal, 38)
-            
+            Spacer()
             
             
             HStack(spacing: 23) {
+                Spacer()
                 ForEach(ProductInfo.allCases, id: \.self) { type in
                     detailsView(type: type)
                         .onTapGesture {
                             switchProductInfo(type: type)
                         }
                 }
+                Spacer()
             }
-            
             Spacer()
+            
             
             HStack {
                 VStack {
@@ -182,14 +182,13 @@ extension ProductDetailsView {
             }
             .padding(.leading, 30)
             .padding(.trailing, 40)
-            
             Spacer()
+            
             
             Text("Select color and capacity")
                 .font(.custom(mediumMark, size: 16))
                 .padding(.leading, 30)
-            
-            Spacer()
+                .padding(.bottom, 15)
             
             HStack {
                 ZStack {
@@ -233,8 +232,7 @@ extension ProductDetailsView {
             }
             .padding(.leading, 30)
             .padding(.trailing, 40)
-            
-            Spacer()
+            .padding(.bottom, 20)
             
             ZStack {
                 Rectangle()
@@ -246,7 +244,7 @@ extension ProductDetailsView {
                         .font(.custom(boldMark, size: 20))
                         .foregroundColor(.white)
                     Spacer()
-                    Text("$1,500")
+                    Text("$\(product.price)")
                         .font(.custom(boldMark, size: 20))
                         .foregroundColor(.white)
                     Spacer()
@@ -255,7 +253,6 @@ extension ProductDetailsView {
             .frame(maxWidth: .infinity)
             .frame(height: 54)
             .padding(.horizontal, 30)
-            
             
         }
     }

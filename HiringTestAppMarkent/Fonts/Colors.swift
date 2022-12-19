@@ -24,4 +24,7 @@ extension Color {
     public static var imageCategory: Color {
         return Color(UIColor(red: 0.702, green: 0.702, blue: 0.765, alpha: 1))
     }
+    public static var basketCard: Color {
+        return Color(UIColor(red: 0.158, green: 0.156, blue: 0.262, alpha: 1))
+    }
 }
