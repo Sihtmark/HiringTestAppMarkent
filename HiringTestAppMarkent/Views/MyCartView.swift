@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct MyCartView: View {
+    
+    @StateObject var myCartViewModel = MyCartViewModel()
+    let myBasket = MyCartViewModel().myCart?.basket
+    
     var body: some View {
         VStack {
             HStack {
@@ -55,19 +59,56 @@ struct MyCartView: View {
             Spacer()
             
             VStack {
-                VStack {
-                    Spacer()
-                    productCell(basket: sampleBasket1)
-                    Spacer()
-                    productCell(basket: sampleBasket2)
-                    Spacer()
+                ScrollView(.vertical, showsIndicators: false) {
+                    VStack(spacing: 46) {
+                        ForEach((myBasket)!, id: \.self) { basket in
+                            productCell(basket: basket)
+                        }
+                    }
                 }
-                .padding(.horizontal, 30)
+                
+                Spacer()
+                
+                Rectangle()
+                    .frame(maxWidth: .infinity)
+                    .frame(height: 4)
+                    .foregroundColor(Color(UIColor(red: 1, green: 1, blue: 1, alpha: 0.25)))
+                    .padding(.horizontal, 5)
+                    .padding(.bottom, 15)
+                
+                totalCell(myCart: sampleCart)
+                    .padding(.horizontal, 55)
+                
+                Rectangle()
+                    .frame(maxWidth: .infinity)
+                    .frame(height: 4)
+                    .foregroundColor(Color(UIColor(red: 1, green: 1, blue: 1, alpha: 0.25)))
+                    .padding(.horizontal, 5)
+                    .padding(.bottom, 27)
+                
+                Button {
+                    
+                } label: {
+                    ZStack {
+                        Rectangle()
+                            .frame(width: 326, height: 54)
+                            .cornerRadius(10)
+                            .foregroundColor(Color.appOrange)
+                        Text("Checkout")
+                            .font(.custom(boldMark, size: 20))
+                            .foregroundColor(.white)
+                    }
+                }
+                .padding(.bottom, 44)
             }
             .background(Color.appBlue)
             .cornerRadius(30)
+            
+            
         }
-        
+        .onAppear {
+            myCartViewModel.fetchData()
+        }
     }
 }
 
@@ -79,66 +120,98 @@ struct MyCartView_Previews: PreviewProvider {
 
 extension MyCartView {
     @ViewBuilder
-    func productCell(basket: Basket) -> some View {
-        HStack {
-            AsyncImage(url: basket.images)
-                .aspectRatio(contentMode: .fill)
-                .frame(width: 88, height: 88)
-                .clipped()
-                .cornerRadius(10)
+    func productCell(basket: Basket?) -> some View {
+        if let basket = basket {
+            HStack {
+                AsyncImage(url: basket.images)
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: 88, height: 88)
+                    .clipped()
+                    .cornerRadius(10)
+                Spacer()
+                VStack(alignment: .leading) {
+                    Text(basket.title)
+                        .foregroundColor(.white)
+                        .font(.custom(mediumMark, size: 20))
+                    Spacer()
+                    Text("$\(basket.price)")
+                        .foregroundColor(Color.appOrange)
+                        .font(.custom(mediumMark, size: 20))
+                        .padding(.bottom, 10)
+                }
+                .frame(maxWidth: 160, alignment: .leading)
+                Spacer()
+                ZStack {
+                    VStack {
+                        Button {
+                            
+                        } label: {
+                            Image(systemName: "minus")
+                                .foregroundColor(.white)
+                                .font(.system(size: 10))
+                        }
+                        Spacer()
+                        Text("0")
+                            .foregroundColor(.white)
+                            .font(.system(size: 20))
+                        Spacer()
+                        Button {
+                            
+                        } label: {
+                            Image(systemName: "plus")
+                                .foregroundColor(.white)
+                                .font(.system(size: 10))
+                        }
+                    }
+                    .padding(.top, 12)
+                    .padding(.bottom, 5)
+                    
+                    
+                }
+                .frame(width: 26, height: 68)
+                .background(Color.basketCard)
+                .cornerRadius(26)
+                Spacer()
+                Button {
+                    
+                } label: {
+                    Image("bin")
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 14.75, height: 16)
+                }
+            }
+            .frame(height: 88)
+        }
+        
+    }
+}
+
+extension MyCartView {
+    @ViewBuilder
+    func totalCell(myCart: MyCart) -> some View {
+        HStack{
+            VStack(alignment: .leading) {
+                Text("Total")
+                    .font(.custom(regularMark, size: 15))
+                    .foregroundColor(.white)
+                    .padding(.bottom, 12)
+                Text("Delivery")
+                    .font(.custom(regularMark, size: 15))
+                    .foregroundColor(.white)
+                    .padding(.bottom, 26)
+            }
             Spacer()
             VStack(alignment: .leading) {
-                Text(basket.title)
+                Text("$\(myCart.total) us")
+                    .font(.custom(boldMark, size: 15))
                     .foregroundColor(.white)
-                    .font(.custom(mediumMark, size: 20))
-                Spacer()
-                Text("$\(basket.price)")
-                    .foregroundColor(Color.appOrange)
-                    .font(.custom(mediumMark, size: 20))
-                    .padding(.bottom, 10)
-            }
-            .frame(maxWidth: 160, alignment: .leading)
-            Spacer()
-            ZStack {
-                VStack {
-                    Button {
-                        
-                    } label: {
-                        Image(systemName: "minus")
-                            .foregroundColor(.white)
-                            .font(.system(size: 10))
-                    }
-                    Spacer()
-                    Text("0")
-                        .foregroundColor(.white)
-                        .font(.system(size: 20))
-                    Spacer()
-                    Button {
-                        
-                    } label: {
-                        Image(systemName: "plus")
-                            .foregroundColor(.white)
-                            .font(.system(size: 10))
-                    }
-                }
-                .padding(.top, 12)
-                .padding(.bottom, 5)
-                
-                
-            }
-            .frame(width: 26, height: 68)
-            .background(Color.basketCard)
-            .cornerRadius(26)
-            Spacer()
-            Button {
-                
-            } label: {
-                Image("bin")
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width: 14.75, height: 16)
+                    .padding(.bottom, 12)
+                Text(myCart.delivery)
+                    .font(.custom(boldMark, size: 15))
+                    .foregroundColor(.white)
+                    .padding(.bottom, 26)
             }
         }
-        .frame(height: 88)
     }
 }

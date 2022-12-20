@@ -52,8 +52,6 @@ struct ProductDetailsView: View {
             
             cellInfo(product: productViewModel.sampleProductModel)
         }
-        //        .background(UIColor(red: 0.971, green: 0.971, blue: 0.971, alpha: 1))
-        .background(.green)
         .onAppear {
             productViewModel.fetchData()
         }
