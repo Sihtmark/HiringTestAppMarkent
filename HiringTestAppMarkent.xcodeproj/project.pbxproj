@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A01F062429532546000D46AC /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01F062329532546000D46AC /* DetailView.swift */; };
 		A052EA51295070B9007CDFCC /* MyCartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A052EA50295070B9007CDFCC /* MyCartView.swift */; };
 		A052EA53295071EE007CDFCC /* MyCartModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A052EA52295071EE007CDFCC /* MyCartModel.swift */; };
 		A052EA552950726C007CDFCC /* MyCartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A052EA542950726C007CDFCC /* MyCartViewModel.swift */; };
@@ -30,6 +31,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A01F062329532546000D46AC /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		A052EA50295070B9007CDFCC /* MyCartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCartView.swift; sourceTree = "<group>"; };
 		A052EA52295071EE007CDFCC /* MyCartModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCartModel.swift; sourceTree = "<group>"; };
 		A052EA542950726C007CDFCC /* MyCartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCartViewModel.swift; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 				A06CD9FD2940B2550038DDCE /* MainScreenView.swift */,
 				A06442B3294B1B8000599EDF /* AsyncImage.swift */,
 				A06442B5294B4AF000599EDF /* FlexibleSheet.swift */,
+				A01F062329532546000D46AC /* DetailView.swift */,
 			);
 			path = MainView;
 			sourceTree = "<group>";
@@ -239,6 +242,7 @@
 				A0D45B8F2948BBC4004C20D4 /* HomeViewModel.swift in Sources */,
 				A0D45B9B2948D166004C20D4 /* Fonts.swift in Sources */,
 				A06E7A94294D93DB00FAE728 /* ProductViewModel.swift in Sources */,
+				A01F062429532546000D46AC /* DetailView.swift in Sources */,
 				A0D45B912948C4ED004C20D4 /* ImageLoader.swift in Sources */,
 				A06E7A96294D94AC00FAE728 /* ProductModel.swift in Sources */,
 				A052EA552950726C007CDFCC /* MyCartViewModel.swift in Sources */,

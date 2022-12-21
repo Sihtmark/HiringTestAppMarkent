@@ -10,7 +10,6 @@ import SwiftUI
 struct MyCartView: View {
     
     @StateObject var myCartViewModel = MyCartViewModel()
-    let myBasket = MyCartViewModel().myCart?.basket
     
     var body: some View {
         VStack {
@@ -48,24 +47,33 @@ struct MyCartView: View {
                 }
                 
             }
+            .padding(.top, 70)
             .padding(.leading, 42)
             .padding(.trailing, 35)
             
             Spacer()
+                .frame(maxHeight: 50)
             
-            Text("My Cart")
-                .font(.custom(boldMark, size: 35))
+            HStack {
+                Text("My Cart")
+                    .font(.custom(boldMark, size: 35))
+                    .padding(.leading, 42)
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
             
             Spacer()
+                .frame(maxHeight: 49)
             
             VStack {
                 ScrollView(.vertical, showsIndicators: false) {
                     VStack(spacing: 46) {
-                        ForEach((myBasket)!, id: \.self) { basket in
+                        ForEach(myCartViewModel.basket, id: \.self) { basket in
                             productCell(basket: basket)
                         }
                     }
                 }
+                .padding(.top, 80)
+                .padding(.horizontal, 23)
                 
                 Spacer()
                 
@@ -76,7 +84,7 @@ struct MyCartView: View {
                     .padding(.horizontal, 5)
                     .padding(.bottom, 15)
                 
-                totalCell(myCart: sampleCart)
+                totalCell(myCart: myCartViewModel.myCart)
                     .padding(.horizontal, 55)
                 
                 Rectangle()
@@ -106,6 +114,7 @@ struct MyCartView: View {
             
             
         }
+        .ignoresSafeArea()
         .onAppear {
             myCartViewModel.fetchData()
         }
@@ -144,14 +153,14 @@ extension MyCartView {
                 ZStack {
                     VStack {
                         Button {
-                            
+                           
                         } label: {
                             Image(systemName: "minus")
                                 .foregroundColor(.white)
                                 .font(.system(size: 10))
                         }
                         Spacer()
-                        Text("0")
+                        Text(String(myCartViewModel.quantity))
                             .foregroundColor(.white)
                             .font(.system(size: 20))
                         Spacer()
@@ -189,28 +198,30 @@ extension MyCartView {
 
 extension MyCartView {
     @ViewBuilder
-    func totalCell(myCart: MyCart) -> some View {
-        HStack{
-            VStack(alignment: .leading) {
-                Text("Total")
-                    .font(.custom(regularMark, size: 15))
-                    .foregroundColor(.white)
-                    .padding(.bottom, 12)
-                Text("Delivery")
-                    .font(.custom(regularMark, size: 15))
-                    .foregroundColor(.white)
-                    .padding(.bottom, 26)
-            }
-            Spacer()
-            VStack(alignment: .leading) {
-                Text("$\(myCart.total) us")
-                    .font(.custom(boldMark, size: 15))
-                    .foregroundColor(.white)
-                    .padding(.bottom, 12)
-                Text(myCart.delivery)
-                    .font(.custom(boldMark, size: 15))
-                    .foregroundColor(.white)
-                    .padding(.bottom, 26)
+    func totalCell(myCart: MyCart?) -> some View {
+        if let myCart = myCart {
+            HStack{
+                VStack(alignment: .leading) {
+                    Text("Total")
+                        .font(.custom(regularMark, size: 15))
+                        .foregroundColor(.white)
+                        .padding(.bottom, 12)
+                    Text("Delivery")
+                        .font(.custom(regularMark, size: 15))
+                        .foregroundColor(.white)
+                        .padding(.bottom, 26)
+                }
+                Spacer()
+                VStack(alignment: .leading) {
+                    Text("$\(myCart.total) us")
+                        .font(.custom(boldMark, size: 15))
+                        .foregroundColor(.white)
+                        .padding(.bottom, 12)
+                    Text("\(myCart.delivery)")
+                        .font(.custom(boldMark, size: 15))
+                        .foregroundColor(.white)
+                        .padding(.bottom, 26)
+                }
             }
         }
     }

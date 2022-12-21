@@ -23,7 +23,7 @@ struct FlexibleSheet<Content: View>: View {
         
         switch isPresent.wrappedValue {
         case true:
-            return UIScreen.main.bounds.height / 20
+            return UIScreen.main.bounds.height / 3.14
         case false:
             return UIScreen.main.bounds.height
         }

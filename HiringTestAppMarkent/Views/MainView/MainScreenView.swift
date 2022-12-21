@@ -9,10 +9,8 @@ import SwiftUI
 
 struct HomeView: View {
     @StateObject var homeViewModel: HomeViewModel = HomeViewModel()
-    @State private var isPresent = false
+    @State private var showingSheet = false
     @Binding var filterPresentation: Bool
-    @State private var brandFilterTitle = "Samsung"
-    @State private var priceFilterTitle = "$300 - $500"
     @State var filterPriceWidth: CGFloat = 25
     
     let columns = [
@@ -20,239 +18,200 @@ struct HomeView: View {
         GridItem(.flexible())
     ]
     var body: some View {
-        ZStack {
-            VStack(spacing: 0) {
-                HStack {
-                    ZStack {
-                        Button {
-                            
-                        } label: {
-                            HStack {
-                                Image("metka")
-                                Text("Zihuatanejo, Gro")
-                                    .font(.custom(regularMark, size: 20))
-                                    .foregroundColor(Color.black)
-                                Image("arrow")
-                            }
-                        }
-                        .frame(alignment: .center)
-                        
-                        VStack(alignment: .trailing) {
-                            Button {
-                                isPresent.toggle()
-                            } label: {
-                                Image("filter")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(width: 15)
-                            }
-                        }
-                        .frame(maxWidth: .infinity, alignment: .trailing)
-                    }
-                    
-                    
-                    
-                }
-                .padding(.vertical)
-                .padding(.horizontal, 25)
-                .background(Color.white)
-                
-                ScrollView(.vertical, showsIndicators: true) {
-                    VStack(spacing: 0) {
-                        HStack {
-                            Text("Select Category")
-                                .font(.custom(regularMark, size: 25).bold())
-                            Spacer()
+        NavigationView {
+            ZStack {
+                VStack(spacing: 0) {
+                    HStack {
+                        ZStack {
                             Button {
                                 
                             } label: {
-                                Text("view all")
-                                    .font(.custom(regularMark, size: 15))
-                                    .foregroundColor(Color.appOrange)
+                                HStack {
+                                    Image("metka")
+                                    Text("Zihuatanejo, Gro")
+                                        .font(.custom(regularMark, size: 20))
+                                        .foregroundColor(Color.black)
+                                    Image("arrow")
+                                }
                             }
+                            .frame(alignment: .center)
+                            
+                            VStack(alignment: .trailing) {
+                                Button(action: {
+                                    self.showingSheet.toggle()
+                                }) {
+                                    Image("filter")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width: 15)
+                                }
+                                .sheet(isPresented: $showingSheet) {
+                                    DetailView()
+                                        .presentationDetents([.fraction(0.5)])
+                                }
+                            }
+                            .frame(maxWidth: .infinity, alignment: .trailing)
                         }
-                        .padding(.vertical)
-                        .padding(.horizontal, 25)
                         
-                        ScrollView(.horizontal, showsIndicators: false) {
-                            HStack(spacing: 23) {
-                                ForEach(ProductType.allCases, id: \.self) { type in
-                                    productTypeView(type: type)
-                                        .onTapGesture {
-                                            switchProuductType(type: type)
-                                        }
+                        
+                        
+                    }
+                    .padding(.vertical)
+                    .padding(.horizontal, 25)
+                    .background(Color.white)
+                    
+                    ScrollView(.vertical, showsIndicators: true) {
+                        VStack(spacing: 0) {
+                            HStack {
+                                Text("Select Category")
+                                    .font(.custom(regularMark, size: 25).bold())
+                                Spacer()
+                                Button {
+                                    
+                                } label: {
+                                    Text("view all")
+                                        .font(.custom(regularMark, size: 15))
+                                        .foregroundColor(Color.appOrange)
                                 }
                             }
                             .padding(.vertical)
                             .padding(.horizontal, 25)
-                        }
-                        HStack {
-                            HStack(spacing: 20) {
-                                Button {
-                                    
-                                } label: {
-                                    Image(systemName: "magnifyingglass")
-                                        .font(.title2)
-                                        .foregroundColor(Color.appOrange)
-                                }
-                                TextField("Search", text: .constant(""))
-                            }
-                            .padding(.vertical, 10)
-                            .padding(.horizontal)
-                            .background(
-                                Capsule()
-                                    .fill(.white)
-                                    .shadow(color: .black.opacity(0.1), radius: 7)
-                                    .frame(maxWidth: .infinity)
-                            )
                             
-                            ZStack {
-                                Button {
-                                    
-                                } label: {
-                                    ZStack {
-                                        Circle()
-                                            .fill(Color.appOrange)
-                                        Image("qrCode")
-                                            .resizable()
-                                            .renderingMode(.template)
-                                            .aspectRatio(contentMode: .fit)
-                                            .frame(height: 20)
-                                            .foregroundColor(Color.white)
+                            ScrollView(.horizontal, showsIndicators: false) {
+                                HStack(spacing: 23) {
+                                    ForEach(ProductType.allCases, id: \.self) { type in
+                                        productTypeView(type: type)
+                                            .onTapGesture {
+                                                switchProuductType(type: type)
+                                            }
                                     }
                                 }
+                                .padding(.vertical)
+                                .padding(.horizontal, 25)
                             }
-                            .frame(maxWidth: 50)
-                            
-                        }
-                        .padding(.vertical)
-                        .padding(.horizontal, 25)
-                        
-                        HStack {
-                            Text("Hot sales")
-                                .font(.custom(regularMark, size: 25).bold())
-                            Spacer()
-                            Button {
+                            HStack {
+                                HStack(spacing: 20) {
+                                    Button {
+                                        
+                                    } label: {
+                                        Image(systemName: "magnifyingglass")
+                                            .font(.title2)
+                                            .foregroundColor(Color.appOrange)
+                                    }
+                                    TextField("Search", text: .constant(""))
+                                }
+                                .padding(.vertical, 10)
+                                .padding(.horizontal)
+                                .background(
+                                    Capsule()
+                                        .fill(.white)
+                                        .shadow(color: .black.opacity(0.1), radius: 7)
+                                        .frame(maxWidth: .infinity)
+                                )
                                 
-                            } label: {
-                                Text("see more")
-                                    .font(.custom(regularMark, size: 15))
-                                    .foregroundColor(Color.appOrange)
+                                ZStack {
+                                    Button {
+                                        
+                                    } label: {
+                                        ZStack {
+                                            Circle()
+                                                .fill(Color.appOrange)
+                                            Image("qrCode")
+                                                .resizable()
+                                                .renderingMode(.template)
+                                                .aspectRatio(contentMode: .fit)
+                                                .frame(height: 20)
+                                                .foregroundColor(Color.white)
+                                        }
+                                    }
+                                }
+                                .frame(maxWidth: 50)
+                                
                             }
-                        }
-                        .padding(.top, 10)
-                        .padding(.horizontal, 25)
-                        
-                        VStack {
-                            TabView {
-                                ForEach(homeViewModel.hotSales, id: \.self) { item in
-                                    hotSalesView(hotSalesData: item)
+                            .padding(.vertical)
+                            .padding(.horizontal, 25)
+                            
+                            HStack {
+                                Text("Hot sales")
+                                    .font(.custom(regularMark, size: 25).bold())
+                                Spacer()
+                                Button {
+                                    
+                                } label: {
+                                    Text("see more")
+                                        .font(.custom(regularMark, size: 15))
+                                        .foregroundColor(Color.appOrange)
                                 }
                             }
-                            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
-                            .shadow(color: Color.black.opacity(0.14), radius: 10)
+                            .padding(.top, 10)
+                            .padding(.horizontal, 25)
+                            
+                            VStack {
+                                TabView {
+                                    ForEach(homeViewModel.hotSales, id: \.self) { item in
+                                        hotSalesView(hotSalesData: item)
+                                    }
+                                }
+                                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+                                .shadow(color: Color.black.opacity(0.14), radius: 10)
+                            }
+                            .frame(height: 200)
+                            
+                            HStack {
+                                Text("Best seller")
+                                    .font(.custom(regularMark, size: 25).bold())
+                                Spacer()
+                                Button {
+                                    
+                                } label: {
+                                    Text("see more")
+                                        .font(.custom(regularMark, size: 15))
+                                        .foregroundColor(Color.appOrange)
+                                }
+                            }
+                            .padding(.top, 10)
+                            .padding(.horizontal, 25)
+                            
+                            LazyVGrid(columns: columns, spacing: 20) {
+                                ForEach(homeViewModel.bestSeller, id: \.self) { bestSeller in
+                                    productCardView(bestSeller: bestSeller)
+                                }
+                            }
+                            .padding(.horizontal, 13)
+                            .padding(.vertical)
                         }
-                        .frame(height: 200)
-                        
+                    }
+                    HStack {
+                        Spacer()
                         HStack {
-                            Text("Best seller")
-                                .font(.custom(regularMark, size: 25).bold())
-                            Spacer()
-                            Button {
-                                
-                            } label: {
-                                Text("see more")
-                                    .font(.custom(regularMark, size: 15))
-                                    .foregroundColor(Color.appOrange)
-                            }
+                            Circle()
+                                .frame(width: 8)
+                                .foregroundColor(.white)
+                            Text("Explorer")
+                                .font(.custom(regularMark, size: 15).bold())
+                                .foregroundColor(.white)
                         }
-                        .padding(.top, 10)
-                        .padding(.horizontal, 25)
-                        
-                        LazyVGrid(columns: columns, spacing: 20) {
-                            ForEach(homeViewModel.bestSeller, id: \.self) { bestSeller in
-                                productCardView(bestSeller: bestSeller)
-                            }
-                        }
-                        .padding(.horizontal, 13)
-                        .padding(.vertical)
+                        Spacer()
+                        Image("cart")
+                        Spacer()
+                        Image("heart")
+                        Spacer()
+                        Image("profile")
+                        Spacer()
                     }
-                }
-                HStack {
-                    Spacer()
-                    HStack {
-                        Circle()
-                            .frame(width: 8)
-                            .foregroundColor(.white)
-                        Text("Explorer")
-                            .font(.custom(regularMark, size: 15).bold())
-                            .foregroundColor(.white)
-                    }
-                    Spacer()
-                    Image("cart")
-                    Spacer()
-                    Image("heart")
-                    Spacer()
-                    Image("profile")
-                    Spacer()
-                }
-                .frame(height: 72)
-                .background(Color.appBlue)
-                .cornerRadius(30)
-                .padding(.bottom, -20)
-                
-                HStack {
-                    Spacer()
-                }
+                    .frame(height: 72)
                     .background(Color.appBlue)
-            }
-            .onAppear {
-                homeViewModel.fetchData()
-            }
-            
-            FlexibleSheet(isPresent: $isPresent) {
-                VStack {
+                    .cornerRadius(30)
+                    .padding(.bottom, -20)
+                    
                     HStack {
-                        Button {
-                            isPresent.toggle()
-                        } label: {
-                            Image(systemName: "clear.fill")
-                                .resizable()
-                                .frame(width: 37, height: 37)
-                                .foregroundColor(Color.appBlue)
-                        }
                         Spacer()
-                        Text("Filter options")
-                            .font(.custom(regularMark, size: 18).bold())
-                            .padding(.leading, 25)
-                        Spacer()
-                        Button {
-                            isPresent.toggle()
-                        } label: {
-                            Text("Done")
-                                .font(.custom(regularMark, size: 18))
-                                .foregroundColor(Color.white)
-                                .padding(.horizontal, 21)
-                                .padding(.vertical, 7)
-                                .background(Color.appOrange)
-                                .cornerRadius(10)
-                        }
                     }
-                    Spacer()
-                        .frame(height: 50)
-                    filterBrand()
-                        .padding(.bottom, 5)
-                    filterPrice()
-                        .padding(.bottom, 5)
-                    filterSize()
+                        .background(Color.appBlue)
                 }
-                .padding(.leading, 44)
-                .padding(.trailing, 20)
-                .padding(.vertical, 30)
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .background(Color.white)
-                .clipShape(RoundedRectangle(cornerRadius: 25, style: .continuous))
-                .shadow(color: .black.opacity(0.1), radius: 12)
+                .onAppear {
+                    homeViewModel.fetchData()
+                }
             }
         }
     }
@@ -412,111 +371,5 @@ extension HomeView {
                 .fill(.white)
                 .shadow(color: Color.black.opacity(0.1), radius: 12)
         )
-    }
-}
-
-extension HomeView {
-    @ViewBuilder
-    func filterBrand() -> some View {
-        VStack(alignment: .leading) {
-            Text("Brand")
-                .font(.custom(mediumMark, size: 18).bold())
-            Menu {
-                Button {
-                    self.brandFilterTitle = "Iphone"
-                } label: {
-                    Text("iPhone")
-                }
-                Button {
-                    self.brandFilterTitle = "Samsung"
-                } label: {
-                    Text("Samsung")
-                }
-                Button {
-                    self.brandFilterTitle = "Motorola"
-                } label: {
-                    Text("Motorola")
-                }
-                Button {
-                    self.brandFilterTitle = "Xiaomi"
-                } label: {
-                    Text("Xiaomi")
-                }
-            } label: {
-                HStack {
-                    Text(brandFilterTitle)
-                        .font(.custom(regularMark, size: 18))
-                        .foregroundColor(.black)
-                    Spacer()
-                    Image(systemName: "chevron.down")
-                        .foregroundColor(Color.imageCategory)
-                }
-                .frame(height: 37)
-                .padding(.horizontal)
-            }
-        }
-    }
-    
-    @ViewBuilder
-    func filterPrice() -> some View {
-        VStack(alignment: .leading) {
-            Text("Price")
-                .font(.custom(mediumMark, size: 18).bold())
-            Menu {
-                Button {
-                    self.priceFilterTitle = "$0 - $300"
-                } label: {
-                    Text("$0 - $300")
-                }
-                Button {
-                    self.priceFilterTitle = "$300 - $500"
-                } label: {
-                    Text("$300 - $500")
-                }
-                Button {
-                    self.priceFilterTitle = "$500 - $800"
-                } label: {
-                    Text("$500 - $800")
-                }
-                Button {
-                    self.priceFilterTitle = "$800 - $1000"
-                } label: {
-                    Text("$800 - $1000")
-                }
-            } label: {
-                HStack {
-                    Text(priceFilterTitle)
-                        .font(.custom(regularMark, size: 18))
-                        .foregroundColor(.black)
-                    Spacer()
-                    Image(systemName: "chevron.down")
-                        .foregroundColor(Color.imageCategory)
-                }
-                .frame(height: 37)
-                .padding(.horizontal)
-            }
-        }
-    }
-    
-    @ViewBuilder
-    func filterSize() -> some View {
-        VStack(alignment: .leading) {
-            Text("Size")
-                .font(.custom(mediumMark, size: 18).bold())
-            ZStack {
-                Capsule()
-                    .foregroundColor(.white)
-                    .frame(height: 37)
-                HStack {
-                    Text("4.5 to 5.5 inches")
-                        .font(.custom(regularMark, size: 18))
-                        .foregroundColor(.black)
-                    Spacer()
-                    Image(systemName: "chevron.down")
-                        .foregroundColor(Color.imageCategory)
-                }
-                .padding(.horizontal)
-            }
-        }
     }
 }

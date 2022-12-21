@@ -10,6 +10,8 @@ import Foundation
 class MyCartViewModel: ObservableObject {
     
     @Published var myCart: MyCart?
+    @Published var basket = [Basket]()
+    @Published var quantity = 1
     
     func fetchData() {
         let url = "https://run.mocky.io/v3/53539a72-3c5f-4f30-bbb1-6ca10d42c149"
@@ -29,6 +31,7 @@ class MyCartViewModel: ObservableObject {
                 if let myCart = self?.parseJSON(safeData) {
                     DispatchQueue.main.async {
                         self?.myCart = myCart
+                        self?.basket = myCart.basket
                     }
                 }
             }
@@ -52,6 +55,4 @@ class MyCartViewModel: ObservableObject {
             return nil
         }
     }
-    
-    
 }
