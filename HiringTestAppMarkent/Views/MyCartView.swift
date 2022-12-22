@@ -14,8 +14,8 @@ struct MyCartView: View {
     var body: some View {
         VStack {
             HStack {
-                Button {
-                    
+                NavigationLink {
+                    HomeView()
                 } label: {
                     ZStack {
                         Image(systemName: "chevron.left")
@@ -118,6 +118,9 @@ struct MyCartView: View {
         .onAppear {
             myCartViewModel.fetchData()
         }
+        .navigationBarTitle("")
+        .navigationBarBackButtonHidden(true)
+        .navigationBarHidden(true)
     }
 }
 
@@ -153,7 +156,7 @@ extension MyCartView {
                 ZStack {
                     VStack {
                         Button {
-                           
+                            
                         } label: {
                             Image(systemName: "minus")
                                 .foregroundColor(.white)

@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct ProductModel: Codable, Hashable {
-    let cpu, camera: String
+struct ProductModel: Codable, Hashable, Identifiable {
+    let CPU, camera: String
     let capacity, color: [String]
     let id: String
     let images: [String]

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 let boldMark = "Mark-Pro-Bold"
 let mediumMark = "Mark-Pro-Medium"

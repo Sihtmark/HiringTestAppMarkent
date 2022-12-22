@@ -14,8 +14,8 @@ struct ProductDetailsView: View {
     var body: some View {
         VStack {
             HStack {
-                Button {
-                    
+                NavigationLink {
+                    HomeView()
                 } label: {
                     ZStack {
                         Image(systemName: "chevron.left")
@@ -30,8 +30,8 @@ struct ProductDetailsView: View {
                 Text("Product details")
                     .font(.custom(regularMark, size: 18))
                 Spacer()
-                Button {
-                    
+                NavigationLink {
+                    MyCartView()
                 } label: {
                     ZStack {
                         Image("cart")
@@ -47,14 +47,24 @@ struct ProductDetailsView: View {
             .padding(.leading, 42)
             .padding(.trailing, 35)
             
-            cellPicture(product: productViewModel.sampleProductModel)
-                .padding(.vertical, 15)
-            
-            cellInfo(product: productViewModel.sampleProductModel)
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 30) {
+                    ForEach(productViewModel.images, id: \.self) { item in
+                        AsyncImage(url: item)
+                            .frame(width: 266)
+                            .background(.orange)
+                            .cornerRadius(20)
+                    }
+                }
+            }
+            cellInfo(product: productViewModel.productModel)
         }
         .onAppear {
             productViewModel.fetchData()
         }
+        .navigationBarTitle("")
+        .navigationBarBackButtonHidden(true)
+        .navigationBarHidden(true)
     }
 }
 
@@ -68,7 +78,7 @@ extension ProductDetailsView {
     @ViewBuilder
     func cellPicture(product: ProductModel) -> some View {
         ZStack {
-            AsyncImage(url: product.images[1])
+            AsyncImage(url: product.images[0])
                 .aspectRatio(contentMode: .fit)
         }
         .frame(width: 266)
@@ -79,179 +89,150 @@ extension ProductDetailsView {
 
 extension ProductDetailsView {
     @ViewBuilder
-    func cellInfo(product: ProductModel) -> some View {
-        VStack(alignment: .leading) {
-            
-            
-            HStack {
-                Text(product.title)
-                    .font(.custom(mediumMark, size: 24))
-                Spacer()
-                Button {
-                    
-                } label: {
-                    ZStack {
-                        Image("heart")
-                            .foregroundColor(.white)
-                            .frame(width: 14, height: 13)
-                    }
-                    .frame(width: 37, height: 37)
-                    .background(Color.appOrange)
-                    .cornerRadius(10)
-                }
-            }
-            .padding(.horizontal, 38)
-            
-            HStack {
-                Image(systemName: "star.fill")
-                    .foregroundColor(.yellow)
-                    .font(.system(size: 18))
-                Image(systemName: "star.fill")
-                    .foregroundColor(.yellow)
-                    .font(.system(size: 18))
-                Image(systemName: "star.fill")
-                    .foregroundColor(.yellow)
-                    .font(.system(size: 18))
-                Image(systemName: "star.fill")
-                    .foregroundColor(.yellow)
-                    .font(.system(size: 18))
-                Image(systemName: "star.fill")
-                    .foregroundColor(.yellow)
-                    .font(.system(size: 18))
-            }
-            .padding(.horizontal, 38)
-            Spacer()
-            
-            
-            HStack(spacing: 23) {
-                Spacer()
-                ForEach(ProductInfo.allCases, id: \.self) { type in
-                    detailsView(type: type)
-                        .onTapGesture {
-                            switchProductInfo(type: type)
-                        }
-                }
-                Spacer()
-            }
-            Spacer()
-            
-            
-            HStack {
-                VStack {
-                    Image("chip")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(height: 28)
-                    Text(product.cpu)
-                        .foregroundColor(Color(UIColor(red: 0.717, green: 0.717, blue: 0.717, alpha: 1)))
-                        .font(.custom(regularMark, size: 11))
-                    
-                }
-                Spacer()
-                VStack {
-                    Image("camera")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(height: 28)
-                    Text(product.camera)
-                        .foregroundColor(Color(UIColor(red: 0.717, green: 0.717, blue: 0.717, alpha: 1)))
-                        .font(.custom(regularMark, size: 11))
-                }
-                Spacer()
-                VStack {
-                    Image("memory")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(height: 28)
-                    Text(product.ssd)
-                        .foregroundColor(Color(UIColor(red: 0.717, green: 0.717, blue: 0.717, alpha: 1)))
-                        .font(.custom(regularMark, size: 11))
-                }
-                Spacer()
-                VStack {
-                    Image("disk")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(height: 28)
-                    Text(product.sd)
-                        .foregroundColor(Color(UIColor(red: 0.717, green: 0.717, blue: 0.717, alpha: 1)))
-                        .font(.custom(regularMark, size: 11))
-                }
-            }
-            .padding(.leading, 30)
-            .padding(.trailing, 40)
-            Spacer()
-            
-            
-            Text("Select color and capacity")
-                .font(.custom(mediumMark, size: 16))
-                .padding(.leading, 30)
-                .padding(.bottom, 15)
-            
-            HStack {
-                ZStack {
-                    Circle()
-                        .frame(width: 40)
-                        .foregroundColor(.blue)
-                    Image(systemName: "checkmark")
-                        .foregroundColor(.white)
-                        .font(.system(size: 13).bold())
-                        .opacity(1.0)
-                }
-                Spacer()
-                ZStack {
-                    Circle()
-                        .frame(width: 40)
-                        .foregroundColor(.yellow)
-                    Image(systemName: "checkmark")
-                        .foregroundColor(.white)
-                        .font(.system(size: 13).bold())
-                        .opacity(0.0)
-                }
-                Spacer()
-                Spacer()
-                ZStack {
-                    Capsule()
-                        .foregroundColor(Color.appOrange)
-                        .cornerRadius(10)
-                    Text(product.capacity[0])
-                        .font(.custom(boldMark, size: 13))
-                }
-                .frame(width: 71.43, height: 30.36)
-                Spacer()
-                ZStack {
-                    Capsule()
-                        .foregroundColor(Color.white)
-                        .cornerRadius(10)
-                    Text(product.capacity[0])
-                        .font(.custom(boldMark, size: 13))
-                }
-                .frame(width: 71.43, height: 30.36)
-            }
-            .padding(.leading, 30)
-            .padding(.trailing, 40)
-            .padding(.bottom, 20)
-            
-            ZStack {
-                Rectangle()
-                    .cornerRadius(10)
-                    .foregroundColor(Color.appOrange)
+    func cellInfo(product: ProductModel?) -> some View {
+        if let product = product {
+            VStack(alignment: .leading) {
                 HStack {
+                    Text(product.title)
+                        .font(.custom(mediumMark, size: 24))
                     Spacer()
-                    Text("Add to card")
-                        .font(.custom(boldMark, size: 20))
-                        .foregroundColor(.white)
+                    Button {
+                        
+                    } label: {
+                        ZStack {
+                            Image("heart")
+                                .foregroundColor(.white)
+                                .frame(width: 14, height: 13)
+                        }
+                        .frame(width: 37, height: 37)
+                        .background(Color.appOrange)
+                        .cornerRadius(10)
+                    }
+                }
+                .padding(.horizontal, 38)
+                
+                HStack {
+                    Image(systemName: "star.fill")
+                        .foregroundColor(.yellow)
+                        .font(.system(size: 18))
+                    Image(systemName: "star.fill")
+                        .foregroundColor(.yellow)
+                        .font(.system(size: 18))
+                    Image(systemName: "star.fill")
+                        .foregroundColor(.yellow)
+                        .font(.system(size: 18))
+                    Image(systemName: "star.fill")
+                        .foregroundColor(.yellow)
+                        .font(.system(size: 18))
+                    Image(systemName: "star.fill")
+                        .foregroundColor(.yellow)
+                        .font(.system(size: 18))
+                }
+                .padding(.horizontal, 38)
+                Spacer()
+                
+                
+                HStack(spacing: 23) {
                     Spacer()
-                    Text("$\(product.price)")
-                        .font(.custom(boldMark, size: 20))
-                        .foregroundColor(.white)
+                    ForEach(ProductInfo.allCases, id: \.self) { type in
+                        detailsView(type: type)
+                            .onTapGesture {
+                                switchProductInfo(type: type)
+                            }
+                    }
                     Spacer()
                 }
+                Spacer()
+                
+                
+                HStack {
+                    VStack {
+                        Image("chip")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(height: 28)
+                        Text(product.CPU)
+                            .foregroundColor(Color(UIColor(red: 0.717, green: 0.717, blue: 0.717, alpha: 1)))
+                            .font(.custom(regularMark, size: 11))
+                        
+                    }
+                    Spacer()
+                    VStack {
+                        Image("camera")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(height: 28)
+                        Text(product.camera)
+                            .foregroundColor(Color(UIColor(red: 0.717, green: 0.717, blue: 0.717, alpha: 1)))
+                            .font(.custom(regularMark, size: 11))
+                    }
+                    Spacer()
+                    VStack {
+                        Image("memory")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(height: 28)
+                        Text(product.ssd)
+                            .foregroundColor(Color(UIColor(red: 0.717, green: 0.717, blue: 0.717, alpha: 1)))
+                            .font(.custom(regularMark, size: 11))
+                    }
+                    Spacer()
+                    VStack {
+                        Image("disk")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(height: 28)
+                        Text(product.sd)
+                            .foregroundColor(Color(UIColor(red: 0.717, green: 0.717, blue: 0.717, alpha: 1)))
+                            .font(.custom(regularMark, size: 11))
+                    }
+                }
+                .padding(.leading, 30)
+                .padding(.trailing, 40)
+                Spacer()
+                
+                
+                Text("Select color and capacity")
+                    .font(.custom(mediumMark, size: 16))
+                    .padding(.leading, 30)
+                    .padding(.bottom, 15)
+                
+                HStack {
+                    ForEach(product.color, id: \.self) { item in
+                        colorCircle(color: item)
+                    }
+                    
+                    Spacer()
+                    Spacer()
+                    
+                    ForEach(product.capacity, id: \.self) { item in
+                       capacityCapsule(capacity: item)
+                    }
+                }
+                .padding(.leading, 30)
+                .padding(.trailing, 40)
+                .padding(.bottom, 20)
+                
+                ZStack {
+                    Rectangle()
+                        .cornerRadius(10)
+                        .foregroundColor(Color.appOrange)
+                    HStack {
+                        Spacer()
+                        Text("Add to card")
+                            .font(.custom(boldMark, size: 20))
+                            .foregroundColor(.white)
+                        Spacer()
+                        Text("$\(product.price)")
+                            .font(.custom(boldMark, size: 20))
+                            .foregroundColor(.white)
+                        Spacer()
+                    }
+                }
+                .frame(maxWidth: .infinity)
+                .frame(height: 54)
+                .padding(.horizontal, 30)
             }
-            .frame(maxWidth: .infinity)
-            .frame(height: 54)
-            .padding(.horizontal, 30)
-            
         }
     }
 }
@@ -276,4 +257,36 @@ extension ProductDetailsView {
             productViewModel.productInfo = type
         }
     }
+}
+
+extension ProductDetailsView {
+    @ViewBuilder
+    func colorCircle(color: String) -> some View {
+        ZStack {
+            Circle()
+                .frame(width: 40)
+                .foregroundColor(Color.init(hexString: color))
+            Image(systemName: "checkmark")
+                .foregroundColor(.white)
+                .font(.system(size: 13).bold())
+                .opacity(1.0)
+        }
+    }
+    
+}
+
+extension ProductDetailsView {
+    @ViewBuilder
+    func capacityCapsule(capacity: String) -> some View {
+        ZStack {
+            Capsule()
+                .foregroundColor(Color.appOrange)
+                .cornerRadius(10)
+            Text(capacity)
+                .font(.custom(boldMark, size: 13))
+                .foregroundColor(.black)
+        }
+        .frame(width: 71.43, height: 30.36)
+    }
+    
 }

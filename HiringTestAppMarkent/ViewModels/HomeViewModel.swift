@@ -47,12 +47,8 @@ class HomeViewModel: ObservableObject {
         decoder.keyDecodingStrategy = .convertFromSnakeCase
         do {
             let decodedData = try decoder.decode(HomeModel.self, from: data)
-            
-            //Get the last property from the decoded data.
             return decodedData
-            
         } catch {
-            
             print("Parsing JSON error: \(error)")
             return nil
         }

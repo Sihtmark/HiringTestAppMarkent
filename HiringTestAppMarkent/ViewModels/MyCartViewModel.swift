@@ -45,12 +45,8 @@ class MyCartViewModel: ObservableObject {
         decoder.keyDecodingStrategy = .convertFromSnakeCase
         do {
             let decodedData = try decoder.decode(MyCart.self, from: data)
-            
-            //Get the last property from the decoded data.
             return decodedData
-            
         } catch {
-            
             print("Parsing JSON error: \(error)")
             return nil
         }

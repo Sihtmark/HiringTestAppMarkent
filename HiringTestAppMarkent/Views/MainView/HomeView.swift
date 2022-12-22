@@ -10,8 +10,7 @@ import SwiftUI
 struct HomeView: View {
     @StateObject var homeViewModel: HomeViewModel = HomeViewModel()
     @State private var showingSheet = false
-    @Binding var filterPresentation: Bool
-    @State var filterPriceWidth: CGFloat = 25
+    @State private var filterPriceWidth: CGFloat = 25
     
     let columns = [
         GridItem(.flexible()),
@@ -207,19 +206,22 @@ struct HomeView: View {
                     HStack {
                         Spacer()
                     }
-                        .background(Color.appBlue)
+                    .background(Color.appBlue)
                 }
                 .onAppear {
                     homeViewModel.fetchData()
                 }
             }
         }
+        .navigationBarTitle("")
+        .navigationBarBackButtonHidden(true)
+        .navigationBarHidden(true)
     }
 }
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView(filterPresentation: .constant(false))
+        HomeView()
     }
 }
 
@@ -284,14 +286,20 @@ extension HomeView {
                         .foregroundColor(Color.white)
                 }
                 Spacer()
-                Text("Buy now!")
-                    .font(.custom(regularMark, size: 11).bold())
-                    .padding(.vertical, 7)
-                    .padding(.horizontal, 30)
-                    .background(
-                        RoundedRectangle(cornerRadius: 9)
-                            .fill(Color.white)
-                    )
+                NavigationLink {
+                    ProductDetailsView()
+                } label: {
+                    Text("Buy now!")
+                        .font(.custom(regularMark, size: 11).bold())
+                        .foregroundColor(.black)
+                        .padding(.vertical, 7)
+                        .padding(.horizontal, 30)
+                        .background(
+                            RoundedRectangle(cornerRadius: 9)
+                                .fill(Color.white)
+                        )
+                }
+                
             }
             Spacer()
         }
@@ -311,65 +319,75 @@ extension HomeView {
 // MARK: Best seller cardView
 extension HomeView {
     @ViewBuilder
-    private func productCardView(bestSeller: BestSeller) -> some View {
-        VStack(spacing: 0) {
-            ZStack {
-                AsyncImage(url: bestSeller.picture)
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width: UIScreen.main.bounds.width / 2.3, height: UIScreen.main.bounds.height / 4, alignment: .center)
-                    .clipped()
-                VStack {
-                    HStack() {
-                        Spacer()
-                        ZStack {
-                            
-                            Image(systemName: bestSeller.isFavorites ? "heart.fill" : "heart")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(height: 11)
-                                .foregroundColor(Color.appOrange)
-                                .background(
-                                    Circle()
-                                        .fill(.white)
-                                        .frame(width: 25, height: 25)
-                                        .shadow(color: .black.opacity(0.1), radius: 10)
-                                )
+    private func productCardView( bestSeller: BestSeller) -> some View {
+        NavigationLink {
+            ProductDetailsView()
+        } label: {
+            VStack(spacing: 0) {
+                ZStack {
+                    AsyncImage(url: bestSeller.picture)
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: UIScreen.main.bounds.width / 2.3, height: UIScreen.main.bounds.height / 4, alignment: .center)
+                        .clipped()
+                    VStack {
+                        HStack() {
+                            Spacer()
+                            ZStack {
+                                Button {
+                                    
+                                } label: {
+                                    Image(systemName: bestSeller.isFavorites ? "heart.fill" : "heart")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(height: 11)
+                                        .foregroundColor(Color.appOrange)
+                                        .background(
+                                            Circle()
+                                                .fill(.white)
+                                                .frame(width: 25, height: 25)
+                                                .shadow(color: .black.opacity(0.1), radius: 10)
+                                        )
+                                }
+                            }
                         }
+                        .frame(maxWidth: .infinity)
+                        Spacer()
                     }
-                    .frame(maxWidth: .infinity)
+                    .frame(maxHeight: .infinity)
+                    .padding()
+                    
+                }
+                
+                HStack(alignment: .bottom) {
+                    Text("$" + "\(bestSeller.priceWithoutDiscount)")
+                        .font(Font.custom("Mark-Pro-Bold", size: 16))
+                        .foregroundColor(.black)
+                    Text("$" + "\(bestSeller.discountPrice)")
+                        .font(.custom(regularMark, size: 10))
+                        .foregroundColor(Color.black.opacity(0.3))
                     Spacer()
                 }
-                .frame(maxHeight: .infinity)
-                .padding()
+                .padding(.horizontal, 16)
+                
+                HStack {
+                    Text(bestSeller.title)
+                        .font(.custom(regularMark, size: 10))
+                        .foregroundColor(.black)
+                    Spacer()
+                    
+                }
+                .padding(.horizontal, 16)
+                .padding(.bottom)
+                
                 
             }
-            
-            HStack(alignment: .bottom) {
-                Text("$" + "\(bestSeller.priceWithoutDiscount)")
-                    .font(.custom(regularMark, size: 16)).bold()
-                Text("$" + "\(bestSeller.discountPrice)")
-                    .font(.custom(regularMark, size: 10))
-                    .foregroundColor(Color.black.opacity(0.3))
-                Spacer()
-            }
-            .padding(.horizontal, 16)
-            
-            HStack {
-                Text(bestSeller.title)
-                    .font(.custom(regularMark, size: 10))
-                Spacer()
-                
-            }
-            .padding(.horizontal, 16)
-            .padding(.bottom)
-            
-            
+            .frame(width: UIScreen.main.bounds.width / 2.3, height: UIScreen.main.bounds.height / 3)
+            .background(
+                RoundedRectangle(cornerRadius: 12)
+                    .fill(.white)
+                    .shadow(color: Color.black.opacity(0.1), radius: 12)
+            )
         }
-        .frame(width: UIScreen.main.bounds.width / 2.3, height: UIScreen.main.bounds.height / 3)
-        .background(
-            RoundedRectangle(cornerRadius: 12)
-                .fill(.white)
-                .shadow(color: Color.black.opacity(0.1), radius: 12)
-        )
+        
     }
 }

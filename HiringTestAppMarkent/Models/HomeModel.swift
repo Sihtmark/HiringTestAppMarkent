@@ -16,7 +16,7 @@ struct HomeModel: Codable {
 }
 
 // MARK: - BestSeller
-struct BestSeller: Codable, Hashable {
+struct BestSeller: Codable, Hashable, Identifiable {
     let id: Int
     let isFavorites: Bool
     let title: String
@@ -26,7 +26,7 @@ struct BestSeller: Codable, Hashable {
 }
 
 // MARK: - HomeStore
-struct HomeStore: Codable, Hashable {
+struct HomeStore: Codable, Hashable, Identifiable {
     let id: Int
     let isNew: Bool?
     let title: String
