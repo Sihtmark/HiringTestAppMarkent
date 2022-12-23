@@ -18,7 +18,7 @@ struct HomeModel: Codable {
 // MARK: - BestSeller
 struct BestSeller: Codable, Hashable, Identifiable {
     let id: Int
-    let isFavorites: Bool
+    var isFavorites: Bool
     let title: String
     let priceWithoutDiscount: Int
     let discountPrice: Int

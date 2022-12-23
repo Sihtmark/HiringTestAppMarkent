@@ -46,6 +46,7 @@ struct ProductDetailsView: View {
             }
             .padding(.leading, 42)
             .padding(.trailing, 35)
+            .padding(.vertical, 20)
             
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 30) {
@@ -54,11 +55,20 @@ struct ProductDetailsView: View {
                             .frame(width: 266)
                             .background(.orange)
                             .cornerRadius(20)
+                            .shadow(color: Color.shadow, radius: 10)
                     }
                 }
             }
+            .padding(.bottom, 15)
             cellInfo(product: productViewModel.productModel)
+                .cornerRadius(15)
+                .background(
+                    RoundedRectangle(cornerRadius: 30)
+                        .fill(.white)
+                        .shadow(color: Color.shadow1, radius: 20, y: -5)
+                )
         }
+        .background(Color.appBackground)
         .onAppear {
             productViewModel.fetchData()
         }
@@ -105,11 +115,12 @@ extension ProductDetailsView {
                                 .frame(width: 14, height: 13)
                         }
                         .frame(width: 37, height: 37)
-                        .background(Color.appOrange)
+                        .background(Color.appBlue)
                         .cornerRadius(10)
                     }
                 }
                 .padding(.horizontal, 38)
+                .padding(.top, 28)
                 
                 HStack {
                     Image(systemName: "star.fill")
@@ -206,7 +217,7 @@ extension ProductDetailsView {
                     Spacer()
                     
                     ForEach(product.capacity, id: \.self) { item in
-                       capacityCapsule(capacity: item)
+                        capacityCapsule(capacity: item)
                     }
                 }
                 .padding(.leading, 30)

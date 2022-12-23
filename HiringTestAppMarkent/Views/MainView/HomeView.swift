@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     @StateObject var homeViewModel: HomeViewModel = HomeViewModel()
+    @StateObject var favorites: FavoritesBestSellers = FavoritesBestSellers()
     @State private var showingSheet = false
     @State private var filterPriceWidth: CGFloat = 25
     
@@ -28,7 +29,7 @@ struct HomeView: View {
                                 HStack {
                                     Image("metka")
                                     Text("Zihuatanejo, Gro")
-                                        .font(.custom(regularMark, size: 20))
+                                        .font(.custom(mediumMark, size: 20))
                                         .foregroundColor(Color.black)
                                     Image("arrow")
                                 }
@@ -63,7 +64,7 @@ struct HomeView: View {
                         VStack(spacing: 0) {
                             HStack {
                                 Text("Select Category")
-                                    .font(.custom(regularMark, size: 25).bold())
+                                    .font(.custom(boldMark, size: 25))
                                 Spacer()
                                 Button {
                                     
@@ -104,7 +105,7 @@ struct HomeView: View {
                                 .background(
                                     Capsule()
                                         .fill(.white)
-                                        .shadow(color: .black.opacity(0.1), radius: 7)
+                                        .shadow(color: Color.shadow, radius: 20)
                                         .frame(maxWidth: .infinity)
                                 )
                                 
@@ -115,6 +116,7 @@ struct HomeView: View {
                                         ZStack {
                                             Circle()
                                                 .fill(Color.appOrange)
+                                                .shadow(color: Color.shadow, radius: 20)
                                             Image("qrCode")
                                                 .resizable()
                                                 .renderingMode(.template)
@@ -132,7 +134,7 @@ struct HomeView: View {
                             
                             HStack {
                                 Text("Hot sales")
-                                    .font(.custom(regularMark, size: 25).bold())
+                                    .font(.custom(boldMark, size: 25))
                                 Spacer()
                                 Button {
                                     
@@ -158,7 +160,7 @@ struct HomeView: View {
                             
                             HStack {
                                 Text("Best seller")
-                                    .font(.custom(regularMark, size: 25).bold())
+                                    .font(.custom(boldMark, size: 25))
                                 Spacer()
                                 Button {
                                     
@@ -187,7 +189,7 @@ struct HomeView: View {
                                 .frame(width: 8)
                                 .foregroundColor(.white)
                             Text("Explorer")
-                                .font(.custom(regularMark, size: 15).bold())
+                                .font(.custom(boldMark, size: 15))
                                 .foregroundColor(.white)
                         }
                         Spacer()
@@ -213,13 +215,16 @@ struct HomeView: View {
                 }
             }
         }
+        .background(Color.appBackground)
         .navigationBarTitle("")
         .navigationBarBackButtonHidden(true)
         .navigationBarHidden(true)
+        .environmentObject(favorites)
     }
 }
 
 struct HomeView_Previews: PreviewProvider {
+    
     static var previews: some View {
         HomeView()
     }
@@ -235,7 +240,7 @@ extension HomeView {
                 Circle()
                     .fill(homeViewModel.productType == type ? Color.appOrange : Color.white)
                     .frame(width: 71, height: 71)
-                    .shadow(color: .black.opacity(0.1), radius: 10)
+                    .shadow(color: Color.shadow1, radius: 10)
                 
                 Image(type.imageName)
                     .resizable()
@@ -334,9 +339,13 @@ extension HomeView {
                             Spacer()
                             ZStack {
                                 Button {
-                                    
+                                    if favorites.contains(bestSeller) {
+                                        favorites.remove(bestSeller)
+                                    } else {
+                                        favorites.add(bestSeller)
+                                    }
                                 } label: {
-                                    Image(systemName: bestSeller.isFavorites ? "heart.fill" : "heart")
+                                    Image(systemName: favorites.contains(bestSeller) ? "heart.fill" : "heart")
                                         .resizable()
                                         .aspectRatio(contentMode: .fit)
                                         .frame(height: 11)
@@ -345,7 +354,7 @@ extension HomeView {
                                             Circle()
                                                 .fill(.white)
                                                 .frame(width: 25, height: 25)
-                                                .shadow(color: .black.opacity(0.1), radius: 10)
+                                                .shadow(color: Color.shadow2, radius: 20)
                                         )
                                 }
                             }
@@ -360,14 +369,16 @@ extension HomeView {
                 
                 HStack(alignment: .bottom) {
                     Text("$" + "\(bestSeller.priceWithoutDiscount)")
-                        .font(Font.custom("Mark-Pro-Bold", size: 16))
+                        .font(Font.custom(boldMark, size: 16))
                         .foregroundColor(.black)
                     Text("$" + "\(bestSeller.discountPrice)")
-                        .font(.custom(regularMark, size: 10))
+                        .font(.custom(mediumMark, size: 10))
                         .foregroundColor(Color.black.opacity(0.3))
+                        .strikethrough(true, color: Color.black.opacity(0.3))
                     Spacer()
                 }
                 .padding(.horizontal, 16)
+                .padding(.bottom, 6.5)
                 
                 HStack {
                     Text(bestSeller.title)
@@ -385,7 +396,7 @@ extension HomeView {
             .background(
                 RoundedRectangle(cornerRadius: 12)
                     .fill(.white)
-                    .shadow(color: Color.black.opacity(0.1), radius: 12)
+                    .shadow(color: Color.shadow1, radius: 40)
             )
         }
         

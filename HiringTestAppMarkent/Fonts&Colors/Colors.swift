@@ -20,13 +20,25 @@ extension Color {
         return Color(UIColor(red: 0.702, green: 0.702, blue: 0.702, alpha: 1))
     }
     public static var appBackground: Color {
-        return Color(UIColor(red: 0.961, green: 0.961, blue: 0.961, alpha: 1))
+        return Color(UIColor(red: 0.971, green: 0.971, blue: 0.971, alpha: 1))
     }
     public static var imageCategory: Color {
         return Color(UIColor(red: 0.702, green: 0.702, blue: 0.765, alpha: 1))
     }
     public static var basketCard: Color {
         return Color(UIColor(red: 0.158, green: 0.156, blue: 0.262, alpha: 1))
+    }
+    public static var shadow: Color {
+        return Color(UIColor(red: 0.191, green: 0.197, blue: 0.245, alpha: 0.15))
+    }
+    public static var shadow1: Color {
+        return Color(UIColor(red: 0.170, green: 0.182, blue: 0.211, alpha: 0.1))
+    }
+    public static var shadow2: Color {
+        return Color(UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.15))
+    }
+    public static var shadow3: Color {
+        return Color(UIColor(red: 0.76, green: 0.95, blue: 0.143, alpha: 0.1))
     }
     
     init(hexString: String) {

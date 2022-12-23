@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import UIKit
+import SwiftUI
 
 class HomeViewModel: ObservableObject {
     @Published var productType: ProductType = .phone
@@ -14,9 +14,11 @@ class HomeViewModel: ObservableObject {
     @Published var hotSales: [HomeStore] = [HomeStore]()
     @Published var bestSeller: [BestSeller] = [BestSeller]()
     @Published var image: UIImage = UIImage()
+    @Published var isFavorite: Bool = false
+    
+    let url = "https://run.mocky.io/v3/654bd15e-b121-49ba-a588-960956b15175"
     
     func fetchData() {
-        let url = "https://run.mocky.io/v3/654bd15e-b121-49ba-a588-960956b15175"
         
         guard let safeUrl = URL(string: url) else { print("Invalid URL"); return }
         
@@ -52,5 +54,28 @@ class HomeViewModel: ObservableObject {
             print("Parsing JSON error: \(error)")
             return nil
         }
+    }
+}
+
+class FavoritesBestSellers: ObservableObject {
+    private var bestSellers: Set<Int>
+    private let saveKey = "Favorites"
+    
+    init() {
+        bestSellers = []
+    }
+    
+    func contains(_ bestSeller: BestSeller) -> Bool {
+        bestSellers.contains(bestSeller.id)
+    }
+    
+    func add(_ bestSeller: BestSeller) {
+        objectWillChange.send()
+        bestSellers.insert(bestSeller.id)
+    }
+    
+    func remove(_ bestSeller: BestSeller) {
+        objectWillChange.send()
+        bestSellers.remove(bestSeller.id)
     }
 }
