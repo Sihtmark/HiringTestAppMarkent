@@ -125,6 +125,7 @@
 		A06CD9FA2940B2550038DDCE /* HiringTestAppMarkent */ = {
 			isa = PBXGroup;
 			children = (
+				A06CD9FB2940B2550038DDCE /* HiringTestAppMarkentApp.swift */,
 				A030B588294A3BD100BF4D73 /* Models */,
 				A030B587294A3B9400BF4D73 /* ViewModels */,
 				A09DF292294740380002E163 /* Views */,
@@ -148,7 +149,6 @@
 		A09DF292294740380002E163 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				A06CD9FB2940B2550038DDCE /* HiringTestAppMarkentApp.swift */,
 				A06442B7294C3EE700599EDF /* MainView */,
 				A06442B9294C3F6E00599EDF /* ProductDetailsView.swift */,
 				A052EA50295070B9007CDFCC /* MyCartView.swift */,
