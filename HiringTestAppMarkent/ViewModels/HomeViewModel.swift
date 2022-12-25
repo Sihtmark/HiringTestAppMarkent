@@ -59,7 +59,6 @@ class HomeViewModel: ObservableObject {
 
 class FavoritesBestSellers: ObservableObject {
     private var bestSellers: Set<Int>
-    private let saveKey = "Favorites"
     
     init() {
         bestSellers = []

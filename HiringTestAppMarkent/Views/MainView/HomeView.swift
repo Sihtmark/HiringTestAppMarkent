@@ -203,7 +203,6 @@ struct HomeView: View {
                     .frame(height: 72)
                     .background(Color.appBlue)
                     .cornerRadius(30)
-                    .padding(.bottom, -20)
                     
                     HStack {
                         Spacer()
@@ -214,6 +213,7 @@ struct HomeView: View {
                     homeViewModel.fetchData()
                 }
             }
+            .edgesIgnoringSafeArea(.bottom)
         }
         .background(Color.appBackground)
         .navigationBarTitle("")

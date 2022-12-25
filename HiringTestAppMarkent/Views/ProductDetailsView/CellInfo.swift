@@ -153,6 +153,7 @@ extension ProductDetailsView {
                 .frame(maxWidth: .infinity)
                 .frame(height: 54)
                 .padding(.horizontal, 30)
+                .padding(.bottom, 30)
             }
         }
     }

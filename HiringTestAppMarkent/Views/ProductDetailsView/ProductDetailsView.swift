@@ -68,6 +68,7 @@ struct ProductDetailsView: View {
                         .shadow(color: Color.shadow1, radius: 20, y: -5)
                 )
         }
+        .edgesIgnoringSafeArea(.bottom)
         .background(Color.appBackground)
         .onAppear {
             productViewModel.fetchData()
