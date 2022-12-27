@@ -32,26 +32,9 @@ extension ProductDetailsView {
                 .padding(.horizontal, 38)
                 .padding(.top, 28)
                 
-                HStack {
-                    Image(systemName: "star.fill")
-                        .foregroundColor(.yellow)
-                        .font(.system(size: 18))
-                    Image(systemName: "star.fill")
-                        .foregroundColor(.yellow)
-                        .font(.system(size: 18))
-                    Image(systemName: "star.fill")
-                        .foregroundColor(.yellow)
-                        .font(.system(size: 18))
-                    Image(systemName: "star.fill")
-                        .foregroundColor(.yellow)
-                        .font(.system(size: 18))
-                    Image(systemName: "star.fill")
-                        .foregroundColor(.yellow)
-                        .font(.system(size: 18))
-                }
-                .padding(.horizontal, 38)
-                Spacer()
+                starRate(rate: product.rating)
                 
+                Spacer()
                 
                 HStack(spacing: 23) {
                     Spacer()
@@ -63,6 +46,7 @@ extension ProductDetailsView {
                     }
                     Spacer()
                 }
+                
                 Spacer()
                 
                 

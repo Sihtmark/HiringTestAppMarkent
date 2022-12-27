@@ -33,6 +33,7 @@
 		A0D45B9A2948D166004C20D4 /* Mark-Pro-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A0D45B952948D166004C20D4 /* Mark-Pro-Bold.ttf */; };
 		A0D45B9B2948D166004C20D4 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D45B962948D166004C20D4 /* Fonts.swift */; };
 		A0D45B9C2948D166004C20D4 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D45B972948D166004C20D4 /* Colors.swift */; };
+		A0F459CB295ADD7600EAFCA6 /* StarRate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F459CA295ADD7600EAFCA6 /* StarRate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +65,7 @@
 		A0D45B952948D166004C20D4 /* Mark-Pro-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Mark-Pro-Bold.ttf"; sourceTree = "<group>"; };
 		A0D45B962948D166004C20D4 /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		A0D45B972948D166004C20D4 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		A0F459CA295ADD7600EAFCA6 /* StarRate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 			children = (
 				A06442B9294C3F6E00599EDF /* ProductDetailsView.swift */,
 				A01B8AF42958401000A509FE /* CellInfo.swift */,
+				A0F459CA295ADD7600EAFCA6 /* StarRate.swift */,
 			);
 			path = ProductDetailsView;
 			sourceTree = "<group>";
@@ -291,6 +294,7 @@
 				A01B8AF229583F5000A509FE /* ProductTypeView.swift in Sources */,
 				A052EA552950726C007CDFCC /* MyCartViewModel.swift in Sources */,
 				A06C67A3294628C9007A9BF1 /* HomeModel.swift in Sources */,
+				A0F459CB295ADD7600EAFCA6 /* StarRate.swift in Sources */,
 				A06442BA294C3F6E00599EDF /* ProductDetailsView.swift in Sources */,
 				A01B8AF029583F0700A509FE /* HotSalesView.swift in Sources */,
 			);

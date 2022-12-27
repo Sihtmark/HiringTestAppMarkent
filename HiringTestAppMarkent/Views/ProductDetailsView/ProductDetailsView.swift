@@ -10,6 +10,7 @@ import SwiftUI
 struct ProductDetailsView: View {
     
     @StateObject var productViewModel = ProductViewModel()
+    @State private var showObject = false
     
     var body: some View {
         VStack {
@@ -48,18 +49,22 @@ struct ProductDetailsView: View {
             .padding(.trailing, 35)
             .padding(.vertical, 20)
             
-            ScrollView(.horizontal, showsIndicators: false) {
+            TabView {
                 HStack(spacing: 30) {
                     ForEach(productViewModel.images, id: \.self) { item in
                         AsyncImage(url: item)
                             .frame(width: 266)
                             .background(.orange)
                             .cornerRadius(20)
-                            .shadow(color: Color.shadow, radius: 10)
+                            .scaleEffect(showObject ? 0.8 : 1)
                     }
                 }
+                .frame(alignment: .center)
             }
             .padding(.bottom, 15)
+            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+            .shadow(color: Color.black.opacity(0.14), radius: 10)
+            
             cellInfo(product: productViewModel.productModel)
                 .cornerRadius(15)
                 .background(
@@ -150,5 +155,4 @@ extension ProductDetailsView {
         }
         .frame(width: 71.43, height: 30.36)
     }
-    
 }
