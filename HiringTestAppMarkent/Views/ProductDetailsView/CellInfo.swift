@@ -32,7 +32,8 @@ extension ProductDetailsView {
                 .padding(.horizontal, 38)
                 .padding(.top, 28)
                 
-                starRate(rate: product.rating)
+                StarRating(rating: .constant(product.rating), maxRating: 5)
+                    .padding(.horizontal, 38)
                 
                 Spacer()
                 
@@ -46,10 +47,7 @@ extension ProductDetailsView {
                     }
                     Spacer()
                 }
-                
                 Spacer()
-                
-                
                 HStack {
                     VStack {
                         Image("chip")
@@ -100,23 +98,18 @@ extension ProductDetailsView {
                 Text("Select color and capacity")
                     .font(.custom(mediumMark, size: 16))
                     .padding(.leading, 30)
-                    .padding(.bottom, 15)
                 
                 HStack {
-                    ForEach(product.color, id: \.self) { item in
-                        colorCircle(color: item)
-                    }
+                    ColorPickerView(colors: productViewModel.productModel!.color, selectedColor: $productViewModel.selectedColor)
                     
                     Spacer()
                     Spacer()
                     
-                    ForEach(product.capacity, id: \.self) { item in
-                        capacityCapsule(capacity: item)
-                    }
+                    CapacityPickerView(capacities: productViewModel.productModel!.capacity, selectedCapacity: $productViewModel.selectedCapacity)
                 }
                 .padding(.leading, 30)
                 .padding(.trailing, 40)
-                .padding(.bottom, 20)
+//                .padding(.bottom, 20)
                 
                 ZStack {
                     Rectangle()
@@ -143,3 +136,43 @@ extension ProductDetailsView {
     }
 }
 
+extension ProductDetailsView {
+    @ViewBuilder
+    func detailsView(type: ProductInfo) -> some View {
+        HStack {
+            VStack {
+                Text(type.title)
+                    .font(.custom(productViewModel.productInfo == type ? boldMark : regularMark, size: 20))
+                Capsule()
+                    .frame(width: 86, height: 2)
+                    .foregroundColor(productViewModel.productInfo == type ? Color.appOrange : .white)
+            }
+        }
+    }
+    
+    func switchProductInfo(type: ProductInfo) {
+        withAnimation {
+            productViewModel.productInfo = type
+        }
+    }
+}
+
+extension ProductDetailsView {
+    @ViewBuilder
+    func capacityCapsule(capacity: String) -> some View {
+        ZStack {
+            Capsule()
+                .foregroundColor(Color.appOrange)
+                .cornerRadius(10)
+            Text(capacity)
+                .font(.custom(boldMark, size: 13))
+                .foregroundColor(.black)
+        }
+        .frame(width: 71.43, height: 30.36)
+    }
+    func switchCapacity(type: ProductModel) {
+        withAnimation {
+            productViewModel.productModel = type
+        }
+    }
+}

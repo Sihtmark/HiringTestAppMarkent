@@ -12,6 +12,10 @@ class ProductViewModel: ObservableObject {
     @Published var productModel: ProductModel?
     @Published var productInfo: ProductInfo = .shop
     @Published var images = [String]()
+//    @Published var colors = [String]()
+//    @Published var capacities = [String]()
+    @Published var selectedColor = ""
+    @Published var selectedCapacity = ""
     
     func fetchData() {
         let url = "https://run.mocky.io/v3/6c14c560-15c6-4248-b9d2-b4508df7d4f5"
@@ -32,6 +36,8 @@ class ProductViewModel: ObservableObject {
                     DispatchQueue.main.async {
                         self?.productModel = productModel
                         self?.images = productModel.images
+                        self?.selectedColor = productModel.color[0]
+                        self?.selectedCapacity = productModel.capacity[0]
                     }
                 }
             }

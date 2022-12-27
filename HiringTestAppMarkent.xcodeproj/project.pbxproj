@@ -33,7 +33,9 @@
 		A0D45B9A2948D166004C20D4 /* Mark-Pro-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A0D45B952948D166004C20D4 /* Mark-Pro-Bold.ttf */; };
 		A0D45B9B2948D166004C20D4 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D45B962948D166004C20D4 /* Fonts.swift */; };
 		A0D45B9C2948D166004C20D4 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D45B972948D166004C20D4 /* Colors.swift */; };
-		A0F459CB295ADD7600EAFCA6 /* StarRate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F459CA295ADD7600EAFCA6 /* StarRate.swift */; };
+		A0F459CD295B15A800EAFCA6 /* ColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F459CC295B15A800EAFCA6 /* ColorPickerView.swift */; };
+		A0F459CF295B1CD700EAFCA6 /* CapacityPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F459CE295B1CD700EAFCA6 /* CapacityPickerView.swift */; };
+		A0F459D1295B542900EAFCA6 /* StarRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F459D0295B542900EAFCA6 /* StarRating.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,7 +67,9 @@
 		A0D45B952948D166004C20D4 /* Mark-Pro-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Mark-Pro-Bold.ttf"; sourceTree = "<group>"; };
 		A0D45B962948D166004C20D4 /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		A0D45B972948D166004C20D4 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
-		A0F459CA295ADD7600EAFCA6 /* StarRate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRate.swift; sourceTree = "<group>"; };
+		A0F459CC295B15A800EAFCA6 /* ColorPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerView.swift; sourceTree = "<group>"; };
+		A0F459CE295B1CD700EAFCA6 /* CapacityPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapacityPickerView.swift; sourceTree = "<group>"; };
+		A0F459D0295B542900EAFCA6 /* StarRating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRating.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,7 +88,9 @@
 			children = (
 				A06442B9294C3F6E00599EDF /* ProductDetailsView.swift */,
 				A01B8AF42958401000A509FE /* CellInfo.swift */,
-				A0F459CA295ADD7600EAFCA6 /* StarRate.swift */,
+				A0F459CC295B15A800EAFCA6 /* ColorPickerView.swift */,
+				A0F459CE295B1CD700EAFCA6 /* CapacityPickerView.swift */,
+				A0F459D0295B542900EAFCA6 /* StarRating.swift */,
 			);
 			path = ProductDetailsView;
 			sourceTree = "<group>";
@@ -279,6 +285,7 @@
 				A06442B4294B1B8000599EDF /* AsyncImage.swift in Sources */,
 				A052EA51295070B9007CDFCC /* MyCartView.swift in Sources */,
 				A0D45B9C2948D166004C20D4 /* Colors.swift in Sources */,
+				A0F459D1295B542900EAFCA6 /* StarRating.swift in Sources */,
 				A06CD9FC2940B2550038DDCE /* HiringTestAppMarkentApp.swift in Sources */,
 				A052EA53295071EE007CDFCC /* MyCartModel.swift in Sources */,
 				A0D45B8F2948BBC4004C20D4 /* HomeViewModel.swift in Sources */,
@@ -288,13 +295,14 @@
 				A01B8AEE29583E9100A509FE /* BestSeller.swift in Sources */,
 				A0D45B912948C4ED004C20D4 /* ImageLoader.swift in Sources */,
 				A01B8AF7295840A800A509FE /* ProductCell.swift in Sources */,
+				A0F459CD295B15A800EAFCA6 /* ColorPickerView.swift in Sources */,
 				A06E7A96294D94AC00FAE728 /* ProductModel.swift in Sources */,
 				A01B8AF52958401000A509FE /* CellInfo.swift in Sources */,
 				A01B8AFA2958416500A509FE /* TotalCell.swift in Sources */,
 				A01B8AF229583F5000A509FE /* ProductTypeView.swift in Sources */,
+				A0F459CF295B1CD700EAFCA6 /* CapacityPickerView.swift in Sources */,
 				A052EA552950726C007CDFCC /* MyCartViewModel.swift in Sources */,
 				A06C67A3294628C9007A9BF1 /* HomeModel.swift in Sources */,
-				A0F459CB295ADD7600EAFCA6 /* StarRate.swift in Sources */,
 				A06442BA294C3F6E00599EDF /* ProductDetailsView.swift in Sources */,
 				A01B8AF029583F0700A509FE /* HotSalesView.swift in Sources */,
 			);

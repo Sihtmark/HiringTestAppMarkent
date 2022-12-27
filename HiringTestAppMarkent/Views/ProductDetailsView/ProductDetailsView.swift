@@ -9,8 +9,7 @@ import SwiftUI
 
 struct ProductDetailsView: View {
     
-    @StateObject var productViewModel = ProductViewModel()
-    @State private var showObject = false
+    @ObservedObject var productViewModel = ProductViewModel()
     
     var body: some View {
         VStack {
@@ -56,10 +55,8 @@ struct ProductDetailsView: View {
                             .frame(width: 266)
                             .background(.orange)
                             .cornerRadius(20)
-                            .scaleEffect(showObject ? 0.8 : 1)
                     }
                 }
-                .frame(alignment: .center)
             }
             .padding(.bottom, 15)
             .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
@@ -100,59 +97,5 @@ extension ProductDetailsView {
         .frame(width: 266)
         .background(.orange)
         .cornerRadius(20)
-    }
-}
-
-
-extension ProductDetailsView {
-    @ViewBuilder
-    func detailsView(type: ProductInfo) -> some View {
-        HStack {
-            VStack {
-                Text(type.title)
-                    .font(.custom(boldMark, size: 20))
-                Capsule()
-                    .frame(width: 86, height: 2)
-                    .foregroundColor(productViewModel.productInfo == type ? Color.appOrange : .white)
-            }
-            
-        }
-    }
-    
-    func switchProductInfo(type: ProductInfo) {
-        withAnimation {
-            productViewModel.productInfo = type
-        }
-    }
-}
-
-extension ProductDetailsView {
-    @ViewBuilder
-    func colorCircle(color: String) -> some View {
-        ZStack {
-            Circle()
-                .frame(width: 40)
-                .foregroundColor(Color.init(hexString: color))
-            Image(systemName: "checkmark")
-                .foregroundColor(.white)
-                .font(.system(size: 13).bold())
-                .opacity(1.0)
-        }
-    }
-    
-}
-
-extension ProductDetailsView {
-    @ViewBuilder
-    func capacityCapsule(capacity: String) -> some View {
-        ZStack {
-            Capsule()
-                .foregroundColor(Color.appOrange)
-                .cornerRadius(10)
-            Text(capacity)
-                .font(.custom(boldMark, size: 13))
-                .foregroundColor(.black)
-        }
-        .frame(width: 71.43, height: 30.36)
     }
 }
