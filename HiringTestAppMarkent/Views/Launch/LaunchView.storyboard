@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22138.1" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22138.1" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -24,9 +24,16 @@
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchCircle" translatesAutoresizingMaskIntoConstraints="NO" id="3f9-5i-JcW">
                                 <rect key="frame" x="130.66666666666666" y="360" width="131.99999999999997" height="132"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="132" id="KAI-ir-C1J"/>
+                                    <constraint firstAttribute="width" constant="132" id="VOk-IN-TaX"/>
+                                </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ecommerce Concept" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tfe-bz-q7D">
-                                <rect key="frame" x="165" y="359" width="185" height="133"/>
+                                <rect key="frame" x="164.66666666666663" y="388" width="185" height="76.333333333333314"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="185" id="hGb-rH-Kcd"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="MarkPro-Bold" family="Mark Pro" pointSize="30"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -35,10 +42,9 @@
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" name="DarkBlue"/>
                         <constraints>
-                            <constraint firstItem="tfe-bz-q7D" firstAttribute="leading" secondItem="3f9-5i-JcW" secondAttribute="leading" constant="34" id="IC2-Ym-Z4v"/>
-                            <constraint firstItem="tfe-bz-q7D" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="Lte-Fy-3cL"/>
-                            <constraint firstItem="tfe-bz-q7D" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="WL7-GB-Elh"/>
-                            <constraint firstItem="3f9-5i-JcW" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="ina-h0-Exe"/>
+                            <constraint firstItem="tfe-bz-q7D" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="eWc-YL-ZNN"/>
+                            <constraint firstItem="3f9-5i-JcW" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="jg7-kY-cR1"/>
+                            <constraint firstItem="tfe-bz-q7D" firstAttribute="leading" secondItem="3f9-5i-JcW" secondAttribute="leading" constant="34" id="sJ6-cY-PmW"/>
                             <constraint firstItem="3f9-5i-JcW" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="sLD-Q9-qF0"/>
                         </constraints>
                     </view>

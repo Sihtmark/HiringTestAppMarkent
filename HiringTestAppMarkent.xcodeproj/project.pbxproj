@@ -13,6 +13,9 @@
 		A01B8AF52958401000A509FE /* CellInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01B8AF42958401000A509FE /* CellInfo.swift */; };
 		A01B8AF7295840A800A509FE /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01B8AF6295840A800A509FE /* ProductCell.swift */; };
 		A01B8AFA2958416500A509FE /* TotalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01B8AF92958416500A509FE /* TotalCell.swift */; };
+		A01DF1672A6160C700A0109C /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01DF1662A6160C700A0109C /* Color.swift */; };
+		A01DF1692A616CE400A0109C /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01DF1682A616CE400A0109C /* Image.swift */; };
+		A01DF16C2A61738800A0109C /* LaunchView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A01DF16B2A61738800A0109C /* LaunchView.storyboard */; };
 		A01F062429532546000D46AC /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01F062329532546000D46AC /* DetailView.swift */; };
 		A052EA51295070B9007CDFCC /* MyCartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A052EA50295070B9007CDFCC /* MyCartView.swift */; };
 		A052EA53295071EE007CDFCC /* MyCartModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A052EA52295071EE007CDFCC /* MyCartModel.swift */; };
@@ -45,6 +48,9 @@
 		A01B8AF42958401000A509FE /* CellInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellInfo.swift; sourceTree = "<group>"; };
 		A01B8AF6295840A800A509FE /* ProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
 		A01B8AF92958416500A509FE /* TotalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalCell.swift; sourceTree = "<group>"; };
+		A01DF1662A6160C700A0109C /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		A01DF1682A616CE400A0109C /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
+		A01DF16B2A61738800A0109C /* LaunchView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchView.storyboard; sourceTree = "<group>"; };
 		A01F062329532546000D46AC /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		A052EA50295070B9007CDFCC /* MyCartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCartView.swift; sourceTree = "<group>"; };
 		A052EA52295071EE007CDFCC /* MyCartModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCartModel.swift; sourceTree = "<group>"; };
@@ -103,6 +109,23 @@
 				A01B8AF92958416500A509FE /* TotalCell.swift */,
 			);
 			path = MyCartView;
+			sourceTree = "<group>";
+		};
+		A01DF1652A6160BC00A0109C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A01DF1662A6160C700A0109C /* Color.swift */,
+				A01DF1682A616CE400A0109C /* Image.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		A01DF16A2A61735600A0109C /* Launch */ = {
+			isa = PBXGroup;
+			children = (
+				A01DF16B2A61738800A0109C /* LaunchView.storyboard */,
+			);
+			path = Launch;
 			sourceTree = "<group>";
 		};
 		A030B587294A3B9400BF4D73 /* ViewModels */ = {
@@ -166,6 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				A06CD9FB2940B2550038DDCE /* HiringTestAppMarkentApp.swift */,
+				A01DF1652A6160BC00A0109C /* Extensions */,
 				A030B588294A3BD100BF4D73 /* Models */,
 				A030B587294A3B9400BF4D73 /* ViewModels */,
 				A09DF292294740380002E163 /* Views */,
@@ -189,6 +213,7 @@
 		A09DF292294740380002E163 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A01DF16A2A61735600A0109C /* Launch */,
 				A06442B7294C3EE700599EDF /* MainView */,
 				A01B8AF329583FC100A509FE /* ProductDetailsView */,
 				A01B8AF8295840D100A509FE /* MyCartView */,
@@ -236,7 +261,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1410;
-				LastUpgradeCheck = 1410;
+				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					A06CD9F72940B2550038DDCE = {
 						CreatedOnToolsVersion = 14.1;
@@ -266,6 +291,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A01DF16C2A61738800A0109C /* LaunchView.storyboard in Resources */,
 				A0D45B9A2948D166004C20D4 /* Mark-Pro-Bold.ttf in Resources */,
 				A0D45B992948D166004C20D4 /* MarkPro-Medium.ttf in Resources */,
 				A06CDA032940B2570038DDCE /* Preview Assets.xcassets in Resources */,
@@ -299,9 +325,11 @@
 				A06E7A96294D94AC00FAE728 /* ProductModel.swift in Sources */,
 				A01B8AF52958401000A509FE /* CellInfo.swift in Sources */,
 				A01B8AFA2958416500A509FE /* TotalCell.swift in Sources */,
+				A01DF1672A6160C700A0109C /* Color.swift in Sources */,
 				A01B8AF229583F5000A509FE /* ProductTypeView.swift in Sources */,
 				A0F459CF295B1CD700EAFCA6 /* CapacityPickerView.swift in Sources */,
 				A052EA552950726C007CDFCC /* MyCartViewModel.swift in Sources */,
+				A01DF1692A616CE400A0109C /* Image.swift in Sources */,
 				A06C67A3294628C9007A9BF1 /* HomeModel.swift in Sources */,
 				A06442BA294C3F6E00599EDF /* ProductDetailsView.swift in Sources */,
 				A01B8AF029583F0700A509FE /* HotSalesView.swift in Sources */,
@@ -347,6 +375,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -407,6 +436,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -433,7 +463,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"HiringTestAppMarkent/Preview Content\"";
-				DEVELOPMENT_TEAM = QYGMJ959XP;
+				DEVELOPMENT_TEAM = VB8C9ZVKXH;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HiringTestAppMarkent/Info.plist;
@@ -442,6 +472,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchView.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -465,7 +496,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"HiringTestAppMarkent/Preview Content\"";
-				DEVELOPMENT_TEAM = QYGMJ959XP;
+				DEVELOPMENT_TEAM = VB8C9ZVKXH;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HiringTestAppMarkent/Info.plist;
@@ -474,6 +505,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchView.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
