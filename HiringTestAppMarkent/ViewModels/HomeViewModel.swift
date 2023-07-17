@@ -20,7 +20,10 @@ class HomeViewModel: ObservableObject {
     
     func fetchData() {
         
-        guard let safeUrl = URL(string: url) else { print("Invalid URL"); return }
+        guard let safeUrl = URL(string: url) else {
+            print("Invalid URL")
+            return
+        }
         
         let session = URLSession(configuration: .default)
         
