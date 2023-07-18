@@ -66,7 +66,6 @@ enum ProductType: CaseIterable {
             return "phone"
         case .computer:
             return "computer"
-            // Changed health image to similar one cause previous had a bug
         case .health:
             return "health"
         case .books:
