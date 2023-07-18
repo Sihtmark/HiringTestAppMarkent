@@ -1,35 +1,36 @@
 //
-//  HotSalesView.swift
+//  HotSalesCell.swift
 //  HiringTestAppMarkent
 //
-//  Created by Sergei Poluboiarinov on 2022-12-25.
+//  Created by Sergei Poluboiarinov on 18.07.2023.
 //
 
 import SwiftUI
 
-// MARK: Hot sales tabView
-extension HomeView {
-    @ViewBuilder
-    func hotSalesView(hotSalesData: HomeStore) -> some View {
+struct HotSalesCell: View {
+    
+    let product: Product
+    
+    var body: some View {
         HStack {
             VStack(alignment: .leading) {
                 
-                if let _ = hotSalesData.isNew {
+                if product.rating > 4.5  {
                     Text("New")
                         .font(.custom(regularMark, size: 10).bold())
                         .foregroundColor(Color.white)
                         .padding(8)
                         .background(
                             Circle()
-                                .fill(Color.appOrange)
+                                .fill(Color.accentColor)
                         )
                     
                 }
                 VStack(alignment: .leading) {
-                    Text(hotSalesData.title)
+                    Text(product.title)
                         .font(.custom(regularMark, size: 25).bold())
                         .foregroundColor(Color.white)
-                    Text(hotSalesData.subtitle)
+                    Text(product.description)
                         .font(.custom(regularMark, size: 11))
                         .foregroundColor(Color.white)
                 }
@@ -55,11 +56,14 @@ extension HomeView {
         .padding()
         .padding(.horizontal, 6)
         .background(
-            AsyncImage(url: hotSalesData.picture)
-                .frame(height: 182)
-                .clipShape(RoundedRectangle(cornerRadius: 12))
+            AsyncImage(url: product.thumbnail)
+                    .frame(height: 182)
+                    .clipShape(RoundedRectangle(cornerRadius: 12))
         )
         .padding()
     }
 }
 
+#Preview {
+    HotSalesCell(product: previewProduct)
+}

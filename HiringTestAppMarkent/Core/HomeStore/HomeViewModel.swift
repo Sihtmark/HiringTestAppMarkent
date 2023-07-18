@@ -11,51 +11,39 @@ import SwiftUI
 class HomeViewModel: ObservableObject {
     @Published var productType: ProductType = .phone
     @Published var productCarousel: Int = 0
-    @Published var hotSales: [HomeStore] = [HomeStore]()
-    @Published var bestSeller: [BestSeller] = [BestSeller]()
+    @Published var hotSales: [Product] = [Product]()
+    @Published var bestSeller: [Product] = [Product]()
+    @Published var favorites = FavoritesBestSellers()
     @Published var image: UIImage = UIImage()
     @Published var isFavorite: Bool = false
     
-    let url = "https://run.mocky.io/v3/654bd15e-b121-49ba-a588-960956b15175"
-    
-    func fetchData() {
-        
-        guard let safeUrl = URL(string: url) else {
-            print("Invalid URL")
-            return
-        }
-        
-        let session = URLSession(configuration: .default)
-        
-        let task = session.dataTask(with: safeUrl) { [weak self] data, response, error in
-            
-            if error != nil {
-                print("Request error: \(error?.localizedDescription ?? "asdf")")
-                return
+    func getProducts() async {
+        do {
+            let data = try await APIRequestDispatcher.request(apiRouter: .getProducts)
+            let responseObject = try JSONDecoder().decode(Products.self, from: data)
+            await MainActor.run {
+                self.bestSeller = responseObject.products
             }
-            
-            if let safeData = data {
-                if let homeModel = self?.parseJSON(safeData) {
-                    DispatchQueue.main.async {
-                        self?.hotSales = homeModel.homeStore
-                        self?.bestSeller = homeModel.bestSeller
-                    }
-                }
-            }
+        } catch {
+            print(URLError(.cannotDecodeRawData))
         }
-        
-        task.resume()
     }
     
-    private func parseJSON(_ data: Data) -> HomeModel? {
-        let decoder = JSONDecoder()
-        decoder.keyDecodingStrategy = .convertFromSnakeCase
+    func getProductsOfCategory(category: String) async {
         do {
-            let decodedData = try decoder.decode(HomeModel.self, from: data)
-            return decodedData
+            let data = try await APIRequestDispatcher.request(apiRouter: .getProductsOfCategory(category: category))
+            let responseObject = try JSONDecoder().decode(Products.self, from: data)
+            await MainActor.run {
+                self.hotSales = responseObject.products
+            }
         } catch {
-            print("Parsing JSON error: \(error)")
-            return nil
+            print(URLError(.cannotDecodeRawData))
+        }
+    }
+    
+    func switchProuductType(type: ProductType) {
+        withAnimation {
+            productType = type
         }
     }
 }
@@ -67,16 +55,16 @@ class FavoritesBestSellers: ObservableObject {
         bestSellers = []
     }
     
-    func contains(_ bestSeller: BestSeller) -> Bool {
+    func contains(_ bestSeller: Product) -> Bool {
         bestSellers.contains(bestSeller.id)
     }
     
-    func add(_ bestSeller: BestSeller) {
+    func add(_ bestSeller: Product) {
         objectWillChange.send()
         bestSellers.insert(bestSeller.id)
     }
     
-    func remove(_ bestSeller: BestSeller) {
+    func remove(_ bestSeller: Product) {
         objectWillChange.send()
         bestSellers.remove(bestSeller.id)
     }

@@ -9,53 +9,23 @@ import SwiftUI
 
 struct DetailView: View {
     
-    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.dismiss) var dismiss
     
     @State private var brandFilterTitle = "Samsung"
     @State private var priceFilterTitle = "$300 - $500"
     
     var body: some View {
         VStack {
-            HStack {
-                Button {
-                    self.presentationMode.wrappedValue.dismiss()
-                } label: {
-                    Image(systemName: "clear.fill")
-                        .resizable()
-                        .frame(width: 37, height: 37)
-                        .foregroundColor(Color.appBlue)
-                }
-                Spacer()
-                Text("Filter options")
-                    .font(.custom(regularMark, size: 18).bold())
-                    .padding(.leading, 25)
-                Spacer()
-                Button {
-                    self.presentationMode.wrappedValue.dismiss()
-                } label: {
-                    Text("Done")
-                        .font(.custom(regularMark, size: 18))
-                        .foregroundColor(Color.white)
-                        .padding(.horizontal, 21)
-                        .padding(.vertical, 7)
-                        .background(Color.appOrange)
-                        .cornerRadius(10)
-                }
-            }
-            Spacer()
-                .frame(height: 50)
-            filterBrand()
-                .padding(.bottom, 5)
-            filterPrice()
-                .padding(.bottom, 5)
-            filterSize()
+            title
+            filterBrand
+            filterPrice
+            filterSize
         }
         .padding(.leading, 44)
         .padding(.trailing, 20)
         .padding(.vertical, 30)
         .shadow(color: .black.opacity(0.1), radius: 12)
     }
-    
 }
 
 
@@ -66,8 +36,38 @@ struct DetailView_Previews: PreviewProvider {
 }
 
 extension DetailView {
-    @ViewBuilder
-    func filterBrand() -> some View {
+    
+    var title: some View {
+        HStack {
+            Button {
+                dismiss()
+            } label: {
+                Image(systemName: "clear.fill")
+                    .resizable()
+                    .frame(width: 37, height: 37)
+                    .foregroundColor(Color.appBlue)
+            }
+            Spacer()
+            Text("Filter options")
+                .font(.custom(regularMark, size: 18).bold())
+                .padding(.leading, 25)
+            Spacer()
+            Button {
+                dismiss()
+            } label: {
+                Text("Done")
+                    .font(.custom(regularMark, size: 18))
+                    .foregroundColor(Color.white)
+                    .padding(.horizontal, 21)
+                    .padding(.vertical, 7)
+                    .background(Color.appOrange)
+                    .cornerRadius(10)
+            }
+        }
+        .padding(.bottom, 50)
+    }
+    
+    var filterBrand: some View {
         VStack(alignment: .leading) {
             Text("Brand")
                 .font(.custom(mediumMark, size: 18).bold())
@@ -110,10 +110,10 @@ extension DetailView {
                 }
             }
         }
+        .padding(.bottom, 5)
     }
     
-    @ViewBuilder
-    func filterPrice() -> some View {
+    var filterPrice: some View {
         VStack(alignment: .leading) {
             Text("Price")
                 .font(.custom(mediumMark, size: 18).bold())
@@ -171,10 +171,10 @@ extension DetailView {
                 }
             }
         }
+        .padding(.bottom, 5)
     }
     
-    @ViewBuilder
-    func filterSize() -> some View {
+    var filterSize: some View {
         VStack(alignment: .leading) {
             Text("Size")
                 .font(.custom(mediumMark, size: 18).bold())
