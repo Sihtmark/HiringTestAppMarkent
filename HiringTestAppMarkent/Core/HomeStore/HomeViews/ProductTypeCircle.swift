@@ -17,19 +17,19 @@ struct ProductTypeCircle: View {
         VStack {
             ZStack {
                 Circle()
-                    .fill(vm.productType == type ? Color.appOrange : Color.white)
+                    .fill(vm.productType == type ? Color.accentColor : Color.white)
                     .frame(width: 71, height: 71)
-                    .shadow(color: Color.shadow1, radius: 10)
-                
-                Image(type.imageName)
+                Image(type.rawValue)
                     .resizable()
-                    .renderingMode(.template)
-                    .aspectRatio(contentMode: .fit)
+                    .scaledToFit()
                     .frame(height: 30)
                     .foregroundColor(vm.productType == type ? Color.white : Color.black.opacity(0.3))
             }
+            .shadow(color: .black.opacity(0.15), radius: 10)
+            .padding(.horizontal)
+            .padding(.top)
             
-            Text(type.title)
+            Text(type.rawValue)
                 .font(.custom(regularMark, size: 14))
                 .foregroundColor(vm.productType == type ? Color.appOrange : Color.black)
         }
@@ -39,7 +39,7 @@ struct ProductTypeCircle: View {
 
 struct ProductTypeCircle_Previews: PreviewProvider {
     static var previews: some View {
-        ProductTypeCircle(type: ProductType.books)
+        ProductTypeCircle(type: ProductType.smartphones)
             .environmentObject(HomeViewModel())
     }
 }

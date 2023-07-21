@@ -12,11 +12,16 @@ extension MyCartView {
     func productCell(basket: Basket?) -> some View {
         if let basket = basket {
             HStack {
-                AsyncImage(url: basket.images)
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width: 88, height: 88)
-                    .clipped()
-                    .cornerRadius(10)
+                AsyncImage(url: URL(string: basket.images)) { image in
+                    image
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 88, height: 88)
+                        .clipped()
+                        .cornerRadius(10)
+                } placeholder: {
+                    ProgressView()
+                }
                 Spacer()
                 VStack(alignment: .leading) {
                     Text(basket.title)

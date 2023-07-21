@@ -59,10 +59,16 @@ struct BestSellerCell_Previews: PreviewProvider {
 extension BestSellerCell {
     var imageSection: some View {
         ZStack {
-            AsyncImage(url: bestSeller.thumbnail)
-                .aspectRatio(contentMode: .fill)
-                .frame(width: UIScreen.main.bounds.width / 2.3, height: UIScreen.main.bounds.height / 4, alignment: .center)
-                .clipped()
+            AsyncImage(url: URL(string: bestSeller.thumbnail)) { image in
+                image
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: UIScreen.main.bounds.width / 2.3, height: UIScreen.main.bounds.height / 4, alignment: .center)
+                    .clipped()
+                
+            } placeholder: {
+                ProgressView()
+            }
             VStack {
                 HStack() {
                     Spacer()

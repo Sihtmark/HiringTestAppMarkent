@@ -51,10 +51,14 @@ struct ProductDetailsView: View {
             TabView {
                 HStack(spacing: 30) {
                     ForEach(productViewModel.images, id: \.self) { item in
-                        AsyncImage(url: item)
-                            .frame(width: 266)
-                            .background(.orange)
-                            .cornerRadius(20)
+                        AsyncImage(url: URL(string: item)) { image in
+                            image
+                                .frame(width: 266)
+                                .background(.orange)
+                                .cornerRadius(20)
+                        } placeholder: {
+                            ProgressView()
+                        }
                     }
                 }
             }
@@ -91,11 +95,16 @@ extension ProductDetailsView {
     @ViewBuilder
     func cellPicture(product: ProductModel) -> some View {
         ZStack {
-            AsyncImage(url: product.images[0])
-                .aspectRatio(contentMode: .fit)
+            AsyncImage(url: URL(string: product.images[0])) { image in
+                image
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 266)
+                    .background(.orange)
+                    .cornerRadius(20)
+            } placeholder: {
+                ProgressView()
+            }
         }
-        .frame(width: 266)
-        .background(.orange)
-        .cornerRadius(20)
     }
 }

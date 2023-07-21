@@ -9,10 +9,10 @@ import Foundation
 import SwiftUI
 
 class HomeViewModel: ObservableObject {
-    @Published var productType: ProductType = .phone
+    @Published var productType: ProductType = .tops
     @Published var productCarousel: Int = 0
-    @Published var hotSales: [Product] = [Product]()
-    @Published var bestSeller: [Product] = [Product]()
+    @Published var hotSales = [Product]()
+    @Published var bestSeller = [Product]()
     @Published var favorites = FavoritesBestSellers()
     @Published var image: UIImage = UIImage()
     @Published var isFavorite: Bool = false
@@ -41,31 +41,10 @@ class HomeViewModel: ObservableObject {
         }
     }
     
-    func switchProuductType(type: ProductType) {
+    func switchProductType(type: ProductType) {
         withAnimation {
             productType = type
         }
     }
 }
 
-class FavoritesBestSellers: ObservableObject {
-    private var bestSellers: Set<Int>
-    
-    init() {
-        bestSellers = []
-    }
-    
-    func contains(_ bestSeller: Product) -> Bool {
-        bestSellers.contains(bestSeller.id)
-    }
-    
-    func add(_ bestSeller: Product) {
-        objectWillChange.send()
-        bestSellers.insert(bestSeller.id)
-    }
-    
-    func remove(_ bestSeller: Product) {
-        objectWillChange.send()
-        bestSellers.remove(bestSeller.id)
-    }
-}
