@@ -21,9 +21,7 @@ struct DetailView: View {
             filterPrice
             filterSize
         }
-        .padding(.leading, 44)
-        .padding(.trailing, 20)
-        .padding(.vertical, 30)
+        .padding(20)
         .shadow(color: .black.opacity(0.1), radius: 12)
     }
 }
@@ -64,7 +62,7 @@ extension DetailView {
                     .cornerRadius(10)
             }
         }
-        .padding(.bottom, 50)
+        .padding(.bottom, 30)
     }
     
     var filterBrand: some View {

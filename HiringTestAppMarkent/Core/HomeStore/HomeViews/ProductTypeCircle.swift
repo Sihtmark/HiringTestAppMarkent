@@ -26,11 +26,11 @@ struct ProductTypeCircle: View {
                     .foregroundColor(vm.productType == type ? Color.white : Color.black.opacity(0.3))
             }
             .shadow(color: .black.opacity(0.15), radius: 10)
-            .padding(.horizontal)
+            .padding(.horizontal, 6)
             .padding(.top)
             
             Text(type.rawValue)
-                .font(.custom(regularMark, size: 14))
+                .font(.custom(regularMark, size: 9))
                 .foregroundColor(vm.productType == type ? Color.appOrange : Color.black)
         }
         .background(Color.white)
