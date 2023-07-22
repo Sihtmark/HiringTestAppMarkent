@@ -39,6 +39,7 @@ struct HomeView: View {
                 DetailView()
                     .presentationDetents([.fraction(0.5)])
             }
+            .navigationBarTitleDisplayMode(.inline)
         }
         .navigationBarBackButtonHidden(true)
         .environmentObject(vm.favorites)
@@ -73,6 +74,8 @@ extension HomeView {
                 }
             }
             .padding(.horizontal)
+            .padding(.top)
+            
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack {
                     ForEach(ProductType.allCases, id: \.self) { type in
@@ -90,6 +93,7 @@ extension HomeView {
                 }
                 .padding(.horizontal, 10)
             }
+            .padding(.bottom, 10)
             HStack {
                 ZStack {
                     Capsule()
