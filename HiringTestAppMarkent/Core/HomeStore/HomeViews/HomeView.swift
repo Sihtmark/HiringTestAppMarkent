@@ -13,8 +13,8 @@ struct HomeView: View {
     @State private var filterPriceWidth: CGFloat = 25
     
     let columns = [
-        GridItem(.flexible()),
-        GridItem(.flexible())
+        GridItem(.fixed(UIScreen.main.bounds.width / 2.3), spacing: 15, alignment: .center),
+        GridItem(.fixed(UIScreen.main.bounds.width / 2.3), spacing: 15, alignment: .center)
     ]
     var body: some View {
         NavigationStack {
@@ -180,11 +180,15 @@ extension HomeView {
                         .foregroundColor(Color.appOrange)
                 }
             }
-            LazyVGrid(columns: columns, spacing: 20) {
+            .padding(.horizontal)
+            LazyVGrid(columns: columns, alignment: .center, spacing: 15) {
                 ForEach(vm.bestSeller, id: \.self) { bestSeller in
                     BestSellerCell(bestSeller: bestSeller)
                 }
             }
+            .padding(.horizontal)
+            .padding(.top)
+            .padding(.bottom, 100)
         }
     }
     

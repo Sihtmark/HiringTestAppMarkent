@@ -14,91 +14,84 @@ struct BestSellerCell: View {
     let bestSeller: Product
     
     var body: some View {
-        VStack(spacing: 0) {
-            imageSection
-            HStack(alignment: .bottom) {
-                Text("$" + "\(bestSeller.price)")
-                    .font(Font.custom(boldMark, size: 16))
-                    .foregroundColor(.black)
-                Text("$" + "\(Double(bestSeller.price) * (100.0 - bestSeller.discountPercentage))")
-                    .font(.custom(mediumMark, size: 10))
-                    .foregroundColor(Color.black.opacity(0.3))
-                    .strikethrough(true, color: Color.black.opacity(0.3))
-                Spacer()
+        VStack {
+            ZStack {
+                AsyncImage(url: URL(string: bestSeller.thumbnail)) { image in
+                    image
+                        .resizable()
+                        .scaledToFill()
+                } placeholder: {
+                    ProgressView()
+                }
             }
-            .padding(.horizontal, 16)
-            .padding(.bottom, 6.5)
-            
-            HStack {
-                Text(bestSeller.title)
-                    .font(.custom(regularMark, size: 10))
-                    .foregroundColor(.black)
-                Spacer()
+            .frame(width: UIScreen.main.bounds.width / 2.3, height: UIScreen.main.bounds.height * 0.265)
                 
+            ZStack {
+                Color.white
+                VStack {
+                    HStack(alignment: .bottom) {
+                        Text("$" + "\(Int(Double(bestSeller.price) * (100.0 - bestSeller.discountPercentage) / 100))")
+                            .font(Font.custom(regularMark, size: 16))
+                            .fontWeight(.bold)
+                            .foregroundColor(.black)
+                        Text("$" + "\(bestSeller.price)")
+                            .font(.custom(mediumMark, size: 10))
+                            .foregroundColor(Color.black.opacity(0.3))
+                            .strikethrough(true, color: Color.black.opacity(0.3))
+                        Spacer()
+                    }
+                    .padding(.horizontal, 16)
+                    .padding(.bottom, 6.5)
+                    
+                    HStack {
+                        Text(bestSeller.title)
+                            .font(.custom(regularMark, size: 10))
+                            .foregroundColor(.black)
+                        Spacer()
+                        
+                    }
+                    .padding(.horizontal, 16)
+                    .padding(.bottom)
+                }
             }
-            .padding(.horizontal, 16)
-            .padding(.bottom)
-            
-            
+            .frame(width: UIScreen.main.bounds.width / 2.3, height: UIScreen.main.bounds.height * 0.075)
         }
-        .frame(width: UIScreen.main.bounds.width / 2.3, height: UIScreen.main.bounds.height / 3)
+        
+        .cornerRadius(15)
         .background(
-            RoundedRectangle(cornerRadius: 12)
-                .fill(.white)
-                .shadow(color: Color.shadow1, radius: 40)
+            Color.white
+                .cornerRadius(15)
+                .shadow(color: .black.opacity(0.15), radius: 10, x: 0, y: 0)
         )
+        .overlay(alignment: .topTrailing) {
+            ZStack {
+                Button {
+                    if vm.favorites.contains(bestSeller) {
+                        vm.favorites.remove(bestSeller)
+                    } else {
+                        vm.favorites.add(bestSeller)
+                    }
+                } label: {
+                    Image(systemName: vm.favorites.contains(bestSeller) ? "heart.fill" : "heart")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 11, height: 10)
+                        .foregroundColor(.accentColor)
+                        .background(
+                            Circle()
+                                .fill(.white)
+                                .frame(width: 25, height: 25)
+                                .shadow(color: .black.opacity(0.15), radius: 10)
+                        )
+                }
+                .offset(x: -15, y: 15)
+            }
+        }
     }
 }
 
 struct BestSellerCell_Previews: PreviewProvider {
     static var previews: some View {
         BestSellerCell(bestSeller: previewProduct)
-    }
-}
-
-extension BestSellerCell {
-    var imageSection: some View {
-        ZStack {
-            AsyncImage(url: URL(string: bestSeller.thumbnail)) { image in
-                image
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: UIScreen.main.bounds.width / 2.3, height: UIScreen.main.bounds.height / 4, alignment: .center)
-                    .clipped()
-                
-            } placeholder: {
-                ProgressView()
-            }
-            VStack {
-                HStack() {
-                    Spacer()
-                    ZStack {
-                        Button {
-                            if vm.favorites.contains(bestSeller) {
-                                vm.favorites.remove(bestSeller)
-                            } else {
-                                vm.favorites.add(bestSeller)
-                            }
-                        } label: {
-                            Image(systemName: vm.favorites.contains(bestSeller) ? "heart.fill" : "heart")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(height: 11)
-                                .foregroundColor(Color.appOrange)
-                                .background(
-                                    Circle()
-                                        .fill(.white)
-                                        .frame(width: 25, height: 25)
-                                        .shadow(color: Color.shadow2, radius: 20)
-                                )
-                        }
-                    }
-                }
-                .frame(maxWidth: .infinity)
-                Spacer()
-            }
-            .frame(maxHeight: .infinity)
-            .padding()
-        }
     }
 }
