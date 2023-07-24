@@ -42,9 +42,10 @@ struct HomeView: View {
             .navigationBarTitleDisplayMode(.inline)
         }
         .navigationBarBackButtonHidden(true)
-        .environmentObject(vm.favorites)
         .task {
-            await vm.getProducts()
+            if vm.bestSellers.isEmpty {
+                await vm.getAllProducts()
+            }
             await vm.getProductsOfCategory(category: vm.productType.rawValue)
         }
     }
@@ -187,7 +188,7 @@ extension HomeView {
             }
             .padding(.horizontal)
             LazyVGrid(columns: columns, alignment: .center, spacing: 15) {
-                ForEach(vm.bestSeller, id: \.self) { bestSeller in
+                ForEach(vm.bestSellers, id: \.self) { bestSeller in
                     BestSellerCell(bestSeller: bestSeller)
                 }
             }

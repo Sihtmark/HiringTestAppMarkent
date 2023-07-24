@@ -66,13 +66,13 @@ struct BestSellerCell: View {
         .overlay(alignment: .topTrailing) {
             ZStack {
                 Button {
-                    if vm.favorites.contains(bestSeller) {
-                        vm.favorites.remove(bestSeller)
+                    if vm.favoritesBestSellersContains(bestSeller) {
+                        vm.removeFromFavoritesBestSellers(bestSeller)
                     } else {
-                        vm.favorites.add(bestSeller)
+                        vm.addBestSellerToFavorites(bestSeller)
                     }
                 } label: {
-                    Image(systemName: vm.favorites.contains(bestSeller) ? "heart.fill" : "heart")
+                    Image(systemName: vm.favoritesBestSellersContains(bestSeller) ? "heart.fill" : "heart")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 11, height: 10)

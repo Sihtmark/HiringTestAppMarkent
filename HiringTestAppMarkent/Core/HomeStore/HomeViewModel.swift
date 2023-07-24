@@ -8,21 +8,22 @@
 import Foundation
 import SwiftUI
 
-class HomeViewModel: ObservableObject {
-    @Published var productType: ProductType = .tops
+final class HomeViewModel: ObservableObject {
+    
+    @Published var productType: ProductType = .smartphones
     @Published var productCarousel: Int = 0
     @Published var hotSales = [Product]()
-    @Published var bestSeller = [Product]()
-    @Published var favorites = FavoritesBestSellers()
+    @Published var bestSellers = [Product]()
     @Published var image: UIImage = UIImage()
     @Published var isFavorite: Bool = false
+    @Published var favoritesBestSellers = Set<Int>()
     
-    func getProducts() async {
+    func getAllProducts() async {
         do {
             let data = try await APIRequestDispatcher.request(apiRouter: .getProducts)
             let responseObject = try JSONDecoder().decode(Products.self, from: data)
             await MainActor.run {
-                self.bestSeller = responseObject.products
+                self.bestSellers = responseObject.products
             }
         } catch {
             print(URLError(.cannotDecodeRawData))
@@ -45,6 +46,18 @@ class HomeViewModel: ObservableObject {
         withAnimation {
             productType = type
         }
+    }
+    
+    func favoritesBestSellersContains(_ bestSeller: Product) -> Bool {
+        favoritesBestSellers.contains(bestSeller.id)
+    }
+    
+    func addBestSellerToFavorites(_ bestSeller: Product) {
+        favoritesBestSellers.insert(bestSeller.id)
+    }
+    
+    func removeFromFavoritesBestSellers(_ bestSeller: Product) {
+        favoritesBestSellers.remove(bestSeller.id)
     }
 }
 
