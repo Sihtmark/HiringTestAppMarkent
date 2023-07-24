@@ -19,6 +19,8 @@ final class HomeViewModel: ObservableObject {
     @Published var favoritesBestSellers = Set<Int>()
     @Published var singleProduct: Product? = nil
     @Published var user: User? = nil
+    @Published var productInfo: ProductInfo = .details
+    
     
     func getAllProducts() async {
         do {
@@ -148,5 +150,17 @@ final class HomeViewModel: ObservableObject {
     func removeFromFavoritesBestSellers(_ bestSeller: Product) {
         favoritesBestSellers.remove(bestSeller.id)
     }
+    
+    func switchProductInfo(type: ProductInfo) {
+        withAnimation {
+            productInfo = type
+        }
+    }
+    
+//    func switchCapacity(type: ProductModel) {
+//        withAnimation {
+//            productModel = type
+//        }
+//    }
 }
 

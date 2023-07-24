@@ -1,22 +1,11 @@
 //
-//  ProductDetailsViewProductModel.swift
+//  ProductInfo.swift
 //  HiringTestAppMarkent
 //
-//  Created by Sergei Poluboiarinov on 2022-12-17.
+//  Created by Sergei Poluboiarinov on 24.07.2023.
 //
 
 import Foundation
-
-struct ProductModel: Codable, Hashable, Identifiable {
-    let CPU, camera: String
-    let capacity, color: [String]
-    let id: String
-    let images: [String]
-    let isFavorites: Bool
-    let price: Int
-    let rating: Double
-    let sd, ssd, title: String
-}
 
 enum ProductInfo: CaseIterable {
     case shop

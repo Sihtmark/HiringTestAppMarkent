@@ -10,7 +10,7 @@ import SwiftUI
 struct HomeView: View {
     @EnvironmentObject private var vm: HomeViewModel
     @State private var showingSheet = false
-    @State private var filterPriceWidth: CGFloat = 25
+//    @State private var filterPriceWidth: CGFloat = 25
     
     let columns = [
         GridItem(.fixed(UIScreen.main.bounds.width / 2.3), spacing: 15, alignment: .center),

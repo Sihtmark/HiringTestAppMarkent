@@ -9,14 +9,15 @@ import SwiftUI
 
 struct ProductDetailsView: View {
     
-    @ObservedObject var productViewModel = ProductViewModel()
+    @Environment(\.dismiss) private var dismiss
+    @ObservedObject var vm = HomeViewModel()
     
     var body: some View {
         VStack {
             HStack {
-                NavigationLink {
-                    HomeView()
-                } label: {
+                Button(action: {
+                    dismiss()
+                }, label: {
                     ZStack {
                         Image(systemName: "chevron.left")
                             .foregroundColor(.white)
@@ -25,7 +26,19 @@ struct ProductDetailsView: View {
                     .frame(width: 37, height: 37)
                     .background(Color.appBlue)
                     .cornerRadius(10)
-                }
+                })
+                //                NavigationLink {
+                //                    HomeView()
+                //                } label: {
+                //                    ZStack {
+                //                        Image(systemName: "chevron.left")
+                //                            .foregroundColor(.white)
+                //                            .font(.system(size: 14))
+                //                    }
+                //                    .frame(width: 37, height: 37)
+                //                    .background(Color.appBlue)
+                //                    .cornerRadius(10)
+                //                }
                 Spacer()
                 Text("Product details")
                     .font(.custom(regularMark, size: 18))
@@ -50,8 +63,8 @@ struct ProductDetailsView: View {
             
             TabView {
                 HStack(spacing: 30) {
-                    ForEach(productViewModel.images, id: \.self) { item in
-                        AsyncImage(url: URL(string: item)) { image in
+                    ForEach(vm.singleProduct!.images, id: \.self) { urlString in
+                        AsyncImage(url: URL(string: urlString)) { image in
                             image
                                 .frame(width: 266)
                                 .background(.orange)
@@ -66,18 +79,20 @@ struct ProductDetailsView: View {
             .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
             .shadow(color: Color.black.opacity(0.14), radius: 10)
             
-            cellInfo(product: productViewModel.productModel)
-                .cornerRadius(15)
-                .background(
-                    RoundedRectangle(cornerRadius: 30)
-                        .fill(.white)
-                        .shadow(color: Color.shadow1, radius: 20, y: -5)
-                )
+            if let product = vm.singleProduct {
+                InfoSection(product: product)
+                    .cornerRadius(15)
+                    .background(
+                        RoundedRectangle(cornerRadius: 30)
+                            .fill(.white)
+                            .shadow(color: Color.shadow1, radius: 20, y: -5)
+                    )
+            }
         }
         .edgesIgnoringSafeArea(.bottom)
         .background(Color.appBackground)
-        .onAppear {
-            productViewModel.fetchData()
+        .task {
+            await vm.getSingleProduct()
         }
         .navigationBarTitle("")
         .navigationBarBackButtonHidden(true)
