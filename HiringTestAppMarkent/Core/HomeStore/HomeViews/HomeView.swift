@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HomeView: View {
-    @StateObject private var vm = HomeViewModel()
+    @EnvironmentObject private var vm: HomeViewModel
     @State private var showingSheet = false
     @State private var filterPriceWidth: CGFloat = 25
     
@@ -54,6 +54,7 @@ struct HomeView_Previews: PreviewProvider {
     
     static var previews: some View {
         HomeView()
+            .environmentObject(HomeViewModel())
     }
 }
 

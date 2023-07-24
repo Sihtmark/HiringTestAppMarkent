@@ -10,9 +10,12 @@ import SwiftUI
 @main
 struct HiringTestAppMarkentApp: App {
     
+    @StateObject private var vm = HomeViewModel()
+    
     var body: some Scene {
         WindowGroup {
             HomeView()
+                .environmentObject(vm)
         }
     }
 }

@@ -11,7 +11,7 @@ struct ProductTypeCircle: View {
     
     let type: ProductType
     
-    @StateObject private var vm = HomeViewModel()
+    @EnvironmentObject private var vm: HomeViewModel
     
     var body: some View {
         VStack {

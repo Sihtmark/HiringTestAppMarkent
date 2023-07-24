@@ -10,6 +10,7 @@ import SwiftUI
 struct DetailView: View {
     
     @Environment(\.dismiss) var dismiss
+    @EnvironmentObject private var vm: HomeViewModel
     
     @State private var brandFilterTitle = "Samsung"
     @State private var priceFilterTitle = "$300 - $500"
@@ -30,6 +31,7 @@ struct DetailView: View {
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
         DetailView()
+            .environmentObject(HomeViewModel())
     }
 }
 

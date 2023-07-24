@@ -9,7 +9,7 @@ import SwiftUI
 
 struct BestSellerCell: View {
     
-    @StateObject private var vm = HomeViewModel()
+    @EnvironmentObject private var vm: HomeViewModel
     
     let bestSeller: Product
     
@@ -93,5 +93,6 @@ struct BestSellerCell: View {
 struct BestSellerCell_Previews: PreviewProvider {
     static var previews: some View {
         BestSellerCell(bestSeller: previewProduct)
+            .environmentObject(HomeViewModel())
     }
 }

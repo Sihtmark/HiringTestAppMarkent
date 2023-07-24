@@ -10,6 +10,7 @@ import SwiftUI
 struct HotSalesCell: View {
     
     let product: Product
+    @EnvironmentObject private var vm: HomeViewModel
     
     var body: some View {
         ZStack(alignment: .trailing) {
@@ -69,6 +70,7 @@ struct HotSalesCell: View {
 struct HotSalesCell_Previews: PreviewProvider {
     static var previews: some View {
         HotSalesCell(product: previewProduct)
+            .environmentObject(HomeViewModel())
     }
 }
 
