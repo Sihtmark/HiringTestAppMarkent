@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct StarRating: View {
+    
     struct ClipShape: Shape {
+        
         let width: Double
         
         func path(in rect: CGRect) -> Path {

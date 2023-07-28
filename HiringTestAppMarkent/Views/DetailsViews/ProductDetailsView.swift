@@ -10,74 +10,11 @@ import SwiftUI
 struct ProductDetailsView: View {
     
     @Environment(\.dismiss) private var dismiss
-    @ObservedObject var vm = HomeViewModel()
+    @EnvironmentObject private var vm: HomeViewModel
     
     var body: some View {
         VStack {
-            HStack {
-                Button(action: {
-                    dismiss()
-                }, label: {
-                    ZStack {
-                        Image(systemName: "chevron.left")
-                            .foregroundColor(.white)
-                            .font(.system(size: 14))
-                    }
-                    .frame(width: 37, height: 37)
-                    .background(Color.appBlue)
-                    .cornerRadius(10)
-                })
-                //                NavigationLink {
-                //                    HomeView()
-                //                } label: {
-                //                    ZStack {
-                //                        Image(systemName: "chevron.left")
-                //                            .foregroundColor(.white)
-                //                            .font(.system(size: 14))
-                //                    }
-                //                    .frame(width: 37, height: 37)
-                //                    .background(Color.appBlue)
-                //                    .cornerRadius(10)
-                //                }
-                Spacer()
-                Text("Product details")
-                    .font(.custom(regularMark, size: 18))
-                Spacer()
-                NavigationLink {
-                    MyCartView()
-                } label: {
-                    ZStack {
-                        Image("cart")
-                            .foregroundColor(.white)
-                            .frame(width: 14, height: 14)
-                    }
-                    .frame(width: 37, height: 37)
-                    .background(Color.appOrange)
-                    .cornerRadius(10)
-                }
-                
-            }
-            .padding(.leading, 42)
-            .padding(.trailing, 35)
-            .padding(.vertical, 20)
-            
-            TabView {
-                HStack(spacing: 30) {
-                    ForEach(vm.singleProduct!.images, id: \.self) { urlString in
-                        AsyncImage(url: URL(string: urlString)) { image in
-                            image
-                                .frame(width: 266)
-                                .background(.orange)
-                                .cornerRadius(20)
-                        } placeholder: {
-                            ProgressView()
-                        }
-                    }
-                }
-            }
-            .padding(.bottom, 15)
-            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
-            .shadow(color: Color.black.opacity(0.14), radius: 10)
+            tabView
             
             if let product = vm.singleProduct {
                 InfoSection(product: product)
@@ -94,32 +31,72 @@ struct ProductDetailsView: View {
         .task {
             await vm.getSingleProduct()
         }
-        .navigationBarTitle("")
+        .navigationBarTitle("Product details")
+        .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(true)
-        .navigationBarHidden(true)
+//        .navigationBarHidden(true)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button(action: {
+                    dismiss()
+                }, label: {
+                    ZStack {
+                        Image(systemName: "chevron.left")
+                            .foregroundColor(.white)
+                            .font(.system(size: 14))
+                    }
+                    .frame(width: 37, height: 37)
+                    .background(Color.appBlue)
+                    .cornerRadius(10)
+                })
+            }
+            ToolbarItem(placement: .navigationBarTrailing) {
+                NavigationLink {
+                    MyCartView()
+                } label: {
+                    ZStack {
+                        Image("cart")
+                            .foregroundColor(.white)
+                            .frame(width: 14, height: 14)
+                    }
+                    .frame(width: 37, height: 37)
+                    .background(Color.appOrange)
+                    .cornerRadius(10)
+                }
+            }
+        }
     }
 }
 
 struct ProductDetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        ProductDetailsView()
+        NavigationStack {
+            ProductDetailsView()
+        }
+        .environmentObject(HomeViewModel())
     }
 }
 
 extension ProductDetailsView {
-    @ViewBuilder
-    func cellPicture(product: ProductModel) -> some View {
-        ZStack {
-            AsyncImage(url: URL(string: product.images[0])) { image in
-                image
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 266)
-                    .background(.orange)
-                    .cornerRadius(20)
-            } placeholder: {
-                ProgressView()
+    var tabView: some View {
+        TabView {
+            if let product = vm.singleProduct {
+                ForEach(product.images, id: \.self) { urlString in
+                    AsyncImage(url: URL(string: urlString)) { image in
+                        image
+                            .resizable()
+                            .scaledToFit()
+                            .frame(maxWidth: .infinity)
+                            .background(.orange)
+                            .cornerRadius(15)
+                    } placeholder: {
+                        ProgressView()
+                    }
+                }
             }
         }
+        .padding(.vertical)
+        .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+        .shadow(color: Color.black.opacity(0.14), radius: 10)
     }
 }

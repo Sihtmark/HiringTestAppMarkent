@@ -25,6 +25,9 @@ struct DetailsView: View {
     }
 }
 
-#Preview {
-    DetailsView(type: ProductInfo.details)
+struct DetailsView_Preview: PreviewProvider {
+    static var previews: some View {
+        DetailsView(type: ProductInfo.details)
+            .environmentObject(HomeViewModel())
+    }
 }
