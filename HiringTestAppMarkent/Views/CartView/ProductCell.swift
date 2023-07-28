@@ -29,7 +29,7 @@ extension MyCartView {
                         .font(.custom(FontTheme.instance.mediumMark, size: 20))
                     Spacer()
                     Text("$\(basket.price)")
-                        .foregroundColor(Color.appOrange)
+                        .foregroundColor(.accentColor)
                         .font(.custom(FontTheme.instance.mediumMark, size: 20))
                         .padding(.bottom, 10)
                 }
@@ -63,7 +63,7 @@ extension MyCartView {
                     
                 }
                 .frame(width: 26, height: 68)
-                .background(Color.basketCard)
+                .background(Color.theme.iconSecondary)
                 .cornerRadius(26)
                 Spacer()
                 Button {

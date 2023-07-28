@@ -31,7 +31,7 @@ struct ProductTypeCircle: View {
             
             Text(type.rawValue)
                 .font(.custom(FontTheme.instance.regularMark, size: 9))
-                .foregroundColor(vm.productType == type ? Color.appOrange : Color.black)
+                .foregroundColor(vm.productType == type ? .accentColor : .black)
         }
         .background(Color.white)
     }

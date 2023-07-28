@@ -45,7 +45,7 @@ extension DetailView {
                 Image(systemName: "clear.fill")
                     .resizable()
                     .frame(width: 37, height: 37)
-                    .foregroundColor(Color.appBlue)
+                    .foregroundColor(.theme.backgroundBlue)
             }
             Spacer()
             Text("Filter options")
@@ -60,7 +60,7 @@ extension DetailView {
                     .foregroundColor(Color.white)
                     .padding(.horizontal, 21)
                     .padding(.vertical, 7)
-                    .background(Color.appOrange)
+                    .background(Color.accentColor)
                     .cornerRadius(10)
             }
         }
@@ -103,7 +103,7 @@ extension DetailView {
                             .foregroundColor(.black)
                         Spacer()
                         Image(systemName: "chevron.down")
-                            .foregroundColor(Color.imageCategory)
+                            .foregroundColor(.theme.iconSecondary)
                     }
                     .frame(height: 37)
                 .padding(.horizontal)
@@ -164,7 +164,7 @@ extension DetailView {
                             .foregroundColor(.black)
                         Spacer()
                         Image(systemName: "chevron.down")
-                            .foregroundColor(Color.imageCategory)
+                            .foregroundColor(.theme.iconSecondary)
                     }
                     .frame(height: 37)
                 .padding(.horizontal)
@@ -188,7 +188,7 @@ extension DetailView {
                         .foregroundColor(.black)
                     Spacer()
                     Image(systemName: "chevron.down")
-                        .foregroundColor(Color.imageCategory)
+                        .foregroundColor(.theme.iconSecondary)
                 }
                 .padding(.horizontal)
             }

@@ -23,7 +23,7 @@ struct MyCartView: View {
                             .font(.system(size: 14))
                     }
                     .frame(width: 37, height: 37)
-                    .background(Color.appBlue)
+                    .background(Color.theme.backgroundBlue)
                     .cornerRadius(10)
                 }
                 Spacer()
@@ -41,7 +41,7 @@ struct MyCartView: View {
                                 .frame(width: 14, height: 14)
                         }
                         .frame(width: 37, height: 37)
-                        .background(Color.appOrange)
+                        .background(Color.accentColor)
                         .cornerRadius(10)
                     }
                 }
@@ -101,7 +101,7 @@ struct MyCartView: View {
                         Rectangle()
                             .frame(width: 326, height: 54)
                             .cornerRadius(10)
-                            .foregroundColor(Color.appOrange)
+                            .foregroundColor(.accentColor)
                         Text("Checkout")
                             .font(.custom(FontTheme.instance.boldMark, size: 20))
                             .foregroundColor(.white)
@@ -109,7 +109,7 @@ struct MyCartView: View {
                 }
                 .padding(.bottom, 44)
             }
-            .background(Color.appBlue)
+            .background(Color.theme.backgroundBlue)
             .cornerRadius(30)
             
             

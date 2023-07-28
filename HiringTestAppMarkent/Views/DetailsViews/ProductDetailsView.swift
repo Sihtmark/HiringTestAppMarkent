@@ -22,12 +22,12 @@ struct ProductDetailsView: View {
                     .background(
                         RoundedRectangle(cornerRadius: 30)
                             .fill(.white)
-                            .shadow(color: Color.shadow1, radius: 20, y: -5)
+                            .shadow(color: .black.opacity(0.15), radius: 20, y: -5)
                     )
             }
         }
         .edgesIgnoringSafeArea(.bottom)
-        .background(Color.appBackground)
+//        .background(Color.appBackground)
         .task {
             await vm.getSingleProduct()
         }
@@ -46,7 +46,7 @@ struct ProductDetailsView: View {
                             .font(.system(size: 14))
                     }
                     .frame(width: 37, height: 37)
-                    .background(Color.appBlue)
+                    .background(Color.theme.backgroundBlue)
                     .cornerRadius(10)
                 })
             }
@@ -60,7 +60,7 @@ struct ProductDetailsView: View {
                             .frame(width: 14, height: 14)
                     }
                     .frame(width: 37, height: 37)
-                    .background(Color.appOrange)
+                    .background(Color.accentColor)
                     .cornerRadius(10)
                 }
             }

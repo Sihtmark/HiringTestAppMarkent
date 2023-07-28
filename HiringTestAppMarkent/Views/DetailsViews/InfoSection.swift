@@ -57,7 +57,7 @@ extension InfoSection {
                         .frame(width: 14, height: 13)
                 }
                 .frame(width: 37, height: 37)
-                .background(Color.appBlue)
+                .background(Color.theme.backgroundBlue)
                 .cornerRadius(10)
             }
         }
@@ -132,7 +132,7 @@ extension InfoSection {
         ZStack {
             Rectangle()
                 .cornerRadius(10)
-                .foregroundColor(Color.appOrange)
+                .foregroundColor(.accentColor)
             HStack {
                 Spacer()
                 Text("Add to card")

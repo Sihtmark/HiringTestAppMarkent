@@ -73,7 +73,7 @@ extension HomeView {
                 } label: {
                     Text("view all")
                         .font(.custom(FontTheme.instance.mediumMark, size: 15))
-                        .foregroundColor(Color.appOrange)
+                        .foregroundColor(.accentColor)
                 }
             }
             .padding(.horizontal)
@@ -111,7 +111,7 @@ extension HomeView {
                                 .resizable()
                                 .scaledToFit()
                                 .frame(width: 16, height: 16)
-                                .foregroundColor(Color.appOrange)
+                                .foregroundColor(.accentColor)
                                 .padding(.horizontal, 24)
                                 .cornerRadius(50)
                         }
@@ -127,8 +127,8 @@ extension HomeView {
                     } label: {
                         ZStack {
                             Circle()
-                                .fill(Color.appOrange)
-                                .shadow(color: Color.shadow, radius: 20)
+                                .fill(Color.accentColor)
+                                .shadow(color: .black.opacity(0.15), radius: 20)
                             Image("qrCode")
                                 .resizable()
                                 .renderingMode(.template)
@@ -155,7 +155,7 @@ extension HomeView {
                 } label: {
                     Text("see more")
                         .font(.custom(FontTheme.instance.regularMark, size: 15))
-                        .foregroundColor(Color.appOrange)
+                        .foregroundColor(.accentColor)
                 }
             }
             .padding(.horizontal)
@@ -184,7 +184,7 @@ extension HomeView {
                 } label: {
                     Text("see more")
                         .font(.custom(FontTheme.instance.regularMark, size: 15))
-                        .foregroundColor(Color.appOrange)
+                        .foregroundColor(.accentColor)
                 }
             }
             .padding(.horizontal)
@@ -220,7 +220,7 @@ extension HomeView {
         }
         .frame(height: 72)
         .frame(maxWidth: .infinity)
-        .background(Color.appBlue)
+        .background(Color.theme.backgroundBlue)
         .cornerRadius(30)
     }
     
