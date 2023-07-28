@@ -30,9 +30,9 @@
 		A06CDA032940B2570038DDCE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A06CDA022940B2570038DDCE /* Preview Assets.xcassets */; };
 		A06F29C42A6685B50073DF00 /* BestSellerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06F29C32A6685B50073DF00 /* BestSellerCell.swift */; };
 		A0D45B8F2948BBC4004C20D4 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D45B8E2948BBC4004C20D4 /* HomeViewModel.swift */; };
-		A0D45B982948D166004C20D4 /* MarkPro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A0D45B932948D165004C20D4 /* MarkPro-Regular.ttf */; };
-		A0D45B992948D166004C20D4 /* MarkPro-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A0D45B942948D165004C20D4 /* MarkPro-Medium.ttf */; };
-		A0D45B9A2948D166004C20D4 /* Mark-Pro-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A0D45B952948D166004C20D4 /* Mark-Pro-Bold.ttf */; };
+		A0D45B982948D166004C20D4 /* MarkProRegular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A0D45B932948D165004C20D4 /* MarkProRegular.ttf */; };
+		A0D45B992948D166004C20D4 /* MarkProMedium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A0D45B942948D165004C20D4 /* MarkProMedium.ttf */; };
+		A0D45B9A2948D166004C20D4 /* MarkProBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A0D45B952948D166004C20D4 /* MarkProBold.ttf */; };
 		A0D45B9B2948D166004C20D4 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D45B962948D166004C20D4 /* Fonts.swift */; };
 		A0D45B9C2948D166004C20D4 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D45B972948D166004C20D4 /* Colors.swift */; };
 		A0E65A4A2A6512D2009D58F2 /* Products.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E65A492A6512D2009D58F2 /* Products.swift */; };
@@ -67,9 +67,9 @@
 		A06F29C32A6685B50073DF00 /* BestSellerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BestSellerCell.swift; sourceTree = "<group>"; };
 		A09CD1EE294486BD0007193A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A0D45B8E2948BBC4004C20D4 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
-		A0D45B932948D165004C20D4 /* MarkPro-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MarkPro-Regular.ttf"; sourceTree = "<group>"; };
-		A0D45B942948D165004C20D4 /* MarkPro-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MarkPro-Medium.ttf"; sourceTree = "<group>"; };
-		A0D45B952948D166004C20D4 /* Mark-Pro-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Mark-Pro-Bold.ttf"; sourceTree = "<group>"; };
+		A0D45B932948D165004C20D4 /* MarkProRegular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MarkProRegular.ttf; sourceTree = "<group>"; };
+		A0D45B942948D165004C20D4 /* MarkProMedium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MarkProMedium.ttf; sourceTree = "<group>"; };
+		A0D45B952948D166004C20D4 /* MarkProBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MarkProBold.ttf; sourceTree = "<group>"; };
 		A0D45B962948D166004C20D4 /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		A0D45B972948D166004C20D4 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		A0E65A492A6512D2009D58F2 /* Products.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Products.swift; sourceTree = "<group>"; };
@@ -210,9 +210,9 @@
 			isa = PBXGroup;
 			children = (
 				A0D45B962948D166004C20D4 /* Fonts.swift */,
-				A0D45B952948D166004C20D4 /* Mark-Pro-Bold.ttf */,
-				A0D45B942948D165004C20D4 /* MarkPro-Medium.ttf */,
-				A0D45B932948D165004C20D4 /* MarkPro-Regular.ttf */,
+				A0D45B952948D166004C20D4 /* MarkProBold.ttf */,
+				A0D45B942948D165004C20D4 /* MarkProMedium.ttf */,
+				A0D45B932948D165004C20D4 /* MarkProRegular.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -276,10 +276,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				A01DF16C2A61738800A0109C /* LaunchView.storyboard in Resources */,
-				A0D45B9A2948D166004C20D4 /* Mark-Pro-Bold.ttf in Resources */,
-				A0D45B992948D166004C20D4 /* MarkPro-Medium.ttf in Resources */,
+				A0D45B9A2948D166004C20D4 /* MarkProBold.ttf in Resources */,
+				A0D45B992948D166004C20D4 /* MarkProMedium.ttf in Resources */,
 				A06CDA032940B2570038DDCE /* Preview Assets.xcassets in Resources */,
-				A0D45B982948D166004C20D4 /* MarkPro-Regular.ttf in Resources */,
+				A0D45B982948D166004C20D4 /* MarkProRegular.ttf in Resources */,
 				A06CDA002940B2570038DDCE /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -374,7 +374,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -429,7 +429,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

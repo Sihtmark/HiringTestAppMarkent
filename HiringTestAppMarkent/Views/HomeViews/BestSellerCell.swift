@@ -31,11 +31,11 @@ struct BestSellerCell: View {
                 VStack {
                     HStack(alignment: .bottom) {
                         Text("$" + "\(Int(Double(bestSeller.price) * (100.0 - bestSeller.discountPercentage) / 100))")
-                            .font(Font.custom(regularMark, size: 16))
+                            .font(Font.custom(FontTheme.instance.regularMark, size: 16))
                             .fontWeight(.bold)
                             .foregroundColor(.black)
                         Text("$" + "\(bestSeller.price)")
-                            .font(.custom(mediumMark, size: 10))
+                            .font(.custom(FontTheme.instance.mediumMark, size: 10))
                             .foregroundColor(Color.black.opacity(0.3))
                             .strikethrough(true, color: Color.black.opacity(0.3))
                         Spacer()
@@ -45,7 +45,7 @@ struct BestSellerCell: View {
                     
                     HStack {
                         Text(bestSeller.title)
-                            .font(.custom(regularMark, size: 10))
+                            .font(.custom(FontTheme.instance.regularMark, size: 10))
                             .foregroundColor(.black)
                         Spacer()
                         

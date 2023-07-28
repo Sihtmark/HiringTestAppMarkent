@@ -30,7 +30,7 @@ struct ProductTypeCircle: View {
             .padding(.top)
             
             Text(type.rawValue)
-                .font(.custom(regularMark, size: 9))
+                .font(.custom(FontTheme.instance.regularMark, size: 9))
                 .foregroundColor(vm.productType == type ? Color.appOrange : Color.black)
         }
         .background(Color.white)

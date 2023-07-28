@@ -6,9 +6,9 @@
 	<string></string>
 	<key>UIAppFonts</key>
 	<array>
-		<string>Fonts&amp;Colors/Mark-Pro-Bold.ttf</string>
-		<string>Fonts&amp;Colors/MarkPro-Medium.ttf</string>
-		<string>Fonts&amp;Colors/MarkPro-Regular.ttf</string>
+		<string>Fonts&amp;Colors/MarkProBold.ttf</string>
+		<string>Fonts&amp;Colors/MarkProMedium.ttf</string>
+		<string>Fonts&amp;Colors/MarkProRegular.ttf</string>
 	</array>
 </dict>
 </plist>

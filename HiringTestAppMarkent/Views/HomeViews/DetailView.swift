@@ -49,14 +49,14 @@ extension DetailView {
             }
             Spacer()
             Text("Filter options")
-                .font(.custom(regularMark, size: 18).bold())
+                .font(.custom(FontTheme.instance.regularMark, size: 18).bold())
                 .padding(.leading, 25)
             Spacer()
             Button {
                 dismiss()
             } label: {
                 Text("Done")
-                    .font(.custom(regularMark, size: 18))
+                    .font(.custom(FontTheme.instance.regularMark, size: 18))
                     .foregroundColor(Color.white)
                     .padding(.horizontal, 21)
                     .padding(.vertical, 7)
@@ -70,7 +70,7 @@ extension DetailView {
     var filterBrand: some View {
         VStack(alignment: .leading) {
             Text("Brand")
-                .font(.custom(mediumMark, size: 18).bold())
+                .font(.custom(FontTheme.instance.mediumMark, size: 18).bold())
             Menu {
                 Button {
                     self.brandFilterTitle = "Iphone"
@@ -99,7 +99,7 @@ extension DetailView {
                         .frame(height: 37)
                     HStack {
                         Text(brandFilterTitle)
-                            .font(.custom(regularMark, size: 18))
+                            .font(.custom(FontTheme.instance.regularMark, size: 18))
                             .foregroundColor(.black)
                         Spacer()
                         Image(systemName: "chevron.down")
@@ -116,7 +116,7 @@ extension DetailView {
     var filterPrice: some View {
         VStack(alignment: .leading) {
             Text("Price")
-                .font(.custom(mediumMark, size: 18).bold())
+                .font(.custom(FontTheme.instance.mediumMark, size: 18).bold())
             Menu {
                 Button {
                     self.priceFilterTitle = "$0 - $300"
@@ -160,7 +160,7 @@ extension DetailView {
                         .frame(height: 37)
                     HStack {
                         Text(priceFilterTitle)
-                            .font(.custom(regularMark, size: 18))
+                            .font(.custom(FontTheme.instance.regularMark, size: 18))
                             .foregroundColor(.black)
                         Spacer()
                         Image(systemName: "chevron.down")
@@ -177,14 +177,14 @@ extension DetailView {
     var filterSize: some View {
         VStack(alignment: .leading) {
             Text("Size")
-                .font(.custom(mediumMark, size: 18).bold())
+                .font(.custom(FontTheme.instance.mediumMark, size: 18).bold())
             ZStack {
                 Capsule()
                     .foregroundColor(.white)
                     .frame(height: 37)
                 HStack {
                     Text("4.5 to 5.5 inches")
-                        .font(.custom(regularMark, size: 18))
+                        .font(.custom(FontTheme.instance.regularMark, size: 18))
                         .foregroundColor(.black)
                     Spacer()
                     Image(systemName: "chevron.down")

@@ -5,9 +5,11 @@
 //  Created by Sergei Poluboiarinov on 2022-12-07.
 //
 
-import Foundation
 import SwiftUI
 
-let boldMark = "Mark-Pro-Bold"
-let mediumMark = "Mark-Pro-Medium"
-let regularMark = "MarkPro-Regular"
+struct FontTheme {
+    static let instance = FontTheme()
+    let boldMark = "MarkProBold"
+    let mediumMark = "MarkProMedium"
+    let regularMark = "MarkProRegular"
+}

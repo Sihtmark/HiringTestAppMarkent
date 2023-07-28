@@ -27,7 +27,7 @@ struct HotSalesCell: View {
                 ProductDetailsView()
             } label: {
                 Text("Buy now!")
-                    .font(.custom(boldMark, size: 11))
+                    .font(.custom(FontTheme.instance.boldMark, size: 11))
                     .foregroundColor(.black)
                     .padding(.vertical, 7)
                     .padding(.horizontal, 30)
@@ -43,7 +43,7 @@ struct HotSalesCell: View {
                 if product.rating > 4.5  {
                     Text("New")
                         .foregroundColor(Color.white)
-                        .font(.custom(boldMark, size: 10))
+                        .font(.custom(FontTheme.instance.boldMark, size: 10))
                         .padding(8)
                         .background(
                             Circle()
@@ -52,12 +52,12 @@ struct HotSalesCell: View {
                 }
                 VStack(alignment: .leading) {
                     Text(product.title)
-                        .font(.custom(boldMark, size: 18))
+                        .font(.custom(FontTheme.instance.boldMark, size: 18))
                         .foregroundColor(.accentColor)
                         .frame(maxWidth: 180, alignment: .leading)
                         .padding(.bottom, 6)
                     Text(product.description)
-                        .font(.custom(regularMark, size: 8))
+                        .font(.custom(FontTheme.instance.regularMark, size: 8))
                         .foregroundColor(Color.white)
                         .frame(maxWidth: 180, alignment: .leading)
                 }

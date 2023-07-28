@@ -26,11 +26,11 @@ extension MyCartView {
                 VStack(alignment: .leading) {
                     Text(basket.title)
                         .foregroundColor(.white)
-                        .font(.custom(mediumMark, size: 20))
+                        .font(.custom(FontTheme.instance.mediumMark, size: 20))
                     Spacer()
                     Text("$\(basket.price)")
                         .foregroundColor(Color.appOrange)
-                        .font(.custom(mediumMark, size: 20))
+                        .font(.custom(FontTheme.instance.mediumMark, size: 20))
                         .padding(.bottom, 10)
                 }
                 .frame(maxWidth: 160, alignment: .leading)

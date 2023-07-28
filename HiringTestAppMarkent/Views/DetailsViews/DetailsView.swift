@@ -16,7 +16,7 @@ struct DetailsView: View {
         HStack {
             VStack {
                 Text(type.title)
-                    .font(.custom(vm.productInfo == type ? boldMark : regularMark, size: 20))
+                    .font(.custom(vm.productInfo == type ? FontTheme.instance.boldMark : FontTheme.instance.regularMark, size: 20))
                 Capsule()
                     .frame(width: 86, height: 2)
                     .foregroundColor(vm.productInfo == type ? Color.appOrange : .white)

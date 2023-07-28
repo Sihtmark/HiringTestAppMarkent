@@ -33,7 +33,7 @@ struct MyCartView: View {
                 } label: {
                     HStack {
                         Text("Add address")
-                            .font(.custom(mediumMark, size: 15))
+                            .font(.custom(FontTheme.instance.mediumMark, size: 15))
                             .foregroundColor(.black)
                         ZStack {
                             Image("cart")
@@ -56,7 +56,7 @@ struct MyCartView: View {
             
             HStack {
                 Text("My Cart")
-                    .font(.custom(boldMark, size: 35))
+                    .font(.custom(FontTheme.instance.boldMark, size: 35))
                     .padding(.leading, 42)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
@@ -103,7 +103,7 @@ struct MyCartView: View {
                             .cornerRadius(10)
                             .foregroundColor(Color.appOrange)
                         Text("Checkout")
-                            .font(.custom(boldMark, size: 20))
+                            .font(.custom(FontTheme.instance.boldMark, size: 20))
                             .foregroundColor(.white)
                     }
                 }

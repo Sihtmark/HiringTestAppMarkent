@@ -46,7 +46,7 @@ extension InfoSection {
     var TitleAndHeartSection: some View {
         HStack {
             Text(product.title)
-                .font(.custom(mediumMark, size: 24))
+                .font(.custom(FontTheme.instance.mediumMark, size: 24))
             Spacer()
             Button {
                 
@@ -88,7 +88,7 @@ extension InfoSection {
                     .foregroundColor(.theme.iconSecondary)
                 Text("Stock \(product.stock)")
                     .foregroundColor(.theme.iconSecondary)
-                    .font(.custom(regularMark, size: 11))
+                    .font(.custom(FontTheme.instance.regularMark, size: 11))
             }
             Spacer()
             VStack {
@@ -99,7 +99,7 @@ extension InfoSection {
                     .foregroundColor(.theme.iconSecondary)
                 Text("\(product.brand)")
                     .foregroundColor(.theme.iconSecondary)
-                    .font(.custom(regularMark, size: 11))
+                    .font(.custom(FontTheme.instance.regularMark, size: 11))
             }
             Spacer()
             VStack {
@@ -110,7 +110,7 @@ extension InfoSection {
                     .foregroundColor(.theme.iconSecondary)
                 Text("\(Int(product.discountPercentage)) %")
                     .foregroundColor(.theme.iconSecondary)
-                    .font(.custom(regularMark, size: 11))
+                    .font(.custom(FontTheme.instance.regularMark, size: 11))
             }
             Spacer()
             VStack {
@@ -121,7 +121,7 @@ extension InfoSection {
                     .foregroundColor(.theme.iconSecondary)
                 Text("Save \(Int(Double(product.price) * ((product.discountPercentage) / 100))) $")
                     .foregroundColor(.theme.iconSecondary)
-                    .font(.custom(regularMark, size: 11))
+                    .font(.custom(FontTheme.instance.regularMark, size: 11))
             }
         }
         .padding(.leading, 30)
@@ -136,16 +136,16 @@ extension InfoSection {
             HStack {
                 Spacer()
                 Text("Add to card")
-                    .font(.custom(boldMark, size: 20))
+                    .font(.custom(FontTheme.instance.boldMark, size: 20))
                     .foregroundColor(.white)
                     .padding(.trailing, 20)
                 Text("$\(Int(Double(product.price) * ((100.0 - product.discountPercentage) / 100.0)))")
-                    .font(.custom(boldMark, size: 20))
+                    .font(.custom(FontTheme.instance.boldMark, size: 20))
                     .foregroundColor(.white)
                     .overlay(alignment: .bottomTrailing) {
                         Text("$\(product.price)")
                             .strikethrough()
-                            .font(.custom(boldMark, size: 13))
+                            .font(.custom(FontTheme.instance.boldMark, size: 13))
                             .foregroundColor(.theme.iconSecondary)
                             .offset(x: 35, y: 6)
                     }

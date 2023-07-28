@@ -65,13 +65,14 @@ extension HomeView {
         VStack {
             HStack {
                 Text("Select Category")
-                    .font(.custom(boldMark, size: 25))
+                    .font(.custom(FontTheme.instance.boldMark, size: 25))
+                    .fontWeight(.bold)
                 Spacer()
                 Button {
                     
                 } label: {
                     Text("view all")
-                        .font(.custom(regularMark, size: 15))
+                        .font(.custom(FontTheme.instance.mediumMark, size: 15))
                         .foregroundColor(Color.appOrange)
                 }
             }
@@ -147,13 +148,13 @@ extension HomeView {
         VStack {
             HStack {
                 Text("Hot sales")
-                    .font(.custom(boldMark, size: 25))
+                    .font(.custom(FontTheme.instance.boldMark, size: 25))
                 Spacer()
                 Button {
                     
                 } label: {
                     Text("see more")
-                        .font(.custom(regularMark, size: 15))
+                        .font(.custom(FontTheme.instance.regularMark, size: 15))
                         .foregroundColor(Color.appOrange)
                 }
             }
@@ -176,13 +177,13 @@ extension HomeView {
         VStack {
             HStack {
                 Text("Best seller")
-                    .font(.custom(boldMark, size: 25))
+                    .font(.custom(FontTheme.instance.boldMark, size: 25))
                 Spacer()
                 Button {
                     
                 } label: {
                     Text("see more")
-                        .font(.custom(regularMark, size: 15))
+                        .font(.custom(FontTheme.instance.regularMark, size: 15))
                         .foregroundColor(Color.appOrange)
                 }
             }
@@ -206,7 +207,7 @@ extension HomeView {
                     .frame(width: 8)
                     .foregroundColor(.white)
                 Text("Explorer")
-                    .font(.custom(boldMark, size: 15))
+                    .font(.custom(FontTheme.instance.boldMark, size: 15))
                     .foregroundColor(.white)
             }
             Spacer()
@@ -230,7 +231,7 @@ extension HomeView {
             HStack {
                 Image("metka")
                 Text("Zihuatanejo, Gro")
-                    .font(.custom(mediumMark, size: 20))
+                    .font(.custom(FontTheme.instance.mediumMark, size: 20))
                     .foregroundColor(Color.black)
                 Image("arrow")
             }
