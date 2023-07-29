@@ -8,12 +8,13 @@
 import SwiftUI
 
 extension Image {
-    static let icon = Icon()
+    static let homeIcons = HomeIcons()
+    static let productViewIcons = ProductViewIcons()
+    static let cartViewIcons = CartViewIcons()
 }
 
-struct Icon {
+struct HomeIcons {
     let arrow = Image("arrow")
-    let bin = Image("bin")
     let books = Image("books")
     let camera = Image("camera")
     let cart = Image("cart")
@@ -28,4 +29,18 @@ struct Icon {
     let phone = Image("phone")
     let profile = Image("profile")
     let qrCode = Image("qrCode")
+}
+
+struct ProductViewIcons {
+    let discount = Image("discount")
+    let label = Image("label")
+    let savings = Image("savings")
+    let stock = Image("stock")
+    let cart = Image("cart")
+    let heart = Image("heart")
+}
+
+struct CartViewIcons {
+    let cart = Image("cart")
+    let bin = Image("bin")
 }

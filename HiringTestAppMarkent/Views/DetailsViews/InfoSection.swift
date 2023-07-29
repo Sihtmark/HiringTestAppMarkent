@@ -15,20 +15,13 @@ struct InfoSection: View {
     var body: some View {
         VStack(alignment: .leading) {
             TitleAndHeartSection
-            
             StarRating(rating: .constant(product.rating), maxRating: 5)
                 .padding(.horizontal, 38)
-            
             Spacer()
-            
             detailPickerSection
-            
             Spacer()
-            
             productInfoSection
-            
             Spacer()
-            
             addToCardButton
         }
     }
@@ -52,7 +45,7 @@ extension InfoSection {
                 
             } label: {
                 ZStack {
-                    Image("heart")
+                    Image.productViewIcons.heart
                         .foregroundColor(.white)
                         .frame(width: 14, height: 13)
                 }
@@ -81,9 +74,9 @@ extension InfoSection {
     var productInfoSection: some View {
         HStack {
             VStack {
-                Image("stock")
+                Image.productViewIcons.stock
                     .resizable()
-                    .aspectRatio(contentMode: .fit)
+                    .scaledToFit()
                     .frame(height: 28)
                     .foregroundColor(.theme.iconSecondary)
                 Text("Stock \(product.stock)")
@@ -92,7 +85,7 @@ extension InfoSection {
             }
             Spacer()
             VStack {
-                Image("label")
+                Image.productViewIcons.label
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(height: 28)
@@ -103,7 +96,7 @@ extension InfoSection {
             }
             Spacer()
             VStack {
-                Image("discount")
+                Image.productViewIcons.discount
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(height: 28)
@@ -114,7 +107,7 @@ extension InfoSection {
             }
             Spacer()
             VStack {
-                Image("savings")
+                Image.productViewIcons.savings
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(height: 28)

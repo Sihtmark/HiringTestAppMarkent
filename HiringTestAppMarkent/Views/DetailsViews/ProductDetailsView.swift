@@ -55,7 +55,7 @@ struct ProductDetailsView: View {
                     MyCartView()
                 } label: {
                     ZStack {
-                        Image("cart")
+                        Image.productViewIcons.cart
                             .foregroundColor(.white)
                             .frame(width: 14, height: 14)
                     }

@@ -36,7 +36,7 @@ struct MyCartView: View {
                             .font(.custom(FontTheme.instance.mediumMark, size: 15))
                             .foregroundColor(.black)
                         ZStack {
-                            Image("cart")
+                            Image.cartViewIcons.cart
                                 .foregroundColor(.white)
                                 .frame(width: 14, height: 14)
                         }
@@ -45,7 +45,6 @@ struct MyCartView: View {
                         .cornerRadius(10)
                     }
                 }
-                
             }
             .padding(.top, 70)
             .padding(.leading, 42)

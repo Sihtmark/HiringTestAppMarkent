@@ -129,7 +129,7 @@ extension HomeView {
                             Circle()
                                 .fill(Color.accentColor)
                                 .shadow(color: .black.opacity(0.15), radius: 20)
-                            Image("qrCode")
+                            Image.homeIcons.qrCode
                                 .resizable()
                                 .renderingMode(.template)
                                 .aspectRatio(contentMode: .fit)
@@ -211,11 +211,11 @@ extension HomeView {
                     .foregroundColor(.white)
             }
             Spacer()
-            Image("cart")
+            Image.homeIcons.cart
             Spacer()
-            Image("heart")
+            Image.homeIcons.heart
             Spacer()
-            Image("profile")
+            Image.homeIcons.profile
             Spacer()
         }
         .frame(height: 72)
@@ -229,11 +229,11 @@ extension HomeView {
             
         }, label: {
             HStack {
-                Image("metka")
+                Image.homeIcons.metka
                 Text("Zihuatanejo, Gro")
                     .font(.custom(FontTheme.instance.mediumMark, size: 20))
                     .foregroundColor(Color.black)
-                Image("arrow")
+                Image.homeIcons.arrow
             }
         })
     }
@@ -242,7 +242,7 @@ extension HomeView {
         Button(action: {
             showingSheet.toggle()
         }, label: {
-            Image("filter")
+            Image.homeIcons.filter
                 .resizable()
                 .scaledToFill()
                 .frame(width: 13, height: 13)

@@ -69,7 +69,7 @@ extension MyCartView {
                 Button {
                     
                 } label: {
-                    Image("bin")
+                    Image.cartViewIcons.bin
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .frame(width: 14.75, height: 16)
