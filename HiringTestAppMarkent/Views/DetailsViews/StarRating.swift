@@ -31,7 +31,7 @@ struct StarRating: View {
             ForEach(0..<maxRating, id: \.self) { _ in
                 Text(Image(systemName: "star"))
                     .font(.system(size: 20))
-                    .foregroundColor(.yellow)
+                    .foregroundColor(.theme.yellow)
                     .aspectRatio(contentMode: .fill)
             }
         }.overlay(
@@ -40,7 +40,7 @@ struct StarRating: View {
                     ForEach(0..<maxRating, id: \.self) { _ in
                         Image(systemName: "star.fill")
                             .font(.system(size: 20))
-                            .foregroundColor(.yellow)
+                            .foregroundColor(.theme.yellow)
                             .aspectRatio(contentMode: .fit)
                     }
                 }
