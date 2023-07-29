@@ -9,7 +9,7 @@ import SwiftUI
 
 struct DetailsView: View {
     
-    @EnvironmentObject private var vm: HomeViewModel
+    @EnvironmentObject private var vm: ViewModel
     let type: ProductInfo
     
     var body: some View {
@@ -28,6 +28,6 @@ struct DetailsView: View {
 struct DetailsView_Preview: PreviewProvider {
     static var previews: some View {
         DetailsView(type: ProductInfo.details)
-            .environmentObject(HomeViewModel())
+            .environmentObject(ViewModel())
     }
 }

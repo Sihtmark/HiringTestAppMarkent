@@ -8,9 +8,9 @@
 import Foundation
 import SwiftUI
 
-final class HomeViewModel: ObservableObject {
+final class ViewModel: ObservableObject {
     
-    @Published var productType: ProductType = .smartphones
+    @Published var productType: ProductTypes = .smartphones
     @Published var productCarousel: Int = 0
     @Published var hotSales = [Product]()
     @Published var bestSellers = [Product]()
@@ -20,7 +20,6 @@ final class HomeViewModel: ObservableObject {
     @Published var singleProduct: Product? = nil
     @Published var user: User? = nil
     @Published var productInfo: ProductInfo = .details
-    
     
     func getAllProducts() async {
         do {
@@ -133,7 +132,7 @@ final class HomeViewModel: ObservableObject {
         }
     }
     
-    func switchProductType(type: ProductType) {
+    func switchProductType(type: ProductTypes) {
         withAnimation {
             productType = type
         }
@@ -156,11 +155,5 @@ final class HomeViewModel: ObservableObject {
             productInfo = type
         }
     }
-    
-//    func switchCapacity(type: ProductModel) {
-//        withAnimation {
-//            productModel = type
-//        }
-//    }
 }
 

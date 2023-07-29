@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HomeView: View {
-    @EnvironmentObject private var vm: HomeViewModel
+    @EnvironmentObject private var vm: ViewModel
     @State private var showingSheet = false
 //    @State private var filterPriceWidth: CGFloat = 25
     
@@ -55,7 +55,7 @@ struct HomeView_Previews: PreviewProvider {
     
     static var previews: some View {
         HomeView()
-            .environmentObject(HomeViewModel())
+            .environmentObject(ViewModel())
     }
 }
 
@@ -81,7 +81,7 @@ extension HomeView {
             
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack {
-                    ForEach(ProductType.allCases, id: \.self) { type in
+                    ForEach(ProductTypes.allCases, id: \.self) { type in
                         Button(action: {
                             withAnimation {
                                 vm.productType = type

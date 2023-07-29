@@ -10,7 +10,7 @@ import SwiftUI
 struct ProductDetailsView: View {
     
     @Environment(\.dismiss) private var dismiss
-    @EnvironmentObject private var vm: HomeViewModel
+    @EnvironmentObject private var vm: ViewModel
     
     var body: some View {
         VStack {
@@ -73,7 +73,7 @@ struct ProductDetailsView_Previews: PreviewProvider {
         NavigationStack {
             ProductDetailsView()
         }
-        .environmentObject(HomeViewModel())
+        .environmentObject(ViewModel())
     }
 }
 

@@ -9,9 +9,9 @@ import SwiftUI
 
 struct ProductTypeCircle: View {
     
-    let type: ProductType
+    let type: ProductTypes
     
-    @EnvironmentObject private var vm: HomeViewModel
+    @EnvironmentObject private var vm: ViewModel
     
     var body: some View {
         VStack {
@@ -39,7 +39,7 @@ struct ProductTypeCircle: View {
 
 struct ProductTypeCircle_Previews: PreviewProvider {
     static var previews: some View {
-        ProductTypeCircle(type: ProductType.smartphones)
-            .environmentObject(HomeViewModel())
+        ProductTypeCircle(type: ProductTypes.smartphones)
+            .environmentObject(ViewModel())
     }
 }

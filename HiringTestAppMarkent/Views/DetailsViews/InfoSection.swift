@@ -10,7 +10,7 @@ import SwiftUI
 struct InfoSection: View {
     
     let product: Product
-    @EnvironmentObject private var vm: HomeViewModel
+    @EnvironmentObject private var vm: ViewModel
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -30,7 +30,7 @@ struct InfoSection: View {
 struct InfoSection_Previews: PreviewProvider {
     static var previews: some View {
         InfoSection(product: previewProduct)
-            .environmentObject(HomeViewModel())
+            .environmentObject(ViewModel())
     }
 }
 

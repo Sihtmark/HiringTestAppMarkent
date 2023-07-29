@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MyCartView: View {
     
-    @StateObject var myCartViewModel = MyCartViewModel()
+    @EnvironmentObject private var vm: ViewModel
     
     var body: some View {
         VStack {
@@ -65,13 +65,13 @@ struct MyCartView: View {
             
             VStack {
                 ScrollView(.vertical, showsIndicators: false) {
-                    VStack(spacing: 46) {
-                        ForEach(myCartViewModel.basket, id: \.self) { basket in
-                            productCell(basket: basket)
+                    VStack(spacing: 45) {
+                        ForEach(vm.hotSales, id: \.self) { product in
+                            ProductCell(product: product)
                         }
                     }
+                    .padding(.top, 30)
                 }
-                .padding(.top, 80)
                 .padding(.horizontal, 23)
                 
                 Spacer()
@@ -83,7 +83,7 @@ struct MyCartView: View {
                     .padding(.horizontal, 5)
                     .padding(.bottom, 15)
                 
-                totalCell(myCart: myCartViewModel.myCart)
+                TotalCell()
                     .padding(.horizontal, 55)
                 
                 Rectangle()
@@ -114,8 +114,8 @@ struct MyCartView: View {
             
         }
         .ignoresSafeArea()
-        .onAppear {
-            myCartViewModel.fetchData()
+        .task {
+            await vm.getProductsOfCategory(category: ProductTypes.furniture.rawValue)
         }
         .navigationBarTitle("")
         .navigationBarBackButtonHidden(true)
@@ -125,6 +125,9 @@ struct MyCartView: View {
 
 struct MyCartView_Previews: PreviewProvider {
     static var previews: some View {
-        MyCartView()
+        NavigationStack {
+            MyCartView()
+        }
+        .environmentObject(ViewModel())
     }
 }

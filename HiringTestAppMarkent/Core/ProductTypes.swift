@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum ProductType: String, CaseIterable {
+enum ProductTypes: String, CaseIterable {
     case smartphones
     case laptops
     case fragrances

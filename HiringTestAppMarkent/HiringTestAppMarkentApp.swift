@@ -10,7 +10,7 @@ import SwiftUI
 @main
 struct HiringTestAppMarkentApp: App {
     
-    @StateObject private var vm = HomeViewModel()
+    @StateObject private var vm = ViewModel()
     
     var body: some Scene {
         WindowGroup {
