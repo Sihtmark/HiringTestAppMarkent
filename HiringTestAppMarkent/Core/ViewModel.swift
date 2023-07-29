@@ -11,10 +11,8 @@ import SwiftUI
 final class ViewModel: ObservableObject {
     
     @Published var productType: ProductTypes = .smartphones
-    @Published var productCarousel: Int = 0
     @Published var hotSales = [Product]()
     @Published var bestSellers = [Product]()
-    @Published var image: UIImage = UIImage()
     @Published var isFavorite: Bool = false
     @Published var favoritesBestSellers = Set<Int>()
     @Published var singleProduct: Product? = nil

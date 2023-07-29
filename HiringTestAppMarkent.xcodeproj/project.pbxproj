@@ -121,8 +121,6 @@
 			children = (
 				A02CB3FC2A6406F900359FF2 /* APIRequestDispatcher.swift */,
 				5239C4F82A750BC5003A66D9 /* Router.swift */,
-				A02CB3FE2A642D7000359FF2 /* User.swift */,
-				A0E65A492A6512D2009D58F2 /* Products.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -159,11 +157,11 @@
 			isa = PBXGroup;
 			children = (
 				A06CD9FB2940B2550038DDCE /* HiringTestAppMarkentApp.swift */,
+				A02CB3FB2A6406EA00359FF2 /* Managers */,
+				A01DF1652A6160BC00A0109C /* Extensions */,
+				A0D45B922948D111004C20D4 /* Fonts */,
 				A06F29BF2A6665AE0073DF00 /* Core */,
 				A06F29C02A6666600073DF00 /* Views */,
-				A01DF1652A6160BC00A0109C /* Extensions */,
-				A02CB3FB2A6406EA00359FF2 /* Managers */,
-				A0D45B922948D111004C20D4 /* Fonts */,
 				A06CDA012940B2570038DDCE /* Preview Content */,
 				A06CD9FF2940B2570038DDCE /* Assets.xcassets */,
 				A01DF16B2A61738800A0109C /* LaunchView.storyboard */,
@@ -186,6 +184,8 @@
 				A0D45B8E2948BBC4004C20D4 /* ViewModel.swift */,
 				A06C67A2294628C9007A9BF1 /* ProductTypes.swift */,
 				A02827632A6EBC9A00FC0403 /* ProductInfo.swift */,
+				A02CB3FE2A642D7000359FF2 /* User.swift */,
+				A0E65A492A6512D2009D58F2 /* Products.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
