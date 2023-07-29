@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		522691BC2A73F3D4006CE087 /* CellPicture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522691BB2A73F3D4006CE087 /* CellPicture.swift */; };
+		522F71922A751646002719A3 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522F71912A751646002719A3 /* LoginView.swift */; };
 		5239C4F92A750BC5003A66D9 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5239C4F82A750BC5003A66D9 /* Router.swift */; };
 		A01B8AF7295840A800A509FE /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01B8AF6295840A800A509FE /* ProductCell.swift */; };
 		A01B8AFA2958416500A509FE /* TotalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01B8AF92958416500A509FE /* TotalCell.swift */; };
@@ -41,6 +42,7 @@
 
 /* Begin PBXFileReference section */
 		522691BB2A73F3D4006CE087 /* CellPicture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellPicture.swift; sourceTree = "<group>"; };
+		522F71912A751646002719A3 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		5239C4F82A750BC5003A66D9 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		A01B8AF6295840A800A509FE /* ProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
 		A01B8AF92958416500A509FE /* TotalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalCell.swift; sourceTree = "<group>"; };
@@ -85,6 +87,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		522F71902A75162E002719A3 /* LoginViews */ = {
+			isa = PBXGroup;
+			children = (
+				522F71912A751646002719A3 /* LoginView.swift */,
+			);
+			path = LoginViews;
+			sourceTree = "<group>";
+		};
 		A01B8AF329583FC100A509FE /* DetailsViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -193,6 +203,7 @@
 		A06F29C02A6666600073DF00 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				522F71902A75162E002719A3 /* LoginViews */,
 				A06442B7294C3EE700599EDF /* HomeViews */,
 				A01B8AF329583FC100A509FE /* DetailsViews */,
 				A01B8AF8295840D100A509FE /* CartView */,
@@ -298,6 +309,7 @@
 				522691BC2A73F3D4006CE087 /* CellPicture.swift in Sources */,
 				A02827642A6EBC9A00FC0403 /* ProductInfo.swift in Sources */,
 				A01F062429532546000D46AC /* DetailView.swift in Sources */,
+				522F71922A751646002719A3 /* LoginView.swift in Sources */,
 				A01B8AF7295840A800A509FE /* ProductCell.swift in Sources */,
 				A01B8AFA2958416500A509FE /* TotalCell.swift in Sources */,
 				A01DF1672A6160C700A0109C /* Color.swift in Sources */,

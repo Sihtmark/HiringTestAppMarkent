@@ -14,8 +14,14 @@ struct HiringTestAppMarkentApp: App {
     
     var body: some Scene {
         WindowGroup {
-            HomeView()
-                .environmentObject(vm)
+            NavigationStack {
+                if vm.user == nil {
+                    LoginView()
+                } else {
+                    HomeView()
+                }
+            }
+            .environmentObject(vm)
         }
     }
 }

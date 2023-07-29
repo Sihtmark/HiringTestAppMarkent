@@ -16,30 +16,28 @@ struct HomeView: View {
         GridItem(.fixed(UIScreen.main.bounds.width / 2.3), spacing: 15, alignment: .center)
     ]
     var body: some View {
-        NavigationStack {
-            ZStack(alignment: .bottom) {
-                ScrollView(.vertical, showsIndicators: false) {
-                    selectCategorySection
-                    hotSalesSection
-                    bestSellerSection
-                }
-                tabBar
+        ZStack(alignment: .bottom) {
+            ScrollView(.vertical, showsIndicators: false) {
+                selectCategorySection
+                hotSalesSection
+                bestSellerSection
             }
-            .edgesIgnoringSafeArea(.bottom)
-            .toolbar {
-                ToolbarItem(placement: .principal) {
-                    locationPicker
-                }
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    filterButton
-                }
-            }
-            .sheet(isPresented: $showingSheet) {
-                DetailView()
-                    .presentationDetents([.fraction(0.5)])
-            }
-            .navigationBarTitleDisplayMode(.inline)
+            tabBar
         }
+        .edgesIgnoringSafeArea(.bottom)
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                locationPicker
+            }
+            ToolbarItem(placement: .navigationBarTrailing) {
+                filterButton
+            }
+        }
+        .sheet(isPresented: $showingSheet) {
+            DetailView()
+                .presentationDetents([.fraction(0.5)])
+        }
+        .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(true)
         .task {
             if vm.bestSellers.isEmpty {
