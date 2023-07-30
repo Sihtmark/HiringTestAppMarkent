@@ -8,12 +8,12 @@ This poject is showing us how we can integrate adaptive Networking to our projec
 
 [YouTube short video](https://youtube.com/shorts/U9fgzh7RzkQ?feature=share)
 
-iOS 16
-Xcode 14
-SwiftUI
-Smart REST API
-Concurrency
-MVVM
-Fonts
-Colors
-Login
+- iOS 16
+- Xcode 14
+- SwiftUI
+- Smart REST API
+- Concurrency
+- MVVM
+- Fonts
+- Colors
+- Login
